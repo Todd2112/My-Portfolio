@@ -1,6 +1,6 @@
 # 🧠 Reasoning AI Chatbot (Streamlit Edition)
 
-Welcome to the **Reasoning AI Chatbot** – a terminal-based AI now reimagined for the browser! This project showcases not only AI conversation but how the AI *thinks*, providing explanations before code answers. Perfect for showcasing real-world AI development skills and clean app deployment to hiring teams.
+Welcome to the **Reasoning AI Chatbot** – a terminal-based AI now reimagined for the browser! This project showcases not only AI conversation but how the AI *thinks*, providing explanations before code answers. 
 
 ## 🌐 Live Demo
 [Click here to try it out on Streamlit Cloud!](https://<your-streamlit-app-link>)
