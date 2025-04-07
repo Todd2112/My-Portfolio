@@ -1,60 +1,33 @@
-# 🧠 Reasoning AI Chatbot (Streamlit Edition)
+# 🤖 Reasoning AI Chatbot (Portfolio Demo)
 
-Welcome to the **Reasoning AI Chatbot** – a terminal-based AI now reimagined for the browser! This project showcases not only AI conversation but how the AI *thinks*, providing explanations before code answers. 
+Welcome to my Reasoning AI Chatbot! This app simulates how an intelligent AI assistant thinks through your questions — showing both the reasoning process and answers.
 
-## 🌐 Live Demo
-[Click here to try it out on Streamlit Cloud!](https://<your-streamlit-app-link>)
+## 🚀 Live Demo for HR Reviewers
 
-## 💡 Features
-- Real-time AI reasoning + code
-- Chat UI powered by Streamlit
-- Uses Ollama + DeepSeek model for conversation
-- Clean and responsive interface
+👉 **[Click here to try the app (Demo Mode only)](https://my-portfolio-reasoning-ai.streamlit.app/)**  
+No downloads or setup required!
 
-## 📦 Requirements
-Install the dependencies:
-
-pip install -r requirements.txt
-
-## 🖥 Run with:
-After installing the dependencies, run the app with this command:
-
-streamlit run streamlit-app.py
-
-This will start the Streamlit app in your browser, where you can interact with the AI chatbot.
-
-## 🧠 Why This Matters
-Perfect for showcasing real-world AI dev skills and clean app deployment to hiring teams. No setup needed for the end user. They can simply open the app in their browser and see it in action!
-
-## 🛠️ Installation Instructions
-1. Clone the repo:
-
-git clone https://github.com/Todd2112/My-Portfolio.git
-
-
-
-2. Navigate into the project directory:
-
-cd your-repo-name
-
-
-3. Install the required dependencies:
-
-pip install -r requirements.txt
-
-
-4. Run the Streamlit app:
-
-streamlit run streamlit-app.py
-
-
-## 🚀 Contributing
-Feel free to fork this project and create a pull request. Contributions are always welcome!
-
-## 📬 Contact
-For any questions, feel free to reach out to me via my GitHub profile: [Todd2112](https://github.com/Todd2112)
+Demo Mode gives HR and recruiters a frictionless experience. It mimics how the AI would respond using reasoning logic — even without a large language model installed.
 
 ---
 
-Made with 💻 and passion by **Todd**. Enjoy the app, and thanks for visiting my GitHub portfolio! 🎉
+## 🧠 Full Mode (Local Use Only)
 
+If you're running this locally and want full power using [Ollama](https://ollama.com), just:
+
+1. Install [Ollama](https://ollama.com/download)
+2. Run this app locally:
+    ```bash
+    streamlit run streamlit-app.py
+    ```
+
+3. Select **"Full Mode"** in the app toggle to use an actual language model like `llama3`.
+
+---
+
+## 📦 Dependencies
+
+### `requirements.txt`:
+```txt
+streamlit
+requests
