@@ -1,34 +1,48 @@
 # 🤖 Reasoning AI Chatbot (Portfolio Demo)
 
-Welcome to my Reasoning AI Chatbot! This app simulates how an intelligent AI assistant thinks through your questions — showing both the reasoning process and answers.
+Welcome to my **Reasoning AI Chatbot!**  
+This app simulates how an intelligent assistant reasons through your questions — showing both its thought process and final answers.
+
+---
 
 ## 🚀 Live Demo for HR Reviewers
 
-🚀 [Click here to try the app (Demo Mode only)](https://my-portfolio-reasoning-ai.streamlit.app)  
-_(Right-click or Ctrl+click to open in a new tab!)_
+[🚀 Click here to try the app (Demo Mode only)](https://my-portfolio-reasoning-ai.streamlit.app)  
+_**Tip:** Right-click or Ctrl+Click to open in a new tab!_
 
-
-Demo Mode gives you a frictionless experience. It mimics how the AI would respond using reasoning logic — even without a large language model installed.
+Demo Mode gives you a frictionless experience. It mimics how the AI would respond using logical reasoning — even without a large language model installed.
 
 ---
 
 ## 🧠 Full Mode (Local Use Only)
 
-If you're running this locally and want full power using [Ollama](https://ollama.com), just:
+Want to run this chatbot with full AI power using **Ollama**?
 
-1. Install [Ollama](https://ollama.com/download)
-2. Run this app locally:
-    ```bash
-    streamlit run streamlit-app.py
-    ```
+1. **Install Ollama**  
+   👉 [Download here](https://ollama.com/download)
 
-3. Select **"Full Mode"** in the app toggle to use an actual language model like `llama3`.
+2. **Start the Ollama server:**
+   ```bash
+   ollama serve
+3. **Pull a model (e.g., DeepSeek or LLaMA3):**
+   ```bash
+   ollama pull deepseek-coder:latest
+4. **or:**
+   ```bash
+   ollama pull llama3
+5. **Run the Streamlit app:**
+   ```bash
+   streamlit run streamlit-app.py
+In the app, switch to "Full Mode" using the toggle at the top to enable actual AI-based reasoning.
+Now your chatbot is connected to a real local LLM!
 
----
+📦 Dependencies
 
-## 📦 Dependencies
+Make sure these are installed in your Python environment:
 
-### `requirements.txt`:
-```txt
+**requirements.txt**
+```bash
 streamlit
 requests
+
+
