@@ -4,7 +4,9 @@ Welcome to my Reasoning AI Chatbot! This app simulates how an intelligent AI ass
 
 ## 🚀 Live Demo for HR Reviewers
 
-👉<a href="https://my-portfolio-reasoning-ai.streamlit.app" target="_blank">🚀 Click here to try the app (Demo Mode only)<br>No downloads or setup required!</a>
+🚀 [Click here to try the app (Demo Mode only)](https://my-portfolio-reasoning-ai.streamlit.app)  
+_(Right-click or Ctrl+click to open in a new tab!)_
+
 
 Demo Mode gives you a frictionless experience. It mimics how the AI would respond using reasoning logic — even without a large language model installed.
 
