@@ -1,7 +1,8 @@
-# 🤖 Reasoning AI Chatbot (Portfolio Demo)
+# 🤖 Reasoning Python Coding AI Chatbot (Portfolio Demo)
 
-Welcome to my **Reasoning AI Chatbot!**  
-This app simulates how an intelligent assistant reasons through your questions — showing both its thought process and final answers.
+Welcome to my **Reasoning Python Coding AI Chatbot!**  
+This chatbot isn't just here to chat — it's here to think.
+Designed as a Python reasoning assistant, it simulates how an intelligent agent would walk through logical steps to solve programming problems.
 
 ---
 
