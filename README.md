@@ -40,6 +40,7 @@ Now your chatbot is connected to a real local LLM!
 📦 Dependencies
 
 Make sure these are installed in your Python environment:
+
 **requirements.txt:**
 ```bash
 streamlit
