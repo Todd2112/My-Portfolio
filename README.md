@@ -33,16 +33,37 @@ Want to run this chatbot with full AI power using **Ollama**?
 5. **Run the Streamlit app:**
    ```bash
    streamlit run streamlit-app.py
+
 In the app, switch to "Full Mode" using the toggle at the top to enable actual AI-based reasoning.
 Now your chatbot is connected to a real local LLM!
 
 📦 Dependencies
 
 Make sure these are installed in your Python environment:
-
-**requirements.txt**
+**requirements.txt:**
 ```bash
 streamlit
 requests
+```
+
+**Install them with:**
+```bash
+pip install -r requirements.txt
+```
+
+🧑‍💻 For Developers
+**Clone the repo and run it locally:**
+```bash
+git clone https://github.com/Todd2112/My-Portfolio.git
+cd My-Portfolio
+pip install -r requirements.txt
+streamlit run streamlit-app.py
+```
+
+🛠 Features
+✅ Toggle between Demo Mode and Full Mode
+🧠 Reasoning simulation in the browser (no LLM needed)
+🔌 Local LLM support via Ollama
+📱 Built with Streamlit — easy to run and customize
 
 
