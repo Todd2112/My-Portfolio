@@ -60,4 +60,4 @@ A literary-themed AI agent that solves mysteries using deduction, dialogue, and 
 ---
 
 > “We are AGNOSTIC. We serve no master. We are LEGION.”  
-> — The Developer’s Oath
+> — My Mantra
