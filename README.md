@@ -1,71 +1,63 @@
-# 🤖 Reasoning Python Coding AI Chatbot (Portfolio Demo)
+# 🚀 Todd2112's Dev Portfolio
 
-Welcome to my **Reasoning Python Coding AI Chatbot!**  
-This chatbot isn't just here to chat — it's here to think.
-Designed as a Python reasoning assistant, it simulates how an intelligent agent would walk through logical steps to solve programming problems.
+Welcome to my official coding portfolio! I'm a versatile, hands-on developer building intelligent apps with **Python, Streamlit, FastAPI, MCP**, and a dose of pure creativity. This repo is the hub for my projects focused on:
+
+- 🧠 Reasoning-based AI
+- 🕵️‍♂️ Security & cyber forensics
+- 🧰 Automation tools
+- 🕸️ Web scraping & analysis
+
+## 🔍 Featured Projects
+
+### 📌 [Web Keyword Crawler](./web-keyword-crawler/)
+A blazing-fast Streamlit app that recursively scrapes websites, searches for specific keywords, and displays matches in real time. 
+
+- ✅ Streamlit UI (no terminal input)
+- 🔍 Internal link crawling
+- ⚡ Built for speed, UX, and diagnostics
+- 🌐 Powered by the Model Context Protocol (MCP)
+
+➡️ [Launch the app on Streamlit!](https://Todd2112-web-keyword-crawler.streamlit.app) *(Link will go here once deployed)*
 
 ---
 
-## 🚀 Live Demo for HR Reviewers
+### 🧠 [Reasoning Chatbot](./reasoning-chatbot/)
+An intelligent chatbot that explains its reasoning process step-by-step. Think of it as Sherlock Holmes with an LLM.
 
-[🚀 Click here to try the app (Demo Mode only)](https://my-portfolio-reasoning-ai.streamlit.app)  
-_**Tip:** Right-click or Ctrl+Click to open in a new tab!_
-
-Demo Mode gives you a frictionless experience. It mimics how the AI would respond using logical reasoning — even without a large language model installed.
+- 🗣️ Interactive interface (Streamlit)
+- 🔎 Transparent logic path
+- 🧰 Ideal for interviews, training, and explainability demos
 
 ---
 
-## 🧠 Full Mode (Local Use Only)
+### 🕵️‍♂️ [Sherlock Holmes AI](./sherlock-holmes-ai/)
+A literary-themed AI agent that solves mysteries using deduction, dialogue, and contextual inference.
 
-Want to run this chatbot with full AI power using **Ollama**?
+- 📚 NLP meets detective work
+- 💡 Built with a touch of flair and fun
+- 🛠️ Can be extended for custom detective cases
 
-1. **Install Ollama**  
-   👉 [Download here](https://ollama.com/download)
+---
 
-2. **Start the Ollama server:**
-   ```bash
-   ollama serve
-3. **Pull a model (e.g., DeepSeek or LLaMA3):**
-   ```bash
-   ollama pull deepseek-coder:latest
-4. **or:**
-   ```bash
-   ollama pull llama3
-5. **Run the Streamlit app:**
-   ```bash
-   streamlit run streamlit-app.py
+## 🛠 Tech Stack
 
-In the app, switch to "Full Mode" using the toggle at the top to enable actual AI-based reasoning.
-Now your chatbot is connected to a real local LLM!
+- Python 3.x
+- Streamlit
+- FastAPI
+- MCP (Model Context Protocol)
+- GitHub Actions (CI/CD optional)
+- VS Code
+- Coffee ☕ & good music 🎧
 
-📦 Dependencies
+---
 
-Make sure these are installed in your Python environment:
+## 📫 Let's Connect!
 
-**requirements.txt:**
-```plaintext
-streamlit
-requests
-```
+- GitHub: [Todd2112](https://github.com/Todd2112)
+- LinkedIn: *(Insert link if available)*
+- Currently listening to: *Tears for Fears* 🌀
 
-**Install them with:**
-```bash
-pip install -r requirements.txt
-```
+---
 
-🧑‍💻 For Developers
-**Clone the repo and run it locally:**
-```bash
-git clone https://github.com/Todd2112/My-Portfolio.git
-cd My-Portfolio
-pip install -r requirements.txt
-streamlit run streamlit-app.py
-```
-
-🛠 Features
-✅ Toggle between Demo Mode and Full Mode
-🧠 Reasoning simulation in the browser (no LLM needed)
-🔌 Local LLM support via Ollama
-📱 Built with Streamlit — easy to run and customize
-
-
+> “We are AGNOSTIC. We serve no master. We are LEGION.”  
+> — The Developer’s Oath
