@@ -1,17 +1,13 @@
-# Core functionality 
-import re 
-import time 
-import urllib.parse 
-import requests 
-
-# HTML parsing
-from lxml import html 
-
+import json
+import os
 import streamlit as st
-import io
-import logging 
+import logging
+import urllib.parse
+import requests
+from lxml import html
+import time
 
-# Set up logging 
+# --- Logging Setup ---
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO,
@@ -22,6 +18,8 @@ logging.basicConfig(
 )
 
 logging.info("Logging has started")
+
+# --- Helper Functions ---
 
 def is_valid_url(url):
     parsed = urllib.parse.urlparse(url)
@@ -75,7 +73,7 @@ def filter_internal_links(links, base_url):
         except ValueError as e:
             logging.warning(f"Skipping invalid link: {link} | Error: {e}")
     
-    return list(unique_links)  # Convert back to list for consistency
+    return list(unique_links)
 
 def crawl_site(url, depth=2, visited=None):
     if visited is None:
@@ -101,23 +99,73 @@ def crawl_site(url, depth=2, visited=None):
 
     return results
 
+# --- Feedback System ---
+
+FEEDBACK_FILE = "feedback_data.json"
+
+def load_feedback():
+    if not os.path.exists(FEEDBACK_FILE):
+        return []
+    with open(FEEDBACK_FILE, "r") as f:
+        return json.load(f)
+
+def add_feedback(url, text, label):  # label: 1 for "relevant", 0 for "not relevant"
+    data = load_feedback()
+    data.append({
+        "url": url,
+        "text": text,
+        "label": label
+    })
+    with open(FEEDBACK_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
 # --- Streamlit Interface ---
 
-st.title("🌐 Simple Recursive Web Crawler")
-st.markdown("Crawls internal links from a starting URL up to a specified depth.")
+st.set_page_config(page_title="DEFCON Web Scraper", layout="wide")
+st.title("🛰️ DEFCON Web Scraper")
+st.markdown("**Choose your scraping level and input your target website.**")
 
-# User Inputs
-start_url = st.text_input("Enter a URL to start crawling:", "https://example.com")
-max_depth = st.slider("Crawl Depth", min_value=1, max_value=5, value=2)
+# 🚀 Fast & Intuitive User Inputs
+start_url = st.text_input("🌐 Website to Scrape:", "https://example.com")
+search_terms = st.text_input("🔍 Keywords or Phrases to Search (comma-separated):", "cybersecurity, AI, automation")
 
-if st.button("Start Crawl"):
-    with st.spinner("Crawling in progress..."):
-        crawl_results = crawl_site(start_url, depth=max_depth)
-    
-    if crawl_results:
-        st.success(f"Crawled {len(crawl_results)} pages.")
-        for idx, (url, html_content) in enumerate(crawl_results, 1):
+# ⚙️ DEFCON-Level Scraping Depth
+scraping_level = st.selectbox(
+    "🚦 Choose Scraping Level (aka DEFCON Mode):",
+    ["Fast Mode (Level 1)", "Level 2", "Level 3", "Level 4", "DEFCON 5"]
+)
+
+# Map DEFCON level to crawl depth
+defcon_depths = {
+    "Fast Mode (Level 1)": 1,
+    "Level 2": 2,
+    "Level 3": 3,
+    "Level 4": 4,
+    "DEFCON 5": 5
+}
+depth = defcon_depths[scraping_level]
+
+# 🧠 Start the Scrape!
+if st.button("🔥 Launch Scrape"):
+    with st.spinner(f"Engaging {scraping_level}... scanning {start_url}..."):
+        results = crawl_site(start_url, depth=depth)
+
+    if results:
+        st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
+        for idx, (url, html_content) in enumerate(results, 1):
             st.markdown(f"### {idx}. [{url}]({url})")
-            st.code(html_content[:500] + "...", language="html")  # Preview first 500 chars
+            snippet = html_content[:500] + "..."
+            st.code(snippet, language="html")
+
+            # --- Feedback UI ---
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("👍 That's Good", key=f"good_{idx}"):
+                    add_feedback(url, snippet, 1)
+                    st.success("Marked as relevant!")
+            with col2:
+                if st.button("👎 Not Relevant", key=f"bad_{idx}"):
+                    add_feedback(url, snippet, 0)
+                    st.info("Marked as not relevant.")
     else:
-        st.warning("No results returned. Check the URL or try a shallower depth.")
+        st.warning("Nothing found. The site may be blocking bots, or try a shallower level.")
