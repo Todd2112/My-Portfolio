@@ -17,7 +17,7 @@ A blazing-fast Streamlit app that recursively scrapes websites, searches for spe
 - ⚡ Built for speed, UX, and diagnostics
 - 🌐 Powered by the Model Context Protocol (MCP)
 
-➡️ [Launch the app on Streamlit!](https://Todd2112-web-keyword-crawler.streamlit.app) *(Link will go here once deployed)*
+➡️ [Launch the app on Streamlit!](https://web-keyword.streamlit.app/) 
 
 ---
 
