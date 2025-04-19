@@ -1,62 +1,77 @@
-# 🧠 Python Coding Assistant (Streamlit Edition)
+# 🧠 Reasoning AI Python Coder (Streamlit Edition)
 
-Welcome to the **Python Coding Assistant** – a browser-based AI helper that *thinks out loud* before generating code. Built with Streamlit, this app showcases reasoning-powered development and deployable AI that actually helps you code better.
+Welcome to the **Reasoning AI Python Coder** – a browser-based AI assistant that *thinks before it codes*. This Streamlit-powered app combines logical step-by-step reasoning with real-time Python code generation. Perfect for devs, learners, and portfolio reviewers alike.
 
 ## 🌐 Live Demo
-[🚀 Click here to try it out on Streamlit!](https://python-coder.streamlit.app/)
+[🚀 Try it on Streamlit](https://python-coder.streamlit.app/)  
+No install. No setup. Just code.
 
 ## 💡 Features
 
-- 🤖 Real-time code help + reasoning steps
-- 🖼️ Clean UI with Streamlit
-- 🧠 Runs on Ollama with the DeepSeek model (local mode)
-- 🔧 Demo Mode for quick testing (no setup needed)
+- 🧠 **Reason-first coding**: The AI explains its logic *before* generating code
+- 🤖 Powered by **OpenAI** (online) or **Ollama + DeepSeek** (local)
+- 🥪 Clean, interactive UI with **Streamlit**
+- 🛠️ Supports HR/demo mode and full dev workflows
 
-## 🛠️ Requirements
+## 🚀 Quickstart
 
-Make sure you have Python 3.10+ and install the dependencies:
+### 🌐 Web Version (OpenAI-powered)
 
-```bash
-pip install -r requirements.txt
-```
-▶️ How to Run
+> No installation required!
 
-1. Clone the repo:
+1. Visit the [Streamlit app](https://python-coder.streamlit.app/)
+2. Ask a Python question
+3. See the reasoning → Get the code → Copy + run!
+
+### 💻 Local Dev (Optional: Ollama + DeepSeek)
+
+> Requires Python 3.10+ and [Ollama](https://ollama.com/)
 
 ```bash
 git clone https://github.com/Todd2112/My-Portfolio.git
-```
-
-2. Navigate to the app folder:
-
-```bash
 cd My-Portfolio/reasoning-ai-chatbot
+pip install -r requirements.txt
+streamlit run Python-Coder.py
 ```
 
-3. Run the app:
-```bash
-streamlit run streamlit-app.py
-```
-✅ Tip: Use Demo Mode for instant results. Use Full Mode with ollama serve running locally to activate the DeepSeek model.
+✅ Tip: Switch between OpenAI and Ollama modes inside the app.
 
-✨ Why This App Rocks
-This isn’t just another chatbot — it shows how the AI thinks, giving logical breakdowns before generating code. Perfect for demonstrating practical AI integration, deployment skills, and clean UX—all in one place.
+---
 
-💡 Tech Stack
-🧠 Ollama + DeepSeek Model
+## ✨ Why This App Rocks
 
-🧪 Streamlit (Frontend & UX)
+This isn’t just another code bot. It:
+- **Breaks down its logic** so you actually learn
+- Works **in your browser** via Streamlit
+- Doubles as a **portfolio showcase** for AI + UX + deployment skills
+- Supports **both online and offline use cases**
 
-🐍 Python (Backend)
+---
 
-🌐 REST API (local model interface)
+## 🧰 Tech Stack
 
-🤝 Contributing
-Forks and pull requests are welcome — let’s build smarter together!
+- 🧠 **OpenAI GPT-4 / DeepSeek (via Ollama)**
+- 🌐 **Streamlit** (frontend + deployment)
+- 🐍 **Python** (backend)
+- 🔌 **REST API / Local LLM interface**
 
-📬 Contact
-Got questions or want to connect?
+---
 
-📫 GitHub: Todd2112
+## 🤝 Contributing
 
+Fork it, clone it, riff on it. PRs welcome.
+
+---
+
+## 🧪 Part of the Matrix Series™
+
+> *"Design, develop, deploy. We are agnostic. We serve no master. We are legion."*
+
+---
+
+## 📬 Contact
+
+👤 GitHub: [Todd2112](https://github.com/Todd2112)
+
+🚀 Powered by coffee, code, and the simulation.
 
