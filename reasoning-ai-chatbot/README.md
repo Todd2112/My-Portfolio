@@ -3,7 +3,7 @@
 Welcome to the **Python Coding Assistant** – a browser-based AI helper that *thinks out loud* before generating code. Built with Streamlit, this app showcases reasoning-powered development and deployable AI that actually helps you code better.
 
 ## 🌐 Live Demo
-[🚀 Click here to try it out on Streamlit!](https://<your-streamlit-app-link>)
+[🚀 Click here to try it out on Streamlit!](https://python-coder.streamlit.app/)
 
 ## 💡 Features
 
