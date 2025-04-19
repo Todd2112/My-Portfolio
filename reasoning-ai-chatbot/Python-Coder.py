@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-import os
 
 # Page config
 st.set_page_config(page_title="Reasoning AI Chatbot", layout="centered")
@@ -21,11 +20,11 @@ user_input = st.text_input("Enter your message:", key="user_input")
 if st.button("Submit") and user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
+        response = openai.completions.create(
+            model="gpt-4",  # or the model you are using
             messages=st.session_state.messages
         )
-        assistant_msg = response.choices[0].message["content"]
+        assistant_msg = response['choices'][0]['message']['content']  # Update the response handling
         st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
     except Exception as e:
         assistant_msg = f"Error: {e}"
