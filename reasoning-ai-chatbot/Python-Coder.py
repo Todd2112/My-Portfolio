@@ -20,12 +20,11 @@ user_input = st.text_input("Enter your message:", key="user_input")
 if st.button("Submit") and user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     try:
-        response = openai.completions.create(
-            model="gpt-4",  # or any other model you are using
-            prompt=user_input,  # Prompt for the AI model
-            messages=st.session_state.messages  # Your previous message history
+        response = openai.ChatCompletion.create(
+            model="gpt-4",  # You can change this to gpt-3.5 or any available model
+            messages=st.session_state.messages  # Chat history
         )
-        assistant_msg = response['choices'][0]['message']['content']  # Adjust response handling
+        assistant_msg = response['choices'][0]['message']['content']
         st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
     except Exception as e:
         assistant_msg = f"Error: {e}"
