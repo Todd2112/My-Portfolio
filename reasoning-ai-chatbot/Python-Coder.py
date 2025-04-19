@@ -1,55 +1,47 @@
 import streamlit as st
-import requests
+import openai
 
-# Page title
-st.set_page_config(page_title="Reasoning AI Chatbot", page_icon="🤖")
-st.title("🤖 Reasoning AI Chatbot")
+# Page config
+st.set_page_config(page_title="Reasoning AI Chatbot", layout="centered")
+st.title("🧠 Reasoning AI Assistant")
+st.caption("Ask any Python-related question. The AI will explain and then code.")
 
-# Mode toggle
-mode = st.radio("Choose Mode:", ["Demo Mode (for HR)", "Full Mode (requires Ollama)"])
+# Load API key securely
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# Chat input
-user_input = st.text_input("Ask a question:")
+# Chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant that explains Python programming concepts "
+                "and writes clean, readable code.\n\n"
+                "Respond with the following format:\n\n"
+                "**Reasoning:**\n[Explanation]\n\n**Code:**\n```python\n[Python Code]\n```"
+            ),
+        }
+    ]
 
-# Session state for chat history
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-
-# Demo Mode behavior
-if mode == "Demo Mode (for HR)":
-    st.info("💡 You're in Demo Mode. This version simulates the AI's reasoning without needing Ollama.")
-    if user_input:
-        # Simulated "smart" demo response
-        response = f"🤖 (Demo): Great question! Here's how I'd think about it: [Insert clever reasoning here for: '{user_input}']"
-        st.session_state.chat_history.append(("You", user_input))
-        st.session_state.chat_history.append(("Bot", response))
-
-# Full Mode behavior
-else:
-    st.warning("⚠️ You're in Full Mode. Make sure Ollama is installed and running locally.")
-    if user_input:
-        try:
-            ollama_response = requests.post(
-                "http://localhost:11434/api/generate",
-                json={"model": "llama3", "prompt": user_input},
-                timeout=10
-            )
-            ollama_response.raise_for_status()
-            raw_output = ollama_response.json()
-            response = raw_output.get("response", "🤖 No response from Ollama.")
-        except Exception as e:
-            response = f"❌ Could not connect to Ollama.\n\n{e}"
-        
-        st.session_state.chat_history.append(("You", user_input))
-        st.session_state.chat_history.append(("Bot", response))
+# User input
+user_input = st.text_input("Enter your message:")
+if st.button("Submit") and user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=st.session_state.messages,
+            temperature=0.7
+        )
+        assistant_msg = response.choices[0].message["content"]
+        st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
+    except Exception as e:
+        assistant_msg = f"❌ Error: {e}"
+        st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
 
 # Display chat history
-if st.session_state.chat_history:
-    st.markdown("### 🧠 Chat History")
-    for role, msg in st.session_state.chat_history:
-        st.markdown(f"**{role}:** {msg}")
-
-# Footer
-st.markdown("---")
-st.markdown("🔁 _Switch between Demo Mode and Full Mode using the toggle above._")
-
+for msg in st.session_state.messages[1:]:  # Skip system prompt
+    if msg["role"] == "user":
+        st.markdown(f"**You:** {msg['content']}")
+    else:
+        st.markdown(msg["content"])
