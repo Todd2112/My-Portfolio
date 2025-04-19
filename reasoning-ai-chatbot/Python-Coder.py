@@ -21,10 +21,11 @@ if st.button("Submit") and user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     try:
         response = openai.completions.create(
-            model="gpt-4",  # or the model you are using
-            messages=st.session_state.messages
+            model="gpt-4",  # or any other model you are using
+            prompt=user_input,  # Prompt for the AI model
+            messages=st.session_state.messages  # Your previous message history
         )
-        assistant_msg = response['choices'][0]['message']['content']  # Update the response handling
+        assistant_msg = response['choices'][0]['message']['content']  # Adjust response handling
         st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
     except Exception as e:
         assistant_msg = f"Error: {e}"
