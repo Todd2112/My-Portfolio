@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy your app into the container
 COPY . /app
 
+# Debug: List the contents of the /app directory
+RUN ls /app
+
 # Install Python and pip
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
