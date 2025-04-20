@@ -2,35 +2,40 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# Load API key from Streamlit secrets
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-# Streamlit app config
+# Page config
 st.set_page_config(page_title="Reasoning AI Chatbot", layout="centered")
 st.title("🧠 Python Coding Assistant")
 st.caption("Ask any Python-related question. The AI will explain and then code.")
 
+# Load API key from Streamlit secrets
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": "For each question, provide an explanation first, followed by the Python code example. Format the response as:\n\n**Reasoning:**\n[Explanation]\n\n**Code:**\n```python\n[Python Code]\n```"}
+        {
+            "role": "system",
+            "content": (
+                "For each question, provide an explanation first, followed by the Python code example. "
+                "Format the response as:\n\n**Reasoning:**\n[Explanation]\n\n**Code:**\n```python\n[Python Code]\n```"
+            )
+        }
     ]
 
 # User input
 user_input = st.text_input("Enter your message:", key="user_input")
 if st.button("Submit") and user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
-
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
-            messages=st.session_state.messages,
+            model="gpt-3.5-turbo",  # Changed from gpt-4
+            messages=st.session_state.messages
         )
         assistant_msg = response.choices[0].message.content
         st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
-
     except Exception as e:
-        st.session_state.messages.append({"role": "assistant", "content": f"Error: {e}"})
+        assistant_msg = f"Error: {e}"
+        st.session_state.messages.append({"role": "assistant", "content": assistant_msg})
 
 # Display chat history
 for msg in st.session_state.messages[1:]:  # Skip system prompt
@@ -39,5 +44,6 @@ for msg in st.session_state.messages[1:]:  # Skip system prompt
     else:
         st.markdown(msg["content"])
 
+# Footer
 st.markdown("---")
 st.markdown("🔁 _Refresh the app to start a new conversation._")
