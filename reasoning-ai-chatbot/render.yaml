@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: reasoning-ai-chatbot
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: /app/start.sh
+    envVars:
+      - key: OLLAMA_HOST
+        value: 0.0.0.0
