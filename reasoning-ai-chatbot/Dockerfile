@@ -1,22 +1,23 @@
-# Start from the Ollama base image
+# Use Ollama base image
 FROM ollama/ollama
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy requirements first for layer caching
-COPY requirements.txt /app/requirements.txt
+# Copy Streamlit app and requirements
+COPY requirements.txt .
+COPY Python-Coder.py .
+COPY start.sh .
 
-# Install Python and pip
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip3 install --no-cache-dir -r /app/requirements.txt
+# Install Python + Streamlit dependencies
+RUN apt-get update && apt-get install -y python3-pip
+RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the app
-COPY . /app
+# Make start.sh executable
+RUN chmod +x start.sh
 
-# Expose ports
-EXPOSE 11434 8501
+# Expose necessary ports
+EXPOSE 11434 8080
 
-# Start Ollama, wait, pull model, then start Streamlit
-CMD bash -c "ollama serve & sleep 5 && ollama pull deepseek-r1:1.5b && streamlit run Python-Coder.py --server.port=8501 --server.address=0.0.0.0"
+# Start both Ollama and Streamlit via startup script
+CMD ["/app/start.sh"]
