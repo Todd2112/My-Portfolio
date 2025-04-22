@@ -1,26 +1,20 @@
-# Use Ollama base image
+# Base image with Ollama and Python
 FROM ollama/ollama:latest
 
-# Working directory
+# Set working directory
 WORKDIR /app
 
-# Copy app files
+# Copy all necessary files
 COPY . .
 
-# Install Python and pip
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Install dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-# Make sure start.sh is executable
+# Make the start script executable
 RUN chmod +x /app/start.sh
 
-# Expose ports
-EXPOSE 8501 11434
+# Expose the Streamlit default port
+EXPOSE 8080
 
-# Prevent inherited ENTRYPOINT from Ollama
+# Override Ollama's default entrypoint so we can run our script
 ENTRYPOINT []
 
-# Start Streamlit and Ollama
+# Use our startup script as the default command
 CMD ["/app/start.sh"]
