@@ -5,8 +5,6 @@ services:
     plan: free
     autoDeploy: true
     dockerfilePath: ./Dockerfile
-    buildCommand: ""
-    startCommand: /app/start.sh
     envVars:
       - key: OLLAMA_HOST
         value: 0.0.0.0
