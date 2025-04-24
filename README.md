@@ -21,7 +21,7 @@ A blazing-fast Streamlit app that recursively scrapes websites, searches for spe
 
 ---
 
-### 🧠 [Reasoning Chatbot](./reasoning-chatbot/)
+### 🧠 [Reasoning Chatbot](./reasoning-ai-chatbot/)
 An intelligent chatbot that explains its reasoning process step-by-step. Think of it as Sherlock Holmes with an LLM.
 
 - 🗣️ Interactive interface (Streamlit)
