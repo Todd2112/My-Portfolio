@@ -13,15 +13,19 @@ The goal here is to demonstrate what I can **design, develop, and deploy indepen
 ## 🔍 Featured Projects
 
 ### 📌 [Web Keyword Crawler](https://web-keyword.streamlit.app/)
-An app that recursively scrapes websites, searches for specific keywords, and displays matches in real time. 
+A blazing-fast Streamlit app that scrapes public websites for specific keywords, with optional recursive crawling and readable match context.
 
-- ✅ Streamlit UI (no terminal input)
-- 🔍 Internal link crawling
-- ⚡ Built for speed, UX, and diagnostics
-- 🌐 Powered by the Model Context Protocol (MCP)
+**Highlights:**
+- 🌐 Scrapes public websites for keyword matches  
+- 🔗 Recursively crawls internal links (depth configurable)  
+- 📄 Clean, readable context for each match  
+- ⚡ Fast, distraction-free: no ads, no trackers, just results
 
-
----
+**Built With:**
+- 🐍 Python + Streamlit UI (zero terminal input)
+- 🧠 Modular code powered by the **Model Context Protocol (MCP)**
+- 🕸️ Web scraping via `requests`, `BeautifulSoup`
+- 🧱 Designed with reusable functions and single-responsibility principles
 
 ### 🧠 [Reasoning Chatbot](./reasoning-ai-chatbot/)
 An intelligent chatbot that explains its reasoning process step-by-step. Think of it as Sherlock Holmes with an LLM.
