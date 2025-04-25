@@ -1,6 +1,9 @@
 # 🚀 Todd2112's Dev Portfolio
 
-Welcome to my official coding portfolio! I'm a versatile, hands-on developer building intelligent apps with **Python, Streamlit, FastAPI, MCP**, and a dose of pure creativity. This repo is the hub for my projects focused on:
+Welcome! This portfolio showcases a collection of applications I’ve built and deployed using **Python**, **Streamlit**, **FastAPI**, **Ollama**, **LangChain**, and **MCP**. These apps are hosted on free-tier platforms for **informational and demonstration purposes only**—they're not commercial products.
+
+Here, I focus on showing what I can **design, develop, and deploy independently**, using lightweight tools to get ideas onto the web as examples of **proof of concepts**, **NOT** intended as production enviroments .
+This repo is the hub for my projects focused on:
 
 - 🧠 Reasoning-based AI
 - 🕵️‍♂️ Security & cyber forensics
