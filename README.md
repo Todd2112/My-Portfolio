@@ -13,14 +13,13 @@ The goal here is to demonstrate what I can **design, develop, and deploy indepen
 ## 🔍 Featured Projects
 
 ### 📌 [Web Keyword Crawler](https://web-keyword.streamlit.app/)
-A blazing-fast Streamlit app that recursively scrapes websites, searches for specific keywords, and displays matches in real time. 
+An app that recursively scrapes websites, searches for specific keywords, and displays matches in real time. 
 
 - ✅ Streamlit UI (no terminal input)
 - 🔍 Internal link crawling
 - ⚡ Built for speed, UX, and diagnostics
 - 🌐 Powered by the Model Context Protocol (MCP)
 
-➡️ [Launch the app on Streamlit!](https://web-keyword.streamlit.app/) 
 
 ---
 
