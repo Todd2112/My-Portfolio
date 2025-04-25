@@ -9,7 +9,7 @@ Welcome to my official coding portfolio! I'm a versatile, hands-on developer bui
 
 ## 🔍 Featured Projects
 
-### 📌 [Web Keyword Crawler](./web-keyword-crawler/)
+### 📌 [Web Keyword Crawler](https://web-keyword.streamlit.app/)
 A blazing-fast Streamlit app that recursively scrapes websites, searches for specific keywords, and displays matches in real time. 
 
 - ✅ Streamlit UI (no terminal input)
