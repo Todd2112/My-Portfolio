@@ -1,6 +1,6 @@
-# Web Keyword Crawler - Proof of Concept
+# Web Keyword Crawler 
 
-## Overview
+## Overview- Proof of Concept
 
 This project demonstrates a practical method for **programmatically extracting keyword-specific information** from publicly accessible websites.  
 It serves as a **proof of concept** for building lightweight reconnaissance tools capable of cutting through web clutter and retrieving targeted content.
