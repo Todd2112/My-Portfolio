@@ -99,27 +99,33 @@ def crawl_site(url, depth=2, visited=None):
 
     return results
 
-def extract_title(html_content):
-    try:
-        tree = html.fromstring(html_content)
-        title = tree.xpath('//title/text()')
-        return title[0].strip() if title else "No Title"
-    except Exception as e:
-        logging.error(f"Error extracting title: {e}")
-        return "No Title"
-
 def extract_visible_text(html_content):
     try:
         tree = html.fromstring(html_content)
 
-        # Remove unwanted elements
-        for elem in tree.xpath('//script | //style | //noscript | //header | //footer | //meta | //head'):
+        # Remove unwanted tags
+        for elem in tree.xpath('//script | //style | //noscript | //header | //footer | //meta | //head | //form | //nav | //aside'):
             if elem.getparent() is not None:
                 elem.getparent().remove(elem)
 
-        text_content = tree.xpath('//body//text()[normalize-space()]')
-        visible_text = " ".join(text_content).strip()
-        return visible_text
+        # Prefer main content blocks
+        candidates = tree.xpath('//article | //main | //section')
+        if candidates:
+            content = candidates[0]
+        else:
+            content = tree.xpath('//body')[0]
+
+        text_parts = content.xpath('.//text()[normalize-space()]')
+
+        # Filter meaningful parts
+        visible_texts = [
+            part.strip() for part in text_parts
+            if len(part.strip()) > 30
+        ]
+
+        visible_text = " ".join(visible_texts).strip()
+
+        return visible_text if visible_text else "No meaningful content extracted."
     except Exception as e:
         logging.error(f"Error extracting visible text: {e}")
         return "Could not extract text snippet."
@@ -173,26 +179,25 @@ if st.button("🔥 Launch Scrape"):
 
     if results:
         st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
-        
+
+        keywords = [term.strip().lower() for term in search_terms.split(",")]
+
         for idx, (url, html_content) in enumerate(results, 1):
-            st.markdown(f"### {idx}. [Visit Page]({url})")
+            text_snippet = extract_visible_text(html_content)
 
-            try:
-                text_snippet = extract_visible_text(html_content)[:500] + "..."
-            except Exception as e:
-                logging.error(f"Error extracting text: {e}")
-                text_snippet = "Could not extract text snippet."
+            # Simple keyword highlighting
+            if any(keyword in text_snippet.lower() for keyword in keywords):
+                st.markdown(f"### {idx}. [🔗 Visit Page]({url})")
+                st.write(text_snippet[:700] + "...")  # Limit snippet length
 
-            st.write(text_snippet)
-
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button(f"👍 That's Good {idx}", key=f"good_{idx}"):
-                    add_feedback(url, text_snippet, 1)
-                    st.success("Marked as relevant!")
-            with col2:
-                if st.button(f"👎 Not Relevant {idx}", key=f"bad_{idx}"):
-                    add_feedback(url, text_snippet, 0)
-                    st.info("Marked as not relevant.")
+                col1, col2 = st.columns(2)
+                with col1:
+                    if st.button(f"👍 Relevant {idx}", key=f"good_{idx}"):
+                        add_feedback(url, text_snippet, 1)
+                        st.success("Marked as relevant!")
+                with col2:
+                    if st.button(f"👎 Not Relevant {idx}", key=f"bad_{idx}"):
+                        add_feedback(url, text_snippet, 0)
+                        st.info("Marked as not relevant.")
     else:
         st.warning("Nothing found. The site may be blocking bots, or try a shallower level.")
