@@ -9,7 +9,7 @@ Tired of pop-ups, ads, and cookie banners? This tool **cuts through the noise** 
 Just raw HTML + your keywords = instant content insight.
 
 ---
-# 🔍 Web Keyword Crawler  
+
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)  
 ![License](https://img.shields.io/badge/License-MIT-green.svg)  
 ![Streamlit](https://img.shields.io/badge/Streamlit-%F0%9F%8E%88-red)  
