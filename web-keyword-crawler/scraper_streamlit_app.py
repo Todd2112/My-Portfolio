@@ -160,13 +160,18 @@ if st.button("🔥 Launch Scrape"):
 
     if results:
     st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
+    
     for idx, (url, html_content) in enumerate(results, 1):
         st.markdown(f"### {idx}. [Visit Page]({url})")
 
         # 🧹 Clean snippet: strip HTML tags and show plain text preview
-        tree = html.fromstring(html_content)
-        text_content = " ".join(tree.xpath('//text()'))
-        text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
+        try:
+            tree = html.fromstring(html_content)
+            text_content = " ".join(tree.xpath('//text()'))
+            text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
+        except Exception as e:
+            logging.error(f"Error extracting text: {e}")
+            text_snippet = "Could not extract text snippet."
 
         st.write(text_snippet)
 
