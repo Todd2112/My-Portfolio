@@ -6,6 +6,7 @@ import urllib.parse
 import requests
 from lxml import html
 import time
+import re
 
 # --- Logging Setup ---
 logging.basicConfig(
@@ -130,6 +131,17 @@ def extract_visible_text(html_content):
         logging.error(f"Error extracting visible text: {e}")
         return "Could not extract text snippet."
 
+# --- Keyword Highlighting Function ---
+
+def highlight_keywords(text, search_terms):
+    highlighted_text = text
+    for term in search_terms:
+        # Regular expression to match the keyword in the text (case-insensitive)
+        highlighted_text = re.sub(r'(\b' + re.escape(term) + r'\b)', 
+                                  r'<span style="background-color: yellow;">\1</span>', 
+                                  highlighted_text, flags=re.IGNORECASE)
+    return highlighted_text
+
 # --- Feedback System ---
 
 FEEDBACK_FILE = "feedback_data.json"
@@ -185,10 +197,13 @@ if st.button("🔥 Launch Scrape"):
         for idx, (url, html_content) in enumerate(results, 1):
             text_snippet = extract_visible_text(html_content)
 
-            # Simple keyword highlighting
+            # Highlight keywords in the text snippet
+            highlighted_snippet = highlight_keywords(text_snippet, keywords)
+
+            # Display the result with highlighted keywords
             if any(keyword in text_snippet.lower() for keyword in keywords):
                 st.markdown(f"### {idx}. [🔗 Visit Page]({url})")
-                st.write(text_snippet[:700] + "...")  # Limit snippet length
+                st.markdown(highlighted_snippet[:700] + "...", unsafe_allow_html=True)  # Limit snippet length
 
                 col1, col2 = st.columns(2)
                 with col1:
