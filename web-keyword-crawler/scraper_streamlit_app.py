@@ -3,7 +3,8 @@ import os
 import streamlit as st
 import logging
 import urllib.parse
-from playwright.sync_api import sync_playwright
+import requests
+from lxml import html
 import time
 
 # --- Logging Setup ---
@@ -29,18 +30,17 @@ def fetch_html(url, retries=3, backoff=2):
         logging.error(f"Invalid URL: {url}")
         return None
 
-    # Use Playwright to fetch the page content
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/91.0 Safari/537.36'
+    }
+
     for attempt in range(retries):
         try:
-            with sync_playwright() as p:
-                browser = p.chromium.launch(headless=True)  # Or use .launch(headless=False) to see the browser
-                page = browser.new_page()
-                page.goto(url)
-                html_content = page.content()  # Fetch page content
-                browser.close()
+            response = requests.get(url, timeout=10, headers=headers)
+            response.raise_for_status()
             logging.info(f"Fetched {url} successfully on attempt {attempt + 1}")
-            return html_content
-        except Exception as e:
+            return response.text
+        except requests.exceptions.RequestException as e:
             logging.warning(f"Attempt {attempt + 1} failed for {url}: {e}")
             time.sleep(backoff * (attempt + 1))
 
@@ -52,15 +52,8 @@ def extract_links(html_content):
         logging.warning("Invalid HTML content type")
         return []
     try:
-        # Extract links using Playwright page methods
-        links = []
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.set_content(html_content)
-            links = page.query_selector_all('a')
-            links = [link.get_attribute('href') for link in links if link.get_attribute('href')]
-            browser.close()
+        tree = html.fromstring(html_content)
+        links = tree.xpath('//a/@href')
         return links
     except Exception as e:
         logging.error(f"Error parsing HTML: {e}")
@@ -108,13 +101,9 @@ def crawl_site(url, depth=2, visited=None):
 
 def extract_title(html_content):
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.set_content(html_content)
-            title = page.title()
-            browser.close()
-        return title if title else "No Title"
+        tree = html.fromstring(html_content)
+        title = tree.xpath('//title/text()')
+        return title[0].strip() if title else "No Title"
     except Exception as e:
         logging.error(f"Error extracting title: {e}")
         return "No Title"
@@ -145,11 +134,9 @@ st.set_page_config(page_title="DEFCON Web Scraper", layout="wide")
 st.title("🛰️ DEFCON Web Scraper")
 st.markdown("**Choose your scraping level and input your target website.**")
 
-# 🚀 Fast & Intuitive User Inputs
 start_url = st.text_input("🌐 Website to Scrape:", "https://example.com")
 search_terms = st.text_input("🔍 Keywords or Phrases to Search (comma-separated):", "cybersecurity, AI, automation")
 
-# ⚙️ DEFCON-Level Scraping Depth
 scraping_level = st.selectbox(
     "🚦 Choose Scraping Level (aka DEFCON Mode):",
     ["Fast Mode (Level 1)", "Level 2", "Level 3", "Level 4", "DEFCON 5"]
@@ -164,7 +151,6 @@ defcon_depths = {
 }
 depth = defcon_depths[scraping_level]
 
-# 🧠 Start the Scrape!
 if st.button("🔥 Launch Scrape"):
     with st.spinner(f"Engaging {scraping_level}... scanning {start_url}..."):
         results = crawl_site(start_url, depth=depth)
@@ -175,16 +161,16 @@ if st.button("🔥 Launch Scrape"):
         for idx, (url, html_content) in enumerate(results, 1):
             st.markdown(f"### {idx}. [Visit Page]({url})")
 
-            # 🧹 Clean snippet: strip HTML tags and show plain text preview
             try:
-                text_snippet = html_content[:500]  # Show the first 500 chars as a preview
+                tree = html.fromstring(html_content)
+                text_content = " ".join(tree.xpath('//text()'))
+                text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
             except Exception as e:
                 logging.error(f"Error extracting text: {e}")
                 text_snippet = "Could not extract text snippet."
 
             st.write(text_snippet)
 
-            # --- Feedback UI ---
             col1, col2 = st.columns(2)
             with col1:
                 if st.button(f"👍 That's Good {idx}", key=f"good_{idx}"):
