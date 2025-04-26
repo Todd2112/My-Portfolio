@@ -159,31 +159,31 @@ if st.button("🔥 Launch Scrape"):
         results = crawl_site(start_url, depth=depth)
 
     if results:
-    st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
-    
-    for idx, (url, html_content) in enumerate(results, 1):
-        st.markdown(f"### {idx}. [Visit Page]({url})")
+        st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
+        
+        for idx, (url, html_content) in enumerate(results, 1):
+            st.markdown(f"### {idx}. [Visit Page]({url})")
 
-        # 🧹 Clean snippet: strip HTML tags and show plain text preview
-        try:
-            tree = html.fromstring(html_content)
-            text_content = " ".join(tree.xpath('//text()'))
-            text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
-        except Exception as e:
-            logging.error(f"Error extracting text: {e}")
-            text_snippet = "Could not extract text snippet."
+            # 🧹 Clean snippet: strip HTML tags and show plain text preview
+            try:
+                tree = html.fromstring(html_content)
+                text_content = " ".join(tree.xpath('//text()'))
+                text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
+            except Exception as e:
+                logging.error(f"Error extracting text: {e}")
+                text_snippet = "Could not extract text snippet."
 
-        st.write(text_snippet)
+            st.write(text_snippet)
 
-        # --- Feedback UI ---
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button(f"👍 That's Good {idx}", key=f"good_{idx}"):
-                add_feedback(url, text_snippet, 1)
-                st.success("Marked as relevant!")
-        with col2:
-            if st.button(f"👎 Not Relevant {idx}", key=f"bad_{idx}"):
-                add_feedback(url, text_snippet, 0)
-                st.info("Marked as not relevant.")
-else:
-    st.warning("Nothing found. The site may be blocking bots, or try a shallower level.")
+            # --- Feedback UI ---
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button(f"👍 That's Good {idx}", key=f"good_{idx}"):
+                    add_feedback(url, text_snippet, 1)
+                    st.success("Marked as relevant!")
+            with col2:
+                if st.button(f"👎 Not Relevant {idx}", key=f"bad_{idx}"):
+                    add_feedback(url, text_snippet, 0)
+                    st.info("Marked as not relevant.")
+    else:
+        st.warning("Nothing found. The site may be blocking bots, or try a shallower level.")
