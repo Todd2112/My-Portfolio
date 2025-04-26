@@ -136,11 +136,12 @@ def extract_visible_text(html_content):
 def highlight_keywords(text, search_terms):
     highlighted_text = text
     for term in search_terms:
-        # Regular expression to match the keyword in the text (case-insensitive)
+        # Softer background color
         highlighted_text = re.sub(r'(\b' + re.escape(term) + r'\b)', 
-                                  r'<span style="background-color: yellow;">\1</span>', 
+                                  r'<span style="background-color: lightgoldenrodyellow; color: black;">\1</span>', 
                                   highlighted_text, flags=re.IGNORECASE)
     return highlighted_text
+
 
 # --- Feedback System ---
 
