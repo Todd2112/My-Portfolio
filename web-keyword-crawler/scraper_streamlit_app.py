@@ -3,8 +3,7 @@ import os
 import streamlit as st
 import logging
 import urllib.parse
-import requests
-from lxml import html
+from playwright.sync_api import sync_playwright
 import time
 
 # --- Logging Setup ---
@@ -30,17 +29,18 @@ def fetch_html(url, retries=3, backoff=2):
         logging.error(f"Invalid URL: {url}")
         return None
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/91.0 Safari/537.36'
-    }
-
+    # Use Playwright to fetch the page content
     for attempt in range(retries):
         try:
-            response = requests.get(url, timeout=10, headers=headers)
-            response.raise_for_status()
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=True)  # Or use .launch(headless=False) to see the browser
+                page = browser.new_page()
+                page.goto(url)
+                html_content = page.content()  # Fetch page content
+                browser.close()
             logging.info(f"Fetched {url} successfully on attempt {attempt + 1}")
-            return response.text
-        except requests.exceptions.RequestException as e:
+            return html_content
+        except Exception as e:
             logging.warning(f"Attempt {attempt + 1} failed for {url}: {e}")
             time.sleep(backoff * (attempt + 1))
 
@@ -52,8 +52,15 @@ def extract_links(html_content):
         logging.warning("Invalid HTML content type")
         return []
     try:
-        tree = html.fromstring(html_content)
-        links = tree.xpath('//a/@href')
+        # Extract links using Playwright page methods
+        links = []
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.set_content(html_content)
+            links = page.query_selector_all('a')
+            links = [link.get_attribute('href') for link in links if link.get_attribute('href')]
+            browser.close()
         return links
     except Exception as e:
         logging.error(f"Error parsing HTML: {e}")
@@ -101,9 +108,13 @@ def crawl_site(url, depth=2, visited=None):
 
 def extract_title(html_content):
     try:
-        tree = html.fromstring(html_content)
-        title = tree.xpath('//title/text()')
-        return title[0].strip() if title else "No Title"
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.set_content(html_content)
+            title = page.title()
+            browser.close()
+        return title if title else "No Title"
     except Exception as e:
         logging.error(f"Error extracting title: {e}")
         return "No Title"
@@ -166,9 +177,7 @@ if st.button("🔥 Launch Scrape"):
 
             # 🧹 Clean snippet: strip HTML tags and show plain text preview
             try:
-                tree = html.fromstring(html_content)
-                text_content = " ".join(tree.xpath('//text()'))
-                text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
+                text_snippet = html_content[:500]  # Show the first 500 chars as a preview
             except Exception as e:
                 logging.error(f"Error extracting text: {e}")
                 text_snippet = "Could not extract text snippet."
