@@ -99,6 +99,15 @@ def crawl_site(url, depth=2, visited=None):
 
     return results
 
+def extract_title(html_content):
+    try:
+        tree = html.fromstring(html_content)
+        title = tree.xpath('//title/text()')
+        return title[0].strip() if title else "No Title"
+    except Exception as e:
+        logging.error(f"Error extracting title: {e}")
+        return "No Title"
+
 # --- Feedback System ---
 
 FEEDBACK_FILE = "feedback_data.json"
@@ -109,7 +118,7 @@ def load_feedback():
     with open(FEEDBACK_FILE, "r") as f:
         return json.load(f)
 
-def add_feedback(url, text, label):  # label: 1 for "relevant", 0 for "not relevant"
+def add_feedback(url, text, label):
     data = load_feedback()
     data.append({
         "url": url,
@@ -135,7 +144,6 @@ scraping_level = st.selectbox(
     ["Fast Mode (Level 1)", "Level 2", "Level 3", "Level 4", "DEFCON 5"]
 )
 
-# Map DEFCON level to crawl depth
 defcon_depths = {
     "Fast Mode (Level 1)": 1,
     "Level 2": 2,
@@ -152,20 +160,30 @@ if st.button("🔥 Launch Scrape"):
 
     if results:
         st.success(f"Scraped {len(results)} pages at {scraping_level} depth.")
-        for idx, (url, html_content) in enumerate(results, 1):
-            st.markdown(f"### {idx}. [{url}]({url})")
-            snippet = html_content[:500] + "..."
-            st.code(snippet, language="html")
+        search_terms_list = [term.strip().lower() for term in search_terms.split(',')]
 
-            # --- Feedback UI ---
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("👍 That's Good", key=f"good_{idx}"):
-                    add_feedback(url, snippet, 1)
-                    st.success("Marked as relevant!")
-            with col2:
-                if st.button("👎 Not Relevant", key=f"bad_{idx}"):
-                    add_feedback(url, snippet, 0)
-                    st.info("Marked as not relevant.")
+        for idx, (url, html_content) in enumerate(results, 1):
+            page_title = extract_title(html_content)
+            snippet = html_content[:500].strip().replace('\n', ' ') + "..."
+
+            # Keyword Highlighting
+            if any(term in snippet.lower() for term in search_terms_list):
+                with st.container():
+                    st.subheader(f"🔎 {page_title}")
+                    st.caption(url)
+                    st.write(snippet)
+
+                    col1, col2, col3 = st.columns([1,1,2])
+                    with col1:
+                        if st.button("👍 Relevant", key=f"good_{idx}"):
+                            add_feedback(url, snippet, 1)
+                            st.success("Marked as relevant!")
+                    with col2:
+                        if st.button("👎 Not Relevant", key=f"bad_{idx}"):
+                            add_feedback(url, snippet, 0)
+                            st.info("Marked as not relevant.")
+                    with col3:
+                        if st.button("🔗 Visit Site", key=f"visit_{idx}"):
+                            st.markdown(f"[Open Site]({url})", unsafe_allow_html=True)
     else:
         st.warning("Nothing found. The site may be blocking bots, or try a shallower level.")
