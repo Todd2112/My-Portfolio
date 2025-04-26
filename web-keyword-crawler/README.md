@@ -1,6 +1,6 @@
-# Web Keyword Crawler 
+# Web Keyword Crawler
 
-## Overview- Proof of Concept
+## Overview - Proof of Concept
 
 This project demonstrates a practical method for **programmatically extracting keyword-specific information** from publicly accessible websites.  
 It serves as a **proof of concept** for building lightweight reconnaissance tools capable of cutting through web clutter and retrieving targeted content.
@@ -21,7 +21,9 @@ The **challenge** addressed by this project is:
 
 ## Approach
 
-This solution utilizes direct HTTP requests to retrieve static HTML content, avoiding browser emulation and JavaScript execution.  
+This solution utilizes **direct HTTP requests** to retrieve static HTML content, avoiding browser emulation and JavaScript execution.  
+By not requiring any user-specific data or interacting with cookies, this tool is designed to perform **anonymous searches**, ensuring that the process of gathering information doesn't trigger ads, trackers, or dynamic content rendering. 
+
 The extracted content is parsed and filtered based on user-defined keyword sets.
 
 Key techniques applied:
@@ -66,7 +68,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/Todd2112/My-Portfolio.git
 cd My-Portfolio/web-keyword-crawler
-```
+
 
 Install dependencies:
 
