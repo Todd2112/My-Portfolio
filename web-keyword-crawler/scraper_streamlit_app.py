@@ -108,6 +108,22 @@ def extract_title(html_content):
         logging.error(f"Error extracting title: {e}")
         return "No Title"
 
+def extract_visible_text(html_content):
+    try:
+        tree = html.fromstring(html_content)
+
+        # Remove unwanted elements
+        for elem in tree.xpath('//script | //style | //noscript | //header | //footer | //meta | //head'):
+            if elem.getparent() is not None:
+                elem.getparent().remove(elem)
+
+        text_content = tree.xpath('//body//text()[normalize-space()]')
+        visible_text = " ".join(text_content).strip()
+        return visible_text
+    except Exception as e:
+        logging.error(f"Error extracting visible text: {e}")
+        return "Could not extract text snippet."
+
 # --- Feedback System ---
 
 FEEDBACK_FILE = "feedback_data.json"
@@ -162,9 +178,7 @@ if st.button("🔥 Launch Scrape"):
             st.markdown(f"### {idx}. [Visit Page]({url})")
 
             try:
-                tree = html.fromstring(html_content)
-                text_content = " ".join(tree.xpath('//text()'))
-                text_snippet = text_content.strip().replace('\n', ' ')[:500] + "..."
+                text_snippet = extract_visible_text(html_content)[:500] + "..."
             except Exception as e:
                 logging.error(f"Error extracting text: {e}")
                 text_snippet = "Could not extract text snippet."
