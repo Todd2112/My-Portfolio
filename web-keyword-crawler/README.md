@@ -1,99 +1,125 @@
-# 🔍 Web Keyword Crawler
+# Web Keyword Crawler - Proof of Concept
 
-Tired of pop-ups, ads, and cookie banners? This tool **cuts through the noise** to find exactly what you're looking for — fast.
+## Overview
 
-- 🕶️ No ads  
-- 🚫 No trackers  
-- ⚡ No distractions  
+This project demonstrates a practical method for **programmatically extracting keyword-specific information** from publicly accessible websites.  
+It serves as a **proof of concept** for building lightweight reconnaissance tools capable of cutting through web clutter and retrieving targeted content.
 
-Just raw HTML + your keywords = instant content insight.
-
----
-
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)  
-![License](https://img.shields.io/badge/License-MIT-green.svg)  
-![Streamlit](https://img.shields.io/badge/Streamlit-%F0%9F%8E%88-red)  
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-
-Tired of pop-ups, ads, and cookie banners?  
-This tool **cuts through the noise** and finds exactly what you’re looking for — fast.
-
-
-## 🚀 Features
-
-- 🌐 Scrape any public website for specific keywords
-- 🔗 Optionally crawl internal links recursively
-- ⏱️ Set your own depth level for recursive crawling
-- 📄 Returns clean, readable context for each keyword match
+Developed as part of a broader engineering portfolio, this project highlights the ability to design, develop, and deploy custom data extraction solutions for real-world applications.
 
 ---
 
-## 🎯 What Makes This App Different?
+## Problem Statement
 
-Unlike traditional web scrapers or browser-based tools, this crawler goes straight to the source — raw HTML.
+Organizations often require ways to monitor external websites for mentions of their brands, products, or relevant topics.  
+Traditional browsing methods introduce inefficiencies due to advertisements, trackers, and dynamic content rendering.
 
-- ✅ **Ad-Free Experience:** Since the app doesn’t render JavaScript, it skips ads, popups, and trackers entirely.
-- 🧠 **Minimalist & Focused:** It only returns relevant content that matches your keywords — nothing else.
-- 🛡️ **Private & Stealthy:** It doesn’t trigger ad logic or cookie popups, and doesn’t track or store user activity.
-
-Think of it as a reconnaissance tool for the web. Fast. Clean. Quiet.
-
-> “You’re not surfing the web — you’re cutting through it like a hot knife through butter.”
+The **challenge** addressed by this project is:  
+> *"How can we rapidly and quietly extract meaningful textual content from websites without getting entangled in ads, popups, or JavaScript-heavy pages?"*
 
 ---
 
-## 📦 Setup Instructions
+## Approach
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/Todd2112/My-Portfolio.git
-   cd My-Portfolio/web-keyword-crawler
-   ```
+This solution utilizes direct HTTP requests to retrieve static HTML content, avoiding browser emulation and JavaScript execution.  
+The extracted content is parsed and filtered based on user-defined keyword sets.
 
-2. Install requirements:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Key techniques applied:
 
-3. Run the app:
-   ```bash
-   streamlit run scraper_streamlit_app.py
-   ```
+- **Request Handling:** Robust fetching with retry logic and custom headers to mimic human browsing patterns.
+- **HTML Parsing:** Structured traversal using `lxml` and XPath expressions.
+- **Recursive Crawling:** Depth-limited internal link exploration for broader coverage without overloading sites.
+- **Keyword Filtering:** Isolation of content snippets containing target terms.
+- **User Feedback Loop:** Mechanism for manually labeling results for future model training (optional).
+
+Logging and error handling are implemented to ensure traceability and resilience.
 
 ---
 
-## 🛠️ Tech Stack
+## Potential Applications
 
-- **Python** 🐍
-- **Streamlit** 🎈
-- **BeautifulSoup** for HTML parsing
-- **Requests** for HTTP interaction
+Although developed as a proof of concept, this framework could be extended into production-ready systems for:
+
+- Brand reputation monitoring
+- Competitive landscape analysis
+- Early warning systems for public relations
+- Research aggregation in academia or journalism
 
 ---
 
-## 📁 File Structure
+## Limitations
+
+This prototype focuses strictly on **static** HTML content retrieval. It does not:
+
+- Render JavaScript-based dynamic content
+- Interact with APIs, forms, or authentication systems
+- Output structured reports (e.g., CSV or Excel formats)
+
+Future iterations could incorporate headless browsing (e.g., `Selenium`, `Playwright`) for enhanced coverage.
+
+---
+
+## Setup Instructions
+
+Clone the repository:
 
 ```bash
-web-keyword-crawler/
-│
-├── scraper_streamlit_app.py       # Main Streamlit app
-├── README.md                      # This file
-└── requirements.txt               # Dependencies
+git clone https://github.com/Todd2112/My-Portfolio.git
+cd My-Portfolio/web-keyword-crawler
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+streamlit run scraper_streamlit_app.py
 ```
 
 ---
 
-## 📘 License
+## Tech Stack
+
+- **Python** 3.8+
+- **Streamlit** (User Interface)
+- **lxml** (HTML Parsing)
+- **requests** (HTTP Requests)
+- **urllib** (URL Manipulation)
+- **logging** (Operational Monitoring)
+
+---
+
+## Repository Structure
+
+```bash
+web-keyword-crawler/
+│
+├── src/
+│   └── scraper_streamlit_app.py     # Application source code
+├── README.md                        # Project documentation
+├── requirements.txt                 # Python dependencies
+└── feedback_data.json (optional)    # Collected feedback (if used)
+```
+
+---
+
+## License
 
 This project is licensed under the MIT License — see the [LICENSE](../LICENSE) file for details.
 
 ---
 
-## 🙌 Contributing
+## Author
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+Built by [Todd2112](https://github.com/Todd2112)  
+Part of a portfolio of proofs of concept demonstrating **real-world problem-solving through software engineering.**
 
 ---
 
-Built with ❤️ by [Todd2112](https://github.com/Todd2112)
+# 🚐
 
+*"Solving problems isn't magic. It's method, clarity, and execution."*
