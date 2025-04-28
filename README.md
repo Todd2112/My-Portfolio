@@ -1,69 +1,165 @@
-# 🚀 Todd2112's Dev Portfolio
+# 🧠 Todd2112's Portfolio
 
-Welcome! This portfolio showcases a collection of applications I’ve built and deployed using **Python**, **Streamlit**, **FastAPI**, **Ollama**, **LangChain**, and **MCP**. These apps are hosted on free-tier platforms for **informational and demonstration purposes only**—they are not commercial products.
+This portfolio showcases a series of **proof-of-concept projects** focused on solving real-world problems through AI, cybersecurity, and intelligent software design.
 
-The goal here is to demonstrate what I can **design, develop, and deploy independently**, using lightweight tools to get ideas online quickly. These are **proof-of-concept projects**, not production environments. This repo serves as a hub for my work focused on:
+Each project represents an exploration of how lightweight tools can be used to **rapidly design, develop, and deploy** solutions that address practical challenges.  
+All applications are hosted on free-tier platforms for **informational and demonstration purposes only**.
 
+This portfolio is a **statement of engineering philosophy**:  
+Clear problem definition.  
+Targeted solutions.  
+Methodical execution.
 
-- 🧠 Reasoning-based AI
-- 🕵️‍♂️ Security & cyber forensics
-- 🧰 Automation tools
-- 🕸️ Web scraping & analysis
+---
 
-## 🔍 Featured Projects
+## 🔬 Statement of Intent
+
+**We are not building production-grade products here.**  
+We are demonstrating that complex, real-world problems can be addressed through focused prototypes, built with accessible tools, under clear constraints.
+
+Our approach emphasizes:
+
+- Clarity of purpose
+- Technical rigor
+- Ethical, responsible coding practices
+- Practical awareness of limitations and trade-offs
+
+---
+
+## 🛠 Featured Projects
 
 ### 📌 [Web Keyword Crawler](https://web-keyword.streamlit.app/)
-A blazing-fast Streamlit app that scrapes public websites for specific keywords, with optional recursive crawling and readable match context.
 
-**Highlights:**
-- 🌐 Scrapes public websites for keyword matches  
-- 🔗 Recursively crawls internal links (depth configurable)  
-- 📄 Clean, readable context for each match  
-- ⚡ Fast, distraction-free: no ads, no trackers, just results
+**Problem:**  
+Organizations need to monitor external websites for specific mentions without getting trapped by trackers, ads, or dynamic web content.
 
-**Built With:**
-- 🐍 Python + Streamlit UI (zero terminal input)
-- 🧠 Modular code powered by the **Model Context Protocol (MCP)**
-- 🕸️ Web scraping via `requests`, `BeautifulSoup`
-- 🧱 Designed with reusable functions and single-responsibility principles
+**Solution:**  
+A lightweight web crawler that rapidly and anonymously retrieves static HTML, filters it for targeted keywords, and presents clean context around each match.
 
-### 🧠 [Reasoning Chatbot](./reasoning-ai-chatbot/)
-An intelligent chatbot that explains its reasoning process step-by-step. Think of it as Sherlock Holmes with an LLM.
-
-- 🗣️ Interactive interface (Streamlit)
-- 🔎 Transparent logic path
-- 🧰 Ideal for interviews, training, and explainability demos
+**Applications:**  
+- Brand monitoring
+- Competitive intelligence
+- Research aggregation
 
 ---
 
-### 🕵️‍♂️ [Sherlock Holmes AI](./sherlock-holmes-ai/)
-A literary-themed AI agent that solves mysteries using deduction, dialogue, and contextual inference.
+### 🧠 [Reasoning AI Chatbot](./reasoning-ai-chatbot/)
 
-- 📚 NLP meets detective work
-- 💡 Built with a touch of flair and fun
-- 🛠️ Can be extended for custom detective cases
+**Problem:**  
+LLMs often provide answers without transparent reasoning, making it difficult to verify or trust the output.
+
+**Solution:**  
+An interactive chatbot that explicitly displays its step-by-step reasoning path, offering users visibility into the logic behind the response.
+
+**Applications:**  
+- Explainable AI prototypes
+- Interview or training simulations
+- Decision support tools
 
 ---
 
-## 🛠 Tech Stack
+# 🕵️‍♂️ Sherlock Holmes AI Agent
+
+## Overview - Proof of Concept
+
+This project explores how lightweight AI agents can be designed to perform **thematic analysis**, **logical inference**, and **knowledge extraction** across large text documents.  
+Modeled after the deductive methods of Sherlock Holmes, this agent demonstrates a novel approach to **parsing**, **linking**, and **summarizing** critical information scattered across unstructured content.
+
+While initially demonstrated on literary works in the public domain, the framework generalizes to professional fields like **data science**, **document intelligence**, and **knowledge management**.
+
+---
+
+## Problem Statement
+
+Professionals often struggle with locating nuanced insights hidden deep within massive text-based resources.  
+Simple keyword searches miss the **context**, **intent**, and **connections** crucial for real understanding.
+
+The **challenge** addressed by this project is:  
+> *"How can we intelligently extract and reason about information in unstructured data — seeing not just where facts occur, but how they relate and evolve?"*
+
+---
+
+## Approach
+
+The Sherlock Holmes AI Agent is designed to:
+
+- **Parse** and **analyze** large text documents (e.g., books, manuals, research papers).
+- **Identify entities** (characters, concepts, themes).
+- **Link references** across sections to build logical inferences (e.g., evolving motives).
+- **Summarize** key patterns and reasoning paths.
+- **Learn** and **improve** over time by training lightweight neural networks for thematic recognition.
+
+The initial system focuses on lightweight methods suitable for real-world deployment without requiring heavy cloud resources or LLM servers.
+
+From a **data science** perspective, it applies:
+
+- **Natural Language Processing (NLP)** for structured parsing
+- **Information Retrieval** for focused extraction
+- **Pattern Recognition** for connecting scattered references
+- **Explainable AI** techniques to present logical reasoning paths
+
+---
+
+## Potential Applications
+
+- Intelligent document indexing
+- Legal discovery and contract review
+- Research and academic summarization
+- Knowledge graph generation
+- AI training datasets construction
+
+---
+
+## Future Directions
+
+- Build modular neural networks for reasoning pattern recognition.
+- Train lightweight text embeddings to model relationships across documents.
+- Modular LLM integration for environments where heavy inference is feasible (e.g., private servers).
+- Expand to handle PDFs, Word Docs, and web pages via parsers and OCR.
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](../LICENSE) file for details.
+
+---
+
+> *"You see, but you do not observe. The distinction is clear."*  
+> — Sherlock Holmes
+
+
+## 🧰 Technology Stack
 
 - Python 3.x
 - Streamlit
 - FastAPI
-- MCP (Model Context Protocol)
-- GitHub Actions (CI/CD optional)
+- Ollama (local LLM backend)
+- LangChain
+- Model Context Protocol (MCP)
+- GitHub Actions (for optional CI/CD)
 - VS Code
-- Coffee ☕ & good music 🎧
 
 ---
 
-## 📫 Let's Connect!
+## ⚡ Future Work
+
+As this portfolio evolves, additional proofs of concept will be added across areas including:
+
+- AI model evaluation frameworks
+- Cybersecurity tools for threat detection and forensics
+- Automation utilities for ethical web research
+- Small-scale data pipelines
+
+A live demo hub is currently in development.
+
+---
+
+## 📫 Connect
 
 - GitHub: [Todd2112](https://github.com/Todd2112)
-- LinkedIn: *(Insert link if available)*
-- Currently listening to: *Tears for Fears* 🌀
-
 ---
 
 > “We are AGNOSTIC. We serve no master. We are LEGION.”  
-> — My Mantra
+
+**Design. Develop. Deploy. Solve.**
