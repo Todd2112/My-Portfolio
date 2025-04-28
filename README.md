@@ -58,9 +58,9 @@ An interactive chatbot that explicitly displays its step-by-step reasoning path,
 
 ---
 
-# 🕵️‍♂️ Sherlock Holmes AI Agent
+### 🕵️‍♂️ [Sherlock Holmes AI Agent](./sherlock-holmes-ai/)
 
-## Overview - Proof of Concept
+**Overview - Proof of Concept**
 
 This project explores how lightweight AI agents can be designed to perform **thematic analysis**, **logical inference**, and **knowledge extraction** across large text documents.  
 Modeled after the deductive methods of Sherlock Holmes, this agent demonstrates a novel approach to **parsing**, **linking**, and **summarizing** critical information scattered across unstructured content.
@@ -69,7 +69,7 @@ While initially demonstrated on literary works in the public domain, the framewo
 
 ---
 
-## Problem Statement
+**Problem Statement**
 
 Professionals often struggle with locating nuanced insights hidden deep within massive text-based resources.  
 Simple keyword searches miss the **context**, **intent**, and **connections** crucial for real understanding.
@@ -79,17 +79,15 @@ The **challenge** addressed by this project is:
 
 ---
 
-## Approach
+**Approach**
 
 The Sherlock Holmes AI Agent is designed to:
 
-- **Parse** and **analyze** large text documents (e.g., books, manuals, research papers).
-- **Identify entities** (characters, concepts, themes).
-- **Link references** across sections to build logical inferences (e.g., evolving motives).
-- **Summarize** key patterns and reasoning paths.
-- **Learn** and **improve** over time by training lightweight neural networks for thematic recognition.
-
-The initial system focuses on lightweight methods suitable for real-world deployment without requiring heavy cloud resources or LLM servers.
+- **Parse** and **analyze** large text documents (e.g., books, manuals, research papers)
+- **Identify entities** (characters, concepts, themes)
+- **Link references** across sections to build logical inferences
+- **Summarize** key patterns and reasoning paths
+- **Learn** and **improve** over time using lightweight neural network models
 
 From a **data science** perspective, it applies:
 
@@ -100,64 +98,55 @@ From a **data science** perspective, it applies:
 
 ---
 
-## Potential Applications
+**Potential Applications**
 
 - Intelligent document indexing
 - Legal discovery and contract review
 - Research and academic summarization
 - Knowledge graph generation
-- AI training datasets construction
+- AI training dataset construction
 
 ---
 
-## Future Directions
+**Future Directions**
 
-- Build modular neural networks for reasoning pattern recognition.
-- Train lightweight text embeddings to model relationships across documents.
-- Modular LLM integration for environments where heavy inference is feasible (e.g., private servers).
-- Expand to handle PDFs, Word Docs, and web pages via parsers and OCR.
-
----
-
-## License
-
-This project is licensed under the MIT License — see the [LICENSE](../LICENSE) file for details.
+- Build modular neural networks for reasoning pattern recognition
+- Train lightweight text embeddings to model relationships across documents
+- Expand to handle PDFs, Word Docs, and scanned files via OCR
+- Integrate with modular LLMs where heavy inference is feasible (e.g., local/private servers)
 
 ---
-
-> *"You see, but you do not observe. The distinction is clear."*  
-> — Sherlock Holmes
-
 
 ## 🧰 Technology Stack
 
 - Python 3.x
 - Streamlit
 - FastAPI
-- Ollama (local LLM backend)
+- Ollama (for local LLM use)
 - LangChain
 - Model Context Protocol (MCP)
-- GitHub Actions (for optional CI/CD)
+- GitHub Actions (for CI/CD pipelines)
 - VS Code
 
 ---
 
-## ⚡ Future Work
+## ⚡ Road Ahead
 
-As this portfolio evolves, additional proofs of concept will be added across areas including:
+As this portfolio evolves, new proofs of concept will be added across domains like:
 
 - AI model evaluation frameworks
-- Cybersecurity tools for threat detection and forensics
-- Automation utilities for ethical web research
-- Small-scale data pipelines
+- Cybersecurity threat detection and forensics
+- Ethical web scraping and research automation
+- Lightweight data pipelines and transformation tools
 
-A live demo hub is currently in development.
+A **live demonstration hub** is currently in development.
 
 ---
 
 ## 📫 Connect
 
 - GitHub: [Todd2112](https://github.com/Todd2112)
+
 ---
 
 > “We are AGNOSTIC. We serve no master. We are LEGION.”  
