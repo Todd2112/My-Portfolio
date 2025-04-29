@@ -1,4 +1,4 @@
-# 🧠 Reasoning AI Python Coder (Streamlit Edition)
+# 🧠 Reasoning AI Python Coder
 
 Welcome to the **Reasoning AI Python Coder** – a browser-based proof of concept for interpretable, transparent AI. This app demonstrates how step-by-step reasoning can enhance trust, learning, and reliability in AI systems. While the focus here is on Python programming, the underlying pattern can be scaled to many domains where logic matters more than speed alone.
 
