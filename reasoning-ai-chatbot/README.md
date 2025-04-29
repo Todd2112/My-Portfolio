@@ -1,77 +1,45 @@
-# 🧠 Reasoning AI Python Coder (Streamlit Edition)
+## 🔍 Solving the Black Box Problem in AI Coding
 
-Welcome to the **Reasoning AI Python Coder** – a browser-based AI assistant that *thinks before it codes*. This Streamlit-powered app combines logical step-by-step reasoning with real-time Python code generation. Perfect for devs, learners, and portfolio reviewers alike.
+This app is a **proof of concept** for a more transparent and reliable way to interact with AI coding assistants. Instead of blindly generating Python code, it first explains its reasoning — giving you visibility into the AI’s logic *before* any code is written.
 
-## 🌐 Live Demo
-[🚀 Try it on Streamlit](https://python-coder.streamlit.app/)  
-No install. No setup. Just code.
+The goal is twofold:
+- Help users **understand and trust** what the AI is doing
+- Offer a **debug-first mindset**, where errors can be caught in the logic before they appear in the output
 
-## 💡 Features
-
-- 🧠 **Reason-first coding**: The AI explains its logic *before* generating code
-- 🤖 Powered by **OpenAI** (online) or **Ollama + DeepSeek** (local)
-- 🥪 Clean, interactive UI with **Streamlit**
-- 🛠️ Supports HR/demo mode and full dev workflows
-
-## 🚀 Quickstart
-
-### 🌐 Web Version (OpenAI-powered)
-
-> No installation required!
-
-1. Visit the [Streamlit app](https://python-coder.streamlit.app/)
-2. Ask a Python question
-3. See the reasoning → Get the code → Copy + run!
-
-### 💻 Local Dev (Optional: Ollama + DeepSeek)
-
-> Requires Python 3.10+ and [Ollama](https://ollama.com/)
-
-```bash
-git clone https://github.com/Todd2112/My-Portfolio.git
-cd My-Portfolio/reasoning-ai-chatbot
-pip install -r requirements.txt
-streamlit run Python-Coder.py
-```
-
-✅ Tip: Switch between OpenAI and Ollama modes inside the app.
+Whether you're a learner, developer, or technical reviewer, this tool showcases how step-by-step reasoning can improve AI reliability, usability, and educational value.
 
 ---
 
-## ✨ Why This App Rocks
+### ❓ The Problem
 
-This isn’t just another code bot. It:
-- **Breaks down its logic** so you actually learn
-- Works **in your browser** via Streamlit
-- Doubles as a **portfolio showcase** for AI + UX + deployment skills
-- Supports **both online and offline use cases**
+When most AI coding tools generate code, they don’t explain *how* they got there.
 
----
+You enter a Python question, and it jumps straight to a solution. But:
 
-## 🧰 Tech Stack
+- Was the question fully understood?
+- Were the correct assumptions made?
+- Did the logic follow a valid path?
 
-- 🧠 **OpenAI GPT-4 / DeepSeek (via Ollama)**
-- 🌐 **Streamlit** (frontend + deployment)
-- 🐍 **Python** (backend)
-- 🔌 **REST API / Local LLM interface**
+If the AI makes a mistake in reasoning, the code will be flawed — sometimes subtly, sometimes critically. And because the thinking is hidden, **you won’t know until it fails**.
+
+This creates a **black box problem**: we get output, but not insight.  
+It makes debugging harder, learning slower, and trust weaker.
 
 ---
 
-## 🤝 Contributing
+### ✅ Our Solution: Force the Thinking to the Surface
 
-Fork it, clone it, riff on it. PRs welcome.
+This app is designed to expose the AI's thought process *before* any code is written.
 
----
+We achieve that with a carefully crafted system prompt, instructing the AI to always respond in two structured parts:
 
-## 🧪 Part of the Matrix Series™
+1. **Reasoning:** A clear explanation of how it's interpreting the question and approaching the solution  
+2. **Code:** The actual Python code that follows from the reasoning
 
-> *"Design, develop, deploy. We are agnostic. We serve no master. We are legion."*
+```markdown
+**Reasoning:**
+[Explanation of logic]
 
----
-
-## 📬 Contact
-
-👤 GitHub: [Todd2112](https://github.com/Todd2112)
-
-🚀 Powered by coffee, code, and the simulation.
-
+**Code:**
+```python
+[Python Code]
