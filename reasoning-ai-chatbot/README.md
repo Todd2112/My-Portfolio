@@ -25,12 +25,6 @@ Whether you're a learner, developer, or technical reviewer, this tool showcases 
 
 ---
 
-## 🌐 Live Demo
-[🚀 Try it on Streamlit](https://python-coder.streamlit.app/)  
-No install. No setup. Just code.
-
----
-
 ## 💡 Problem Statement
 Modern code generation tools often act as black boxes: they return code, but without clarifying *why* that code was written. This creates risks:
 
@@ -63,6 +57,13 @@ This sequence encourages critical thinking, facilitates debugging, and promotes 
 - 🔀 Toggle between HR/demo mode and dev workflows
 
 ---
+
+## 🌐 Live Demo
+[🚀 Try it on Streamlit](https://python-coder.streamlit.app/)  
+No install. No setup. Just code.
+
+---
+
 
 ## 🚀 Quickstart
 
