@@ -8,12 +8,6 @@ Welcome to the **Reasoning AI Python Coder** – a browser-based proof of concep
 
 This app is a **proof of concept** for a more transparent and reliable way to interact with AI coding assistants. Instead of blindly generating Python code, it first explains its reasoning — giving you visibility into the AI’s logic *before* any code is written.
 
-The goal is twofold:
-- Help users **understand and trust** what the AI is doing
-- Offer a **debug-first mindset**, where errors can be caught in the logic before they appear in the output
-
-Whether you're a learner, developer, or technical reviewer, this tool showcases how step-by-step reasoning can improve AI reliability, usability, and educational value.
-
 ### 🎯 Bonus: Two-for-One Learning
 Each interaction not only generates useful output — it doubles as a **training opportunity**:
 
@@ -22,6 +16,12 @@ Each interaction not only generates useful output — it doubles as a **training
 - For researchers: Capture reasoning + output as high-quality, explainable training data
 
 > This “explain-before-action” loop isn’t just output — it’s ongoing instruction, debug insight, and dataset generation in one.
+
+The goal is twofold:
+- Help users **understand and trust** what the AI is doing
+- Offer a **debug-first mindset**, where errors can be caught in the logic before they appear in the output
+
+Whether you're a learner, developer, or technical reviewer, this tool showcases how step-by-step reasoning can improve AI reliability, usability, and educational value.
 
 ---
 
