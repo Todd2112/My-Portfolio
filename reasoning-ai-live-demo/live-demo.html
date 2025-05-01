@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reasoning AI Demo</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #111;
+      color: #eee;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .line {
+      margin: 1rem 0;
+    }
+    .thinking {
+      color: #00ffaa;
+    }
+    .you {
+      color: #ffd700;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #eee;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { background-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div class="line you"><strong>You:</strong> <span id="user-text"></span><span class="cursor"></span></div>
+  <div class="line thinking"><strong>Thinking:</strong> <span id="bot-text"></span><span class="cursor"></span></div>
+
+  <script>
+    const userText = "write a simple print statement";
+    const botText = `Okay, so I need to write a simple print statement in Python. Let me think about how to do that.
+
+First, I remember that printing is done using the print() function. So I should start by calling print followed by an argument inside parentheses.
+
+What type of argument should I use? Since it's a simple example, maybe just a number or a string would work. Let me pick a number first.
+
+So the code should look like print(5). That way, when I run this line, it will output 5 on the screen.
+
+Wait, but sometimes people might want to see a message instead of a number. Like print("Hello World"). But for a simple case, maybe just using a number is enough and easier to understand.
+
+Let me test this in my mind. If I type print(5), does it display 5? Yes, that's correct.
+
+So putting it all together, the code will be:
+
+print(5)
+
+I think that's straightforward. It's clear and meets the requirement of writing a simple print statement.`;
+
+    const typeText = (elementId, text, delay = 30) => {
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          document.getElementById(elementId).textContent += text[i++];
+        } else {
+          clearInterval(interval);
+        }
+      }, delay);
+    };
+
+    // Simulate typing both user and bot with delay between
+    typeText("user-text", userText, 40);
+    setTimeout(() => {
+      typeText("bot-text", botText, 20);
+    }, userText.length * 40 + 500);
+  </script>
+</body>
+</html>
