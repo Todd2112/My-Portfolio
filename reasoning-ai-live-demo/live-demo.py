@@ -1,10 +1,13 @@
 import streamlit as st
 import time
 
-# Function to simulate the typing animation
-def typewriter_effect(text, speed=0.05):
+# Function to simulate the typing animation using a placeholder
+def typewriter_effect(text, speed=0.01):
+    placeholder = st.empty()
+    displayed_text = ""
     for char in text:
-        st.write(char, end="", flush=True)
+        displayed_text += char
+        placeholder.markdown(f"```markdown\n{displayed_text}\n```")
         time.sleep(speed)
 
 # Page title
@@ -34,23 +37,8 @@ print(5)
 
 I think that's straightforward. It's clear and meets the requirement of writing a simple print statement. </think>
 
-Reasoning: To print a number in Python, use the print() function with an integer or string as the argument inside parentheses.
+**Reasoning**: To print a number in Python, use the `print()` function with an integer or string as the argument inside parentheses.
 
-Code:
-
+**Code**:
+```python
 print(5)
-
-Output:
-
-5
-"""
-
-# Animate the question
-st.write("You: ", end="")
-typewriter_effect(question)
-st.write("\n")
-time.sleep(1)  # Delay before response starts
-
-# Animate the response
-st.write("Bot: ", end="")
-typewriter_effect(response)
