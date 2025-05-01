@@ -2,44 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reasoning AI Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reasoning AI Assistant</title>
   <style>
     body {
-      font-family: 'Courier New', monospace;
-      background: #111;
-      color: #eee;
-      padding: 2rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+      padding: 2em;
+    }
+    .container {
       max-width: 800px;
       margin: auto;
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .line {
-      margin: 1rem 0;
+    #typed-output {
+      white-space: pre-wrap;
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-top: 1em;
     }
-    .thinking {
-      color: #00ffaa;
-    }
-    .you {
-      color: #ffd700;
-    }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: #eee;
-      animation: blink 1s step-start infinite;
-    }
-    @keyframes blink {
-      50% { background-color: transparent; }
+    .fake-input {
+      width: 100%;
+      padding: 0.8em;
+      font-size: 1em;
+      margin-top: 0.5em;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      color: #777;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <div class="line you"><strong>You:</strong> <span id="user-text"></span><span class="cursor"></span></div>
-  <div class="line thinking"><strong>Thinking:</strong> <span id="bot-text"></span><span class="cursor"></span></div>
+  <div class="container">
+    <h1>🧠 Reasoning AI Assistant</h1>
+    <p style="font-size: 1.1em; color: #666;">
+      Ask any Python-related question. The AI will explain and then code.
+    </p>
+    <p><strong>Enter your message:</strong></p>
+    <div class="fake-input">write a simple print statement</div>
+
+    <div id="typed-output"></div>
+  </div>
 
   <script>
-    const userText = "write a simple print statement";
-    const botText = `Okay, so I need to write a simple print statement in Python. Let me think about how to do that.
+    const text = `🤔 Thinking:
+
+Okay, so I need to write a simple print statement in Python. Let me think about how to do that.
 
 First, I remember that printing is done using the print() function. So I should start by calling print followed by an argument inside parentheses.
 
@@ -57,22 +71,19 @@ print(5)
 
 I think that's straightforward. It's clear and meets the requirement of writing a simple print statement.`;
 
-    const typeText = (elementId, text, delay = 30) => {
-      let i = 0;
-      const interval = setInterval(() => {
-        if (i < text.length) {
-          document.getElementById(elementId).textContent += text[i++];
-        } else {
-          clearInterval(interval);
-        }
-      }, delay);
-    };
+    let index = 0;
+    const speed = 30;
+    const outputDiv = document.getElementById("typed-output");
 
-    // Simulate typing both user and bot with delay between
-    typeText("user-text", userText, 40);
-    setTimeout(() => {
-      typeText("bot-text", botText, 20);
-    }, userText.length * 40 + 500);
+    function typeWriter() {
+      if (index < text.length) {
+        outputDiv.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
   </script>
 </body>
 </html>
