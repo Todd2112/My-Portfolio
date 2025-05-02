@@ -29,7 +29,7 @@ Our approach emphasizes:
 ## 🛠 Featured Projects
 
 ### 📌 [Web Keyword Crawler](https://web-keyword.streamlit.app/)
-
+(click link above to see it in action)
 **Problem:**  
 Organizations need to monitor external websites for specific mentions without getting trapped by trackers, ads, or dynamic web content.
 
@@ -44,7 +44,7 @@ A lightweight web crawler that rapidly and anonymously retrieves static HTML, fi
 ---
 
 ### 🧠 [Reasoning AI Chatbot](https://todd2112.github.io/My-Portfolio/live-demo.html)
-
+(click the link above to see an actual question/answer demo)
 
 **Problem:**  
 LLMs often provide answers without transparent reasoning, making it difficult to verify or trust the output.
