@@ -59,9 +59,8 @@ This sequence encourages critical thinking, facilitates debugging, and promotes 
 ---
 
 ## 🌐 Live Demo
-[🚀 Try it on Streamlit](https://python-coder.streamlit.app/)  
-No install. No setup. Just code.
-
+[Reasoning AI Chatbot](https://todd2112.github.io/My-Portfolio/live-demo.html)
+  
 ---
 
 
