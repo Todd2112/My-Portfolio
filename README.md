@@ -1,4 +1,4 @@
-# 🧠 Todd2112's Portfolio
+# 🧠 My Portfolio
 
 This portfolio showcases a series of **proof-of-concept projects** focused on solving real-world problems through AI, cybersecurity, and intelligent software design.
 
@@ -43,7 +43,8 @@ A lightweight web crawler that rapidly and anonymously retrieves static HTML, fi
 
 ---
 
-### 🧠 [Reasoning AI Chatbot](./reasoning-ai-chatbot/)
+### 🧠 [Reasoning AI Chatbot](https://todd2112.github.io/My-Portfolio/live-demo.html)
+
 
 **Problem:**  
 LLMs often provide answers without transparent reasoning, making it difficult to verify or trust the output.
