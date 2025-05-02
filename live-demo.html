@@ -5,65 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reasoning AI Assistant</title>
   <style>
-    /* Global reset and layout */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f0f2f6;
+      background-color: #0e1117;
+      color: #e6e6e6;
     }
     .container {
       max-width: 900px;
       margin: 50px auto;
       padding: 2em;
-      background-color: #ffffff;
+      background-color: #161b22;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     h1 {
       font-size: 2em;
-      color: #1c1c1c;
+      color: #58a6ff;
       margin-bottom: 0.5em;
+      text-align: center;
     }
     p {
       font-size: 1.1em;
-      color: #2e2e2e;
-      margin-bottom: 1em;
+      color: #8b949e;
+      margin-bottom: 1.5em;
+      text-align: center;
     }
+    #typed-question,
     #typed-output {
       font-family: 'Courier New', monospace;
       white-space: pre-wrap;
       font-size: 1.1em;
       line-height: 1.6;
-      margin-top: 20px;
-      color: #1a1a1a;
-      text-align: left;
-      max-height: 500px;
-      overflow-y: auto;
+      color: #c9d1d9;
+      background-color: #0d1117;
       padding: 1em;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-    }
-    .fake-input {
-      width: 80%;
-      margin: 0 auto;
-      padding: 0.8em;
-      font-size: 1.1em;
-      background-color: #e6ebf1;
-      color: #444;
-      border: none;
       border-radius: 6px;
-      text-align: center;
-      margin-bottom: 1em;
-      font-style: italic;
+      margin-bottom: 1.5em;
+      overflow-y: auto;
+      max-height: 400px;
     }
     .button-container {
-      margin-top: 2em;
+      text-align: center;
     }
     button {
       padding: 0.6em 1.2em;
-      background-color: #007BFF;
+      background-color: #238636;
       color: white;
       border: none;
       border-radius: 5px;
@@ -72,7 +60,7 @@
       transition: background-color 0.3s;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: #2ea043;
     }
   </style>
 </head>
@@ -82,8 +70,7 @@
     <h1>🧠 Reasoning AI Assistant</h1>
     <p>Ask any Python-related question. The AI will explain and then code.</p>
 
-    <div class="fake-input">write a simple print statement</div>
-
+    <div id="typed-question"></div>
     <div id="typed-output"></div>
 
     <div class="button-container">
@@ -92,7 +79,8 @@
   </div>
 
   <script>
-    const text = `🤔 Thinking:
+    const question = "You: write a simple print statement";
+    const answer = `🤔 Thinking:
 
 Okay, so I need to write a simple print statement in Python. Let me think about how to do that.
 
@@ -112,26 +100,39 @@ print(5)
 
 I think that's straightforward. It's clear and meets the requirement of writing a simple print statement.`;
 
-    let index = 0;
-    const speed = 37.5; // slowed down by 25%
+    const speed = 38; // 25% slower
+    let qIndex = 0, aIndex = 0;
+    const questionDiv = document.getElementById("typed-question");
     const outputDiv = document.getElementById("typed-output");
 
-    function typeWriter() {
-      if (index < text.length) {
-        outputDiv.textContent += text.charAt(index);
-        index++;
-        outputDiv.scrollTop = outputDiv.scrollHeight; // auto-scroll
-        setTimeout(typeWriter, speed);
+    function typeQuestion() {
+      if (qIndex < question.length) {
+        questionDiv.textContent += question.charAt(qIndex);
+        qIndex++;
+        setTimeout(typeQuestion, speed);
+      } else {
+        setTimeout(typeAnswer, 500); // Pause before answer starts
       }
     }
 
-    window.onload = typeWriter;
+    function typeAnswer() {
+      if (aIndex < answer.length) {
+        outputDiv.textContent += answer.charAt(aIndex);
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+        aIndex++;
+        setTimeout(typeAnswer, speed);
+      }
+    }
 
     function restartTyping() {
-      index = 0;
+      qIndex = 0;
+      aIndex = 0;
+      questionDiv.textContent = "";
       outputDiv.textContent = "";
-      typeWriter();
+      typeQuestion();
     }
+
+    window.onload = typeQuestion;
   </script>
 
 </body>
