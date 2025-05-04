@@ -60,7 +60,7 @@ An interactive chatbot that explicitly displays its step-by-step reasoning path,
 
 ---
 
-### 🕵️‍♂️ [Sherlock Holmes AI Agent](./sherlock-holmes-ai/)
+### COMING SOON! 🕵️‍♂️ [Sherlock Holmes AI Agent](./sherlock-holmes-ai/)
 
 **Overview - Proof of Concept**
 
