@@ -2,7 +2,7 @@
 
 ## A Forensic-Grade, LoRA-Based Facial Replication Framework
 
-**Authors:** Todd Lancaster
+**Authors:** Todd
 **Contact:** [realtodd@yahoo.com](mailto:realtodd@yahoo.com)
 **Repository:** [https://github.com/Todd2112](https://github.com/Todd2112)
 
