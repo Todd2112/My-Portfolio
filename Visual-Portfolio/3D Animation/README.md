@@ -1,7 +1,4 @@
-
 # AI Character Rendering Portfolio
-
-**Curated by [Your Name Here]**
 
 ---
 
@@ -28,8 +25,9 @@ Each render retains the subject’s real facial structure and vibe, proving fore
   - Classic Renaissance Painting
   - Steampunk Fantasy
   - Sci-Fi Heroine
+  - Heavy Pixar (hyper stylized)
 - **All-Offline Workflow:**  
-  Local, private, 100% CPU—no cloud, no API, total control.
+  Local, private, 100% no cloud, no API, total control.
 
 ---
 
@@ -38,6 +36,7 @@ Each render retains the subject’s real facial structure and vibe, proving fore
 | Style                | Preview (click for full size)                                                                                                            | Description                        |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
 | **Original Photo**   | [![Original](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/orig_woman.jpg)](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/orig_woman.jpg) | Starting point: the real subject    |
+| **Heavy Pixar**      | [![Heavy Pixar](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/Heavy_pixar.png)](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/Heavy_pixar.png) | Heavily stylized Pixar 3D style     |
 | **Pixar / Disney**   | [![Pixar/Disney](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/Heavy_Disney.png)](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/Heavy_Disney.png) | Family-friendly 3D animation        |
 | **DreamWorks**       | [![DreamWorks](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/DreamWorks.png)](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/DreamWorks.png) | Cinematic, expressive characters    |
 | **GTA Comic**        | [![GTA](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/GTA.png)](https://github.com/Todd2112/My-Portfolio/blob/master/Visual-Portfolio/3D%20Animation/GTA.png) | Bold, comic-inspired urban style    |
@@ -49,7 +48,7 @@ Each render retains the subject’s real facial structure and vibe, proving fore
 > - **Same subject, identity-locked**  
 > - **Light green-blue eyes, natural blonde hair, and unique facial details preserved**
 > - **Prompt and seed controlled for maximum repeatability and precision**
-> - **Generated 100% locally on CPU, no cloud, no outside access**
+> - **Generated 100% locally, no cloud, no outside access**
 
 ---
 
@@ -80,7 +79,7 @@ Each render retains the subject’s real facial structure and vibe, proving fore
 - **Stable Diffusion XL (SDXL)**
 - **LoRA fine-tuning**
 - **Tkinter GUI for prompt input**
-- **100% offline, local, and CPU-powered**
+- **100% offline**
 
 ---
 
@@ -93,7 +92,7 @@ Each render retains the subject’s real facial structure and vibe, proving fore
 
 ## 📫 Contact
 
-- realtodd@yahoo.com
+- **Email:** [realtodd@yahoo.com](mailto:realtodd@yahoo.com)
 
 ---
 
