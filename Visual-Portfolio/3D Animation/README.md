@@ -60,7 +60,7 @@ Each render retains the subject’s real facial structure and vibe, proving fore
   Style, wardrobe, expression, or scene swapped with surgical precision—identity never wavers.
 - **Forensic Parity:**  
   Retains true likeness, even in stylized or cartoon forms.
-- **SDXL + LoRA:**  
+- **Stable Diffusion + LoRA:**  
   Lean, optimized models for cartoon, comic, Renaissance, and photoreal settings.
 
 ---
@@ -76,9 +76,9 @@ Each render retains the subject’s real facial structure and vibe, proving fore
 
 ## 🛠️ Tools & Tech
 
-- **Stable Diffusion XL (SDXL)**
+- **Stable Diffusion **
 - **LoRA fine-tuning**
-- **Tkinter GUI for prompt input**
+- **GUI for prompt input**
 - **100% offline**
 
 ---
