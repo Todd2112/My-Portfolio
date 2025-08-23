@@ -55,23 +55,26 @@ The system is designed to be **fully offline**, except for the Ollama API, provi
 
 ---
 
+## 📌 Quick Demo
+
+**PDF-to-Answer Interaction Example:**
+
+- **Source PDF:** [MIT 6.0001 Lecture Notes – Fall 2016](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/lecture-notes/)
+- **Functionality Demonstrated:**
+  1. **PDF Loading:** Seamless import of lecture notes.
+  2. **Text Chunking & Embedding:** Efficient segmentation and processing for semantic search.
+  3. **Natural Language Querying:** Pose questions in plain English.
+  4. **Real-Time Response:** Context-aware answers from the PDF content.
+  5. **Interactive Interface:** User-friendly Tkinter chat display with progress bars.
+
+**Screenshot Example:**
+
+<img width="681" height="708" alt="PDF Teacher Screenshot" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
+
+---
+
 ## Screenshots
-
-<img width="681" height="708" alt="PDF Teacher Assistant Screenshot" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
-
----
-
-## Usage
-
-1. Launch `teacher.py` in your Python environment.
-2. Click **Load PDFs** and select the documents you want to process.
-3. Ask questions in the chat input and receive streaming responses from the LLM.
-4. Progress bars indicate loading and embedding generation in real-time.
-5. Configure **chunk size** and **overlap** to optimize semantic retrieval for larger documents.
+<img width="681" height="708" alt="PDF Teacher Screenshot" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
 
 ---
-
-## License
-
-This project is for portfolio demonstration purposes. Redistribution or public deployment without permission is prohibited.
 
