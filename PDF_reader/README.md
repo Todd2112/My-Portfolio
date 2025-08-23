@@ -44,10 +44,4 @@ The system is designed to be **fully offline**, except for the Ollama API, provi
 ## Screenshots
 <img width="681" height="708" alt="image" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
 
-> Add your screenshots here showing:  
-> - The GUI interface  
-> - Loading PDFs  
-> - Asking questions and receiving LLM answers  
-
----
 
