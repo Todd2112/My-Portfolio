@@ -14,8 +14,6 @@ The **PDF Teacher RAG Assistant** is a professional-grade, offline-capable AI ap
 
 ---
 
----
-
 ## Future Enhancements & Knowledge Base
 
 The PDF Teacher RAG Assistant is designed with scalability and continuous learning in mind:
@@ -28,6 +26,7 @@ The PDF Teacher RAG Assistant is designed with scalability and continuous learni
 
 This roadmap highlights the project’s potential to evolve from a PDF Q&A tool into a fully autonomous, learning knowledge assistant.
 
+---
 
 ## Project Overview
 
@@ -57,6 +56,22 @@ The system is designed to be **fully offline**, except for the Ollama API, provi
 ---
 
 ## Screenshots
-<img width="681" height="708" alt="image" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
 
+<img width="681" height="708" alt="PDF Teacher Assistant Screenshot" src="https://github.com/user-attachments/assets/71ba76fe-9a46-48e2-b13e-8aa87ae232b7" />
+
+---
+
+## Usage
+
+1. Launch `teacher.py` in your Python environment.
+2. Click **Load PDFs** and select the documents you want to process.
+3. Ask questions in the chat input and receive streaming responses from the LLM.
+4. Progress bars indicate loading and embedding generation in real-time.
+5. Configure **chunk size** and **overlap** to optimize semantic retrieval for larger documents.
+
+---
+
+## License
+
+This project is for portfolio demonstration purposes. Redistribution or public deployment without permission is prohibited.
 
