@@ -1,4 +1,4 @@
-# 🚀 Full SEO Agent: AI-Powered Content Optimization Suite
+#  Full SEO Agent: AI-Powered Content Optimization Suite
 
 ---
 
@@ -17,27 +17,27 @@
 
 ---
 
-## 🎯 Key Features
+##  Key Features
 
 ### 📝 Intelligent Content Analysis
 * **Comprehensive Readability Scores:** Flesch Reading Ease, Flesch-Kincaid Grade, Dale-Chall, and more.
 * **Passive Voice Detection:** Identify and revise passive sentences for clearer, more direct writing.
 * **Real-time Keyword Density:** Monitor keyword usage and receive instant recommendations to prevent under-optimization or stuffing.
 
-### 🤖 AI-Powered Content Rewriting
+###  AI-Powered Content Rewriting
 * **Multi-Tone Rewrites:** Professional, Casual, Humorous, Persuasive.
 * **Incremental Live Streaming:** Watch AI-generated rewrites appear word-by-word, even for large documents.
 * **Live Keyword Tracking:** Track and adjust keyword density in real time.
 * **Side-by-Side Diffing:** Integrated HTML diff view for easy comparison of original vs. rewritten content.
 
-### 🗄️ Robust Data Management
+### Robust Data Management
 * **Local SQLite Database:** Securely store pages, analyses, and rewritten content offline.
 * **JSON-Encoded Metrics:** Efficient storage of keyword and analytical data.
 * **No Cloud Dependency:** Full control over data and resources, ideal for sensitive projects.
 
 ---
 
-## 🖥️ Demo Interface (Streamlit)
+##  Demo Interface (Streamlit)
 
 For demonstration purposes, the interface utilizes **Streamlit**, providing a fast, intuitive way to interact with the Full SEO Agent. Streamlit enables live keyword tracking, content analysis, and AI-powered rewriting in a simple, tabbed interface.
 
@@ -45,7 +45,7 @@ For demonstration purposes, the interface utilizes **Streamlit**, providing a fa
 
 ---
 
-## 💡 Example Use Cases
+##  Example Use Cases
 
 * **Agencies:** Optimize content for multiple client websites consistently and efficiently.
 * **Content Teams:** Streamline workflows, improve readability, and ensure SEO compliance.
@@ -54,7 +54,7 @@ For demonstration purposes, the interface utilizes **Streamlit**, providing a fa
 
 ---
 
-## 🛠️ Technical Highlights
+##  Technical Highlights
 
 * **Language:** Python 3.10+
 * **Framework:** Streamlit (demo), modular architecture supports any front-end
@@ -65,7 +65,7 @@ For demonstration purposes, the interface utilizes **Streamlit**, providing a fa
 
 ---
 
-## 🖼️ Screenshot / Demo Placement
+##  Screenshot / Demo Placement
 
 This screenshot highlights the demo interface built in Streamlit. The UI is modular and fully adaptable for enterprise-ready custom front-ends.
 
