@@ -89,17 +89,11 @@ For businesses with capable IT or development teams, CopyIQ can be installed and
 
 ---
 
-## System Requirements
-- Python 3.10+  
-- Streamlit  
-- Ollama with llama3.1:8b  
-- Local JSON storage (no external database required)
-
----
-
 ## License
 All rights reserved.
 
 The CopyIQ source code is proprietary and not open source.
 
 This repository exists solely to showcase functionality and project outcomes.
+
+---
