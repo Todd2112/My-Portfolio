@@ -60,7 +60,7 @@ For businesses with capable IT or development teams, CopyIQ can be installed and
 
 ## Screenshots
 I've ran the program with several different varibles, one to start, one that's optimized and one with errors to show the differences and preformance of the program.
-*(See [GitHub repo files](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq) for visuals)*
+
 
 **1st Run:**  
 ![Login](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/1st_run_log-in.png)  
