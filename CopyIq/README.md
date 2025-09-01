@@ -58,11 +58,32 @@ For businesses with capable IT or development teams, CopyIQ can be installed and
 ---
 
 ## Screenshots
-Browse visuals directly in the repository:
 
-- **Prompt Engineer:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/prompt_engineer.png)  
-- **Monitoring Dashboard:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/monitoring_dashboard.png)  
-- **Sample Report PDF:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/sample_report.png)  
+### First Run
+![Login](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/1st_run_log-in.png)  
+![Main](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/1st_run_main.png)  
+![Monitor](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/1st_run_monitor.png)  
+![Report](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/1st_run_report.png)  
+
+### Second Run
+![Main](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/2nd_run_main.png)  
+![Monitor](https://github.com/Todd2112/MyPortfolio/blob/master/CopyIq/2nd_run_monitor.png)  
+![Report](https://github.com/Todd2112/MyPortfolio/blob/master/CopyIq/2nd_run_report.png)  
+
+### Third Run
+![Main](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/3rd_run_main.png)  
+![Monitor](https://github.com/Todd2112/MyPortfolio/blob/master/CopyIq/3rd_run_monitor.png)  
+![Report](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/3rd_run_report.png)  
+
+### Ad Copy Example
+![Main](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/ad_copy_main.png)  
+![Monitor](https://github.com/Todd2112/MyPortfolio/blob/master/CopyIq/ad_copy_monitor.png)  
+![Report](https://github.com/Todd2112/MyPortfolio/blob/master/CopyIq/ad_copy_report.png)  
+
+### Email Copy Example
+![Main](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/email_main.png)  
+![Monitor](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/email_monitor.png)  
+![Report](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/email_report.png)  
 
 ---
 
