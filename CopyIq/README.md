@@ -1,4 +1,4 @@
-# CopyIQ: Data-Driven AI Prompt Engineer 🚀
+# CopyIQ: Data-Driven AI Prompt Engineer 
 **Tagline:** Bring your brand to life with data-backed, high-quality marketing copy.
 
 ---
