@@ -59,7 +59,7 @@ For businesses with capable IT or development teams, CopyIQ can be installed and
 ---
 
 ## Screenshots
-I've ran the program with several different varibles, one to start, one that's optimized and one with errors to show the differences and preformance of the program.
+I've ran the program with several different variables, one to start, one that's optimized and one with errors to show the differences and performance of the program.
 
 
 **1st Run:**  
