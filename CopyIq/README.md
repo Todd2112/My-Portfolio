@@ -1,4 +1,3 @@
-
 # CopyIQ: Data-Driven AI Prompt Engineer 🚀
 **Tagline:** Stop guessing if your AI-generated copy will perform—guarantee it.
 
@@ -59,11 +58,11 @@ For businesses with capable IT or development teams, CopyIQ can be installed and
 ---
 
 ## Screenshots
-(See `/docs/screenshots/` for visuals)
+Browse visuals directly in the repository:
 
-- **Prompt Engineer:** Generate copy with instant quality metrics  
-- **Monitoring Dashboard:** Track hallucinations, spot anomalies, and monitor performance trends  
-- **Sample Report PDF:** Deliver polished reports with executive summaries, charts, and logs  
+- **Prompt Engineer:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/prompt_engineer.png)  
+- **Monitoring Dashboard:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/monitoring_dashboard.png)  
+- **Sample Report PDF:** [View Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/CopyIq/docs/screenshots/sample_report.png)  
 
 ---
 
