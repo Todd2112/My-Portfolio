@@ -32,7 +32,7 @@ Once the copy is created and validated, we move to optimization. Our **Full SEO 
 
 **Why this matters:** We turn your quality content into a powerful business asset, ensuring it ranks highly and attracts the right audience.
 
-[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
+[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent#readme)
 
 ---
 
