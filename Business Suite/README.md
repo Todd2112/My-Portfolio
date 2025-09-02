@@ -1,5 +1,4 @@
-
-# 🌟 Welcome to Our Business Solutions Suite
+# 🌟 Welcome to The Business Solutions Suite
 
 ## A Unified Approach to High-Performance Content
 
@@ -19,7 +18,7 @@ This is the foundation of your content. We use our **CopyIQ** pipeline to collab
 
 **Why this matters:** We remove the guesswork and technical risk associated with raw AI generation, ensuring your content is compelling and trustworthy from the very first word.
 
-[**Learn more about our CopyIQ service here.**](./CopyIq/README.md)
+[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq)
 
 ---
 
@@ -33,7 +32,7 @@ Once the copy is created and validated, we move to optimization. Our **Full SEO 
 
 **Why this matters:** We turn your quality content into a powerful business asset, ensuring it ranks highly and attracts the right audience.
 
-[**Learn more about our SEO Agent service here.**](./SEO_Agent/README.md)
+[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
 
 ---
 
