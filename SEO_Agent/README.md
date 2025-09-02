@@ -1,10 +1,10 @@
-#  Full SEO Agent: AI-Powered Content Optimization Suite
+#  Max SEO Agent: AI-Powered Content Optimization Suite
 
 ---
 
 ## ✨ Quick Client Summary
 
-**Elevate your SEO with our AI-driven Full SEO Agent!** This intuitive platform offers **_offline content analysis and LLM-powered rewriting_**, providing a streamlined, **fully customizable** solution for achieving higher rankings and superior content quality. Ideal for agencies, content teams, and marketing consultants seeking precision, privacy, and performance.
+**Elevate your SEO with the AI-driven Max SEO Agent!** This intuitive platform offers **_offline content analysis and LLM-powered rewriting_**, providing a streamlined, **fully customizable** solution for achieving higher rankings and superior content quality. Ideal for agencies, content teams, and marketing consultants seeking precision, privacy, and performance.
 
 ---
 
@@ -77,13 +77,6 @@ This screenshot highlights the demo interface built in Streamlit. The UI is modu
 This software is proprietary. The source code is not publicly available for cloning, downloading, or direct contribution. This repository demonstrates high-level capabilities and features only.
 
 ---
-
-## 📞 Live Demo & Contact
-
-For a personalized, appointment-based live demo or to discuss custom solutions tailored to your specific needs:
-
-* **Live Demo (By Appointment):** [TEMPORARY_NGROK_LINK_OR_CONTACT_INFO]
-* **Example Content Pages:** [LINK_TO_SAMPLE_CONTENT_OR_SCREENSHOTS]
 
 ---
 
