@@ -30,7 +30,7 @@ Once the copy is created and validated, we move to optimization. Our **Max SEO A
 
 **Outcome:** Optimized content engineered to rank, drive traffic, and outperform competitors.
 
-[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
+[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent#readme)
 
 ---
 
