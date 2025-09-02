@@ -76,4 +76,4 @@ LLMO represents the **final phase in our three-phase content workflow**:
 - Provides **live, actionable insights** during rewriting to improve content quality in real-time.  
 - Fully offline and secure—perfect for privacy-conscious enterprises.  
 
-[**Learn more about the full Business Solutions Suite here.**](https://github.com/Todd2112/My-Portfolio)
+[**Learn more about the full Business Solutions Suite here.**](https://github.com/Todd2112/My-Portfolio/tree/master/Business%20Suite#readme)
