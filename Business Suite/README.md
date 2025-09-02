@@ -17,7 +17,7 @@ This is the foundation of your content. We use our **CopyIQ** pipeline to collab
 
 **Outcome:** High-quality, brand-safe copy that builds authority from day one.
 
-[**Learn more about our CopyIQ service here.**]([https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq#readme))
+[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq#readme)
 
 ---
 
