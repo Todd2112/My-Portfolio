@@ -18,7 +18,7 @@ This is the foundation of your content. We use our **CopyIQ** pipeline to collab
 
 **Why this matters:** We remove the guesswork and technical risk associated with raw AI generation, ensuring your content is compelling and trustworthy from the very first word.
 
-[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq)
+[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq#readme)
 
 ---
 
