@@ -1,4 +1,4 @@
-# 🌟 Welcome to The Business Solutions Suite
+# 🌟 Welcome to Our Business Solutions Suite
 
 ## A Unified Approach to High-Performance Content
 
@@ -18,7 +18,7 @@ This is the foundation of your content. We use our **CopyIQ** pipeline to collab
 
 **Why this matters:** We remove the guesswork and technical risk associated with raw AI generation, ensuring your content is compelling and trustworthy from the very first word.
 
-[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq#readme)
+[**Learn more about our CopyIQ service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/CopyIq)
 
 ---
 
@@ -32,7 +32,7 @@ Once the copy is created and validated, we move to optimization. Our **Full SEO 
 
 **Why this matters:** We turn your quality content into a powerful business asset, ensuring it ranks highly and attracts the right audience.
 
-[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent#readme)
+[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
 
 ---
 
@@ -48,3 +48,29 @@ Your brand's valuable data remains secure with us. Our entire suite operates in 
 
 #### **AI-Powered, Human-Led**
 While our technology is cutting-edge, our service is led by human expertise. Our team oversees every step, providing strategic insights and ensuring the final content not only performs but also resonates with your brand's unique identity.
+
+---
+
+### **Working With Our Business Solutions Suite**
+
+Our **Business Solutions Suite** is designed to provide you with a powerful, hassle-free solution.
+
+**Done-For-You AI Copywriting Service (Highly Recommended)**
+Collaborate with us to generate high-quality, data-backed copy. You provide the vision and brand context—we deliver polished content for ads, emails, or product pages.
+
+* **Benefits:**
+    * No technical hassle
+    * Guaranteed high-quality results
+    * Expert oversight to maximize impact
+
+This is the safest, fastest, and most reliable way to get high-performing copy.
+
+**Self-Service Option (For Advanced Teams Only)**
+For businesses with capable IT or development teams, our tools can be installed and run in-house.
+
+* **Important Considerations:**
+    * Requires technical expertise for installation and maintenance
+    * Onboarding guidance is available at a premium rate
+    * All software, hardware, and environment issues are the responsibility of your team
+
+⚠️ **Note:** Our tools are powerful but not a plug-and-play solution. For most clients, the **Done-For-You service is the safer and more effective choice**.
