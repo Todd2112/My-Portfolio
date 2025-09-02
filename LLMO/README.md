@@ -1,4 +1,3 @@
-
 # 🌟 LLMO – AI Content Optimization Service
 
 **As part of our Business Solutions Suite, LLMO is a powerful, offline AI service that optimizes your existing content for next-generation language models (LLMs), building directly on the work completed by Max SEO Agent.**
@@ -30,6 +29,12 @@ LLMO is designed to take your content from **Phase 2: Max SEO Agent** and refine
 - **Live Feedback:** Provides real-time keyword density, readability scoring, and tone adjustments during content generation.
 
 - **Offline & Secure:** Fully local and offline; your content never leaves your environment.
+
+![LLMO Screenshot Page 2](https://github.com/Todd2112/My-Portfolio/blob/master/LLMO/llmo_pg2.png)  
+*LLMO in action: content selection and live keyword feedback.*
+
+![LLMO Screenshot Page 3](https://github.com/Todd2112/My-Portfolio/blob/master/LLMO/llmo_pg3.png)  
+*LLMO rewrite interface with tone selection and readability metrics.*
 
 ---
 
