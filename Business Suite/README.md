@@ -24,7 +24,7 @@ This is the foundation of your content. We use our **CopyIQ** pipeline to collab
 
 ### **Phase 2: SEO & Performance Optimization** (Powered by Max SEO Agent)
 
-Once the copy is created and validated, we move to optimization. Our **Full SEO Agent** takes over to strategically refine your content for search engines and audience engagement.
+Once the copy is created and validated, we move to optimization. Our **Max SEO Agent** takes over to strategically refine your content for search engines and audience engagement.
 
 * **We analyze and adapt:** We perform a deep analysis of your content against market leaders. Our proprietary tools identify critical keyword gaps and readability issues that are holding your content back.
 * **We refine with precision:** Our AI-powered system rewrites and optimizes the content for readability, tone, and search engine performance. It ensures every new word contributes to your SEO goals without ever risking keyword stuffing.
@@ -32,7 +32,7 @@ Once the copy is created and validated, we move to optimization. Our **Full SEO 
 
 **Why this matters:** We turn your quality content into a powerful business asset, ensuring it ranks highly and attracts the right audience.
 
-[**Learn more about our SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
+[**Learn more about our Max SEO Agent service here.**](https://github.com/Todd2112/My-Portfolio/tree/master/SEO_Agent)
 
 ---
 
