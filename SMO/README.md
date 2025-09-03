@@ -1,4 +1,3 @@
-
 # 🌟 SMO Agent – Social Media Optimizer
 
 **Your All-in-One Social Media Optimization Tool**
@@ -23,6 +22,18 @@ SMO Agent transforms your content into **platform-perfect social media posts**, 
 
 ---
 
+## Platform Previews
+
+| Facebook | Instagram |
+|----------|-----------|
+| ![Facebook Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/SMO/smo_facebook.png) | ![Instagram Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/SMO/smo_instagram.png) |
+
+| LinkedIn | Twitter/X |
+|----------|-----------|
+| ![LinkedIn Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/SMO/smo_linkedIn.png) | ![Twitter Screenshot](https://github.com/Todd2112/My-Portfolio/blob/master/SMO/smo_twitter.png) |
+
+---
+
 ## How It Works
 
 1. **Paste your content** into SMO Agent.  
@@ -37,7 +48,5 @@ Optional: Pull content automatically from your existing business suite for end-t
 ## The Result
 
 Professional, ready-to-post social media content—**optimized for reach, engagement, and clarity**—in seconds. SMO Agent saves you time while making your content shine on every platform.  
-
----
 
 **Take control of your social media content. Make every post count with SMO Agent.**
