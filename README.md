@@ -1,6 +1,6 @@
 # My Portfolio
 
-I build AI systems with one guiding principle: AI belongs to the users, not to corporations.
+I'm building AI systems with one guiding principle: AI belongs to the users, not to corporations.
 
 Today’s dominant platforms — OpenAI, Anthropic, Microsoft, Google — keep AI locked behind APIs, subscriptions, and terms of service that restrict freedom and compromise privacy. They turn intelligence into a product you rent, never own.
 
@@ -198,3 +198,4 @@ I design AI pipelines that scale to your hardware, from CPU-only laptops to loca
 
 **Design. Develop. Deploy. Solve.**  
 **I build AI that works for your business — not the other way around.**
+
