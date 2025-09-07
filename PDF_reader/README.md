@@ -22,7 +22,7 @@ The PDF Teacher RAG Assistant is designed with scalability and continuous learni
 - **Self-Growing Knowledge Base:** Every time a question is asked and answered correctly, the assistant can store that Q&A pair locally, continuously training its embeddings and improving semantic retrieval.
 - **Offline LLM Training Integration:** By combining local embeddings with LLM feedback, the system could incrementally refine its knowledge without needing an internet connection.
 - **Advanced Search & Analytics:** Users could query across multiple PDFs, track answer history, and visualize knowledge coverage.
-- **Portfolio & Enterprise Ready:** These features demonstrate a forward-looking, production-grade AI application for recruiters and clients, showcasing Python, AI, and offline LLM capabilities.
+- **Enterprise Ready:** These features demonstrate a forward-looking, production-grade AI application for recruiters and clients, showcasing Python, AI, and offline LLM capabilities.
 
 This roadmap highlights the project’s potential to evolve from a PDF Q&A tool into a fully autonomous, learning knowledge assistant.
 
