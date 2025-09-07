@@ -2,6 +2,8 @@
 
 I'm building AI systems with one guiding principle: AI belongs to the users, not to corporations.
 
+AI is just a tool under your control, not a corporate product guessing your needs.
+
 Today’s dominant platforms — OpenAI, Anthropic, Microsoft, Google — keep AI locked behind APIs, subscriptions, and terms of service that restrict freedom and compromise privacy. They turn intelligence into a product you rent, never own.
 
 My work takes AI back out of the cloud and puts it in your hands. I design and develop local, private, adaptive AI pipelines that run on your hardware, with your data, under your control. No corporate middlemen, no hidden costs, no black-box restrictions.
@@ -198,4 +200,5 @@ I design AI pipelines that scale to your hardware, from CPU-only laptops to loca
 
 **Design. Develop. Deploy. Solve.**  
 **I build AI that works for your business — not the other way around.**
+
 
