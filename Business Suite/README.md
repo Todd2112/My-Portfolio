@@ -1,4 +1,4 @@
-# 🌟 Welcome to Our Business Solutions Suite
+# Welcome to the Business Solutions Suite
 
 ## A Unified Approach to High-Performance Content
 
