@@ -56,10 +56,8 @@ The application utilizes the book **"Artificial Intelligence and Librarianship: 
 
 ### Example Interaction
 
-**User:** "What does this PDF say about the Turing Test?"  
 
-**Assistant:** "According to the text, the Turing Test is explained as follows: The Turing Test was considered an indicator of whether a system had intelligence (Oppy and Dowe 2021). However, nowadays, it's believed that the Turing Test is not demanding enough. Some systems, such as chatbots like ChatGPT, can pass the Turing Test, but this doesn't necessarily reveal everything about their capabilities. Additionally, it mentions that some researchers consider whether the ability to pass the Turing Test implies true intelligence or if there is emergence of complex behavior in these systems."
-
+(https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
 ---
 
 For more information and to access the source PDF, visit the official page: [Artificial Intelligence and Librarianship](https://softoption.us/AIandLibrarianship).  
