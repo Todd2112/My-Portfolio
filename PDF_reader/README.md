@@ -54,10 +54,16 @@ The application utilizes the book **"Artificial Intelligence and Librarianship: 
 
 ---
 
-### Example Interaction
+## Screenshots
 
+**Main Interface:**
 
-(https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
+![PDF Teacher Main](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher.png)
+
+**Sidebar & PDF Management:**
+
+![PDF Teacher Sidebar](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
+
 ---
 
 For more information and to access the source PDF, visit the official page: [Artificial Intelligence and Librarianship](https://softoption.us/AIandLibrarianship).  
