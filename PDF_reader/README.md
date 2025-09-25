@@ -56,13 +56,17 @@ The application uses the book **"Artificial Intelligence and Librarianship: Note
 
 ## Screenshots
 
-**Main Interface:**
+**Ask a Question Interface:**
 
-![PDF RAG Main](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher.png)
+![PDF RAG Ask](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_ask.png)
 
-**Sidebar & PDF Management:**
+**Comprehension Mode / Question Generation:**
 
-![PDF RAG Sidebar](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
+![PDF RAG Ask Mode](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_ask_mode.png)
+
+**Chat / Context History:**
+
+![PDF RAG Comprehension](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_comp.png)
 
 ---
 
