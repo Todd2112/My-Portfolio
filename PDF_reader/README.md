@@ -1,24 +1,24 @@
-# PDF Teacher RAG Assistant – Portfolio Demo
+# PDF RAG Assistant – Portfolio Demo
 
 ---
 
 ## Executive Summary
 
-The **PDF Teacher RAG Assistant** is a professional-grade, offline-capable AI application designed to read and understand PDF documents and answer natural language questions. It combines local embedding models, a Streamlit GUI, and streaming LLM responses via Ollama to create an intelligent assistant that can serve educational, research, or professional purposes. Recruiters and non-technical clients can immediately appreciate the tool’s polished interface, offline functionality, and intelligent question-answering capabilities, making it an impressive showcase project for Python and AI expertise.
+The **PDF RAG Assistant** is a professional, offline-capable AI application that reads and understands PDF documents, answering natural language questions accurately. It leverages local embedding models, a Streamlit GUI, and streaming LLM responses via Ollama to deliver an intelligent assistant suitable for educational, research, or professional environments. Its polished interface, offline functionality, and real-time question-answering make it an ideal portfolio project demonstrating Python, AI, and semantic search expertise.
 
 ---
 
 ## Future Enhancements & Knowledge Base
 
-The PDF Teacher RAG Assistant is designed with scalability and continuous learning in mind:
+The PDF RAG Assistant is designed for scalability and continuous improvement:
 
-- **Universal PDF Support:** Future versions could automatically handle any PDF document, including scanned PDFs via OCR, to answer questions from a wider range of sources.
-- **Self-Growing Knowledge Base:** Every time a question is asked and answered correctly, the assistant can store that Q&A pair locally, continuously training its embeddings and improving semantic retrieval.
-- **Offline LLM Training Integration:** By combining local embeddings with LLM feedback, the system could incrementally refine its knowledge without needing an internet connection.
-- **Advanced Search & Analytics:** Users could query across multiple PDFs, track answer history, and visualize knowledge coverage.
-- **Enterprise Ready:** These features demonstrate a forward-looking, production-grade AI application for recruiters and clients, showcasing Python, AI, and offline LLM capabilities.
+- **Universal PDF Support:** Future versions could incorporate OCR to handle scanned PDFs, expanding the range of supported documents.
+- **Self-Growing Knowledge Base:** Correctly answered Q&A pairs can be stored locally, updating embeddings and improving semantic retrieval over time.
+- **Offline LLM Training Integration:** Embeddings combined with local LLM feedback could allow incremental knowledge refinement without internet access.
+- **Advanced Search & Analytics:** Users could query multiple PDFs, track answer history, and visualize knowledge coverage.
+- **Enterprise Ready:** These features showcase the potential for a production-grade, offline-capable AI assistant, highlighting Python, AI, and LLM integration for recruiters and clients.
 
-This roadmap highlights the project’s potential to evolve from a PDF Q&A tool into a fully autonomous, learning knowledge assistant.
+This roadmap demonstrates the project’s evolution from a PDF Q&A tool to a fully autonomous, learning knowledge assistant.
 
 ---
 
@@ -26,31 +26,31 @@ This roadmap highlights the project’s potential to evolve from a PDF Q&A tool 
 
 This project implements a **Retrieval-Augmented Generation (RAG)** workflow:
 
-- Load PDF files and automatically segment their content into meaningful text chunks.
+- Load PDF files and segment content into meaningful text chunks automatically.
 - Generate embeddings locally using a compact, efficient sentence-transformer model.
-- Store these embeddings for fast, offline semantic search.
-- Accept user questions via a clean, dark-themed Streamlit GUI.
-- Retrieve contextually relevant PDF content and feed it to an LLM (Ollama) for real-time, streaming answers.
-- Display the results in a professional, scrollable chat interface.
+- Store embeddings for fast, offline semantic search.
+- Accept user questions through a clean, professional Streamlit GUI.
+- Retrieve contextually relevant PDF content and provide it to an LLM (Ollama) for real-time answers.
+- Display results in a professional, scrollable chat interface.
 
-The system is designed to be **fully offline**, except for the Ollama API, providing high performance, privacy, and reliability.
+The system is designed to operate **fully offline**, except for the Ollama API, ensuring privacy, reliability, and high performance.
 
 ---
 
 ## Features
 
-- **Offline-friendly embeddings** using `SentenceTransformer` – no internet required for processing PDFs.
-- **Streamlit GUI** with dark theme, chat display, multi-line input, and progress bars.
-- **Dynamic chunking** of PDF content with configurable chunk size and overlap.
-- **Streaming LLM answers** from Ollama, providing responsive, real-time feedback.
-- **NumPy-based cosine similarity** for fast, offline semantic search.
-- **Professional portfolio-ready design**, highlighting Python, GUI, offline capabilities, and LLM integration.
+- **Offline embeddings** using `SentenceTransformer` – process PDFs without internet access.
+- **Streamlit GUI** with multi-line input, configurable settings, and chat interface.
+- **Dynamic chunking** of PDF content with adjustable size and overlap for semantic accuracy.
+- **Streaming LLM answers** via Ollama for responsive, real-time feedback.
+- **Fast semantic search** using NumPy-based cosine similarity.
+- **Portfolio-ready design** emphasizing Python, offline capabilities, GUI, and LLM integration.
 
 ---
 
 ## About the Source PDF
 
-The application utilizes the book **"Artificial Intelligence and Librarianship: Notes for Teaching" (3rd Edition)** by Martin Frické. This open-source resource provides comprehensive insights into AI's impact on librarianship and is licensed under a Creative Commons Attribution 4.0 International License. ([softoption.us](https://softoption.us/AIandLibrarianship?utm_source=chatgpt.com))
+The application uses the book **"Artificial Intelligence and Librarianship: Notes for Teaching" (3rd Edition)** by Martin Frické. This open-source resource provides insights into AI's impact on librarianship and is licensed under a Creative Commons Attribution 4.0 International License. ([softoption.us](https://softoption.us/AIandLibrarianship?utm_source=chatgpt.com))
 
 ---
 
@@ -58,12 +58,12 @@ The application utilizes the book **"Artificial Intelligence and Librarianship: 
 
 **Main Interface:**
 
-![PDF Teacher Main](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher.png)
+![PDF RAG Main](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher.png)
 
 **Sidebar & PDF Management:**
 
-![PDF Teacher Sidebar](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
+![PDF RAG Sidebar](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/teacher_side.png)
 
 ---
 
-For more information and to access the source PDF, visit the official page: [Artificial Intelligence and Librarianship](https://softoption.us/AIandLibrarianship).  
+For more information and to access the source PDF, visit: [Artificial Intelligence and Librarianship](https://softoption.us/AIandLibrarianship)
