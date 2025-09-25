@@ -62,11 +62,11 @@ The application uses the book **"Artificial Intelligence and Librarianship: Note
 
 **Comprehension Mode / Question Generation:**
 
-![PDF RAG Ask Mode](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_ask_mode.png)
+![PDF RAG Ask Mode](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_comp.png)
 
-**Chat / Context History:**
+**Ask Mode Sidebar:**
 
-![PDF RAG Comprehension](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_comp.png)
+![PDF RAG Comprehension](https://github.com/Todd2112/My-Portfolio/blob/master/PDF_reader/pdf_sidebar.png)
 
 ---
 
