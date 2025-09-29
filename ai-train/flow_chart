@@ -1,40 +1,41 @@
-                 ┌───────────────────────┐
-                 │    User Query Input    │
-                 └─────────┬─────────────┘
+                 ┌─────────────────────┐
+                 │   User Query Input  │
+                 └─────────┬──────────┘
                            │
-                           ▼
-                ┌───────────────────────┐
-                │ Check KB for answer   │
-                └─────────┬─────────────┘
-             ┌───────────┴───────────┐
-             │                       │
-       KB HIT│                       │ KB MISS
-             ▼                       ▼
-  ┌───────────────────────┐  ┌───────────────────────┐
-  │ Return KB answer      │  │ Perform RAG / Web      │
-  │ (High confidence)     │  │ Scraping               │
-  └─────────┬─────────────┘  └─────────┬─────────────┘
-            │                            │
-            ▼                            ▼
-      ┌───────────────────────────────┐
-      │ Synthesize LLM + RAG Results  │
-      │ (Agent A + Agent B crosscheck)│
-      └─────────┬─────────────────────┘
+                ┌──────────┴──────────┐
+                │ Check KB for answer │
+                └─────────┬──────────┘
+             KB HIT│                 │KB MISS
+                  ▼                  ▼
+     ┌─────────────────────┐  ┌─────────────────────┐
+     │ Return KB answer     │  │ Fetch RAG/Web Data  │
+     │ (High confidence)    │  └─────────┬───────────┘
+     └─────────┬───────────┘            │
+               │                        ▼
+               │           ┌─────────────────────────┐
+               │           │ Run Agent A LLM         │
+               │           └─────────┬──────────────┘
+               │                     │
+               │           ┌─────────────────────────┐
+               │           │ Run Agent B LLM         │
+               │           └─────────┬──────────────┘
+               │                     │
+               ▼                     ▼
+      ┌─────────────────────────────────────────────┐
+      │ Triple Cross-Check: Agent A + Agent B + RAG │
+      │   - Compare answers                          │
+      │   - Compute consensus / weighted confidence │
+      └─────────┬───────────────────────────────────┘
                 │
+      High Conf │ Low Conf
                 ▼
-        ┌───────────────────────┐
-        │ Compute Confidence     │
-        └─────────┬─────────────┘
-         High Conf│       Low Conf
+        ┌─────────────────────┐
+        │ Return Answer to     │
+        │ User                 │
+        └─────────┬───────────┘
+                  │
                   ▼
-          ┌─────────────────────┐
-          │ Return Answer to     │
-          │ User                │
-          └─────────┬───────────┘
-                    │
-                    ▼
-        ┌─────────────────────────┐
-        │ Update KB if answer     │
-        │ verified / confidence   │
-        │ above threshold         │
-        └─────────────────────────┘
+      ┌─────────────────────────┐
+      │ Update KB if confidence │
+      │ above threshold         │
+      └─────────────────────────┘
