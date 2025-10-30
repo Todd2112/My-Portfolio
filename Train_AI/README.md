@@ -34,3 +34,20 @@ You **don’t need massive servers or GPUs** to get started. My platform runs on
 - **Human-in-the-Loop Accuracy:** Experts guide AI training, eliminating hallucinations and flawed outputs.  
 - **Continuous Learning:** The AI evolves with your business, staying up-to-date without manual retraining.  
 - **Cross-Platform Training:** Ingest documents, URLs, or manual entries for **robust, modular learning**.  
+
+---
+
+## What This Is — and What This Is Not
+
+### What This Is
+- A **modular AI platform** that you control.  
+- A **Human-in-the-Loop LLM training system** that learns from your data and expert guidance.  
+- **Web-browser based**, intuitive, and easy for your team to use.  
+- **LLM-agnostic**, CPU or GPU compatible, and scalable from laptops to servers.  
+- **Quick deployment** — I install, train your team, and leave you running independently.  
+
+### What This Is Not
+- **Not a subscription service:** You own the software and your AI; there’s no monthly fee unless you choose to rehire me for updates or upgrades.  
+- **Not 24/7 tech support:** I get your system up and running. Your team operates it day-to-day.  
+- **Not tied to a single AI model or cloud provider:** You are free to choose and swap models as your business evolves.  
+- **Not an auto-magical solution:** Human-in-the-loop is essential; you train your AI, it learns intelligently from your input.  
