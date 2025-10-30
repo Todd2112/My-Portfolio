@@ -60,6 +60,9 @@ This platform is designed for **your business, your processes, your knowledge** 
 
 I’m not Google, OpenAI, or Facebook. This system **doesn’t collect your data, require subscriptions, or tie you to a cloud service**. You get **a working, locally running AI platform tailored to your needs**, with no unnecessary extras. Once we’ve built and deployed it together, it’s **yours to use independently** — no ongoing support obligations, no hidden commitments, no AI marketing hype.
 
+This isn’t a system that **replaces all your workers** or **promises wealth overnight**. It’s about **stripping away the AI hype** sold to you on the news and social media to get investors to pour money into platforms. You’re getting **AI your way**, built specifically for your business, your processes, and your expertise.
+
+
 ---
 
 ## Key Benefits
