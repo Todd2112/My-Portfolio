@@ -13,7 +13,7 @@ This system is designed for **simplicity, autonomy, and flexibility**:
 - **It is not:** A subscription-based service, cloud-dependent system, or 24/7 tech support contract.  
 - **You get:** A one-time setup walkthrough, demonstration of usage, and co-created deployment tuned to your computing setup. Once it’s running, it’s **yours** — I’m out.
 
-> ⚡ If your system isn’t capable of running the models we select (CPU, RAM, OS), the project can’t proceed — this keeps expectations clear and avoids wasted time.
+>  If your system isn’t capable of running the models we select (CPU, RAM, OS), the project can’t proceed — this keeps expectations clear and avoids wasted time.
 
 ---
 
