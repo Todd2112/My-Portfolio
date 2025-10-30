@@ -13,7 +13,7 @@ This system is designed for **simplicity, autonomy, and flexibility**:
 - **It is not:** A subscription-based service, cloud-dependent system, or 24/7 tech support contract.  
 - **You get:** A one-time setup walkthrough, demonstration of usage, and co-created deployment tuned to your computing setup. Once it’s running, it’s **yours** — I’m out.
 
->  If your system isn’t capable of running the models we select (CPU, RAM, OS), the project can’t proceed — this keeps expectations clear and avoids wasted time.
+> If your system isn’t capable of running the models we select (CPU, RAM, OS), the project can’t proceed — this keeps expectations clear and avoids wasted time.
 
 ---
 
@@ -33,6 +33,14 @@ AI **hallucinates and returns flawed responses**. This platform uses **Human-in-
 
 ### Flexible Training & Continuous Learning
 Train on **anything**: PDFs, Word docs, URLs, or manual entries. The system **adapts continuously**, reflecting your **current processes, policies, and expert knowledge** without retraining from scratch.
+
+---
+
+## Your Business, Not Trivia
+
+Sure, AI services like ChatGPT can tell you **what the capital of Texas is** or **what wine pairs with chicken**. But that’s not what this system is for.  
+
+This system is built from the ground up to be trained **specifically on your needs**, not on what some general AI thinks you need. It’s about giving you **a tool that adapts to your expertise**, grows with your business, and **learns from you directly**, not from someone else’s dataset.
 
 ---
 
