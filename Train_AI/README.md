@@ -44,7 +44,7 @@ I consult with you upfront to **evaluate your system and co-create the deploymen
 - Operates **locally and efficiently**  
 - Provides **accurate, usable outputs from day one**  
 
-Once deployed, the system is **yours to use independently** — no ongoing support or hidden subscriptions. You’re hiring **a freelancer to deliver a tailored solution**, not a monthly albatross like ChatGPT or other subscription-based AI services.
+Once deployed, the system is **yours to use independently** — no ongoing support or hidden subscriptions. You’re hiring **a freelancer to deliver a tailored solution**, not locked into ongoing subscription fees like ChatGPT or other AI services.
 
 ---
 
@@ -52,7 +52,7 @@ Once deployed, the system is **yours to use independently** — no ongoing suppo
 
 Sure, AI services like ChatGPT can tell you **what the capital of Texas is** or **what wine pairs with chicken**. But that’s not what this system is for.  
 
-This platform is designed for **your business, your processes, your knowledge** — not trivia or generic advice. It’s about giving you **a tool that adapts to your expertise**, grows with your business, and **learns from you directly**, not from someone else’s dataset. This system is built from the ground up to be trained **specifically on your needs**, not what some general AI thinks you need, but **exactly what you need**.
+This platform is designed for **your business, your processes, your knowledge** — not trivia or generic advice. It’s about giving you **a tool that adapts to your expertise**, grows with your business, and **learns from you directly**, not from someone else’s dataset. This system is built from the ground up to be trained **specifically on your needs**, not what some general AI assumes you need, but **exactly what fits your business**.
 
 ---
 
@@ -61,7 +61,6 @@ This platform is designed for **your business, your processes, your knowledge** 
 I’m not Google, OpenAI, or Facebook. This system **doesn’t collect your data, require subscriptions, or tie you to a cloud service**. You get **a working, locally running AI platform tailored to your needs**, with no unnecessary extras. Once we’ve built and deployed it together, it’s **yours to use independently** — no ongoing support obligations, no hidden commitments, no AI marketing hype.
 
 This isn’t a system that **replaces all your workers** or **promises wealth overnight**. It’s about **stripping away the AI hype** sold to you on the news and social media to get investors to pour money into platforms. You’re getting **AI your way**, built specifically for your business, your processes, and your expertise.
-
 
 ---
 
