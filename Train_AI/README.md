@@ -36,14 +36,6 @@ Train on **anything**: PDFs, Word docs, URLs, or manual entries. The system **ad
 
 ---
 
-## Your Business, Not Trivia
-
-Sure, AI services like ChatGPT can tell you **what the capital of Texas is** or **what wine pairs with chicken**. But that’s not what this system is for.  
-
-This system is built from the ground up to be trained **specifically on your needs**, not on what some general AI thinks you need. It’s about giving you **a tool that adapts to your expertise**, grows with your business, and **learns from you directly**, not from someone else’s dataset.
-
----
-
 ## Custom-Tailored Deployment
 
 I consult with you upfront to **evaluate your system and co-create the deployment**. This ensures that the AI:
@@ -52,7 +44,21 @@ I consult with you upfront to **evaluate your system and co-create the deploymen
 - Operates **locally and efficiently**  
 - Provides **accurate, usable outputs from day one**  
 
-Once deployed, the system is **yours to use independently** — no ongoing support or hidden subscriptions.
+Once deployed, the system is **yours to use independently** — no ongoing support or hidden subscriptions. You’re hiring **a freelancer to deliver a tailored solution**, not a monthly albatross like ChatGPT or other subscription-based AI services.
+
+---
+
+## Your AI. Your Way.
+
+Sure, AI services like ChatGPT can tell you **what the capital of Texas is** or **what wine pairs with chicken**. But that’s not what this system is for.  
+
+This platform is designed for **your business, your processes, your knowledge** — not trivia or generic advice. It’s about giving you **a tool that adapts to your expertise**, grows with your business, and **learns from you directly**, not from someone else’s dataset. This system is built from the ground up to be trained **specifically on your needs**, not what some general AI thinks you need, but **exactly what you need**.
+
+---
+
+## No Corporate Hype, Just Your AI
+
+I’m not Google, OpenAI, or Facebook. This system **doesn’t collect your data, require subscriptions, or tie you to a cloud service**. You get **a working, locally running AI platform tailored to your needs**, with no unnecessary extras. Once we’ve built and deployed it together, it’s **yours to use independently** — no ongoing support obligations, no hidden commitments, no AI marketing hype.
 
 ---
 
@@ -64,7 +70,7 @@ Once deployed, the system is **yours to use independently** — no ongoing suppo
 - **Human-in-the-Loop Accuracy:** Guide AI learning for precise, business-aligned outputs.  
 - **Web Browser Interface:** Intuitive, universal access without complex installs.  
 - **Continuous Learning:** The AI evolves with your business, reflecting the latest input from you.  
-- **Cross-Platform Training:** Ingest documents, URLs, or manual entries for **robust, modular learning**.
+- **Cross-Platform Training:** Ingest documents, URLs, or manual entries for **robust, modular learning**.  
 
 ---
 
