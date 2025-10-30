@@ -7,58 +7,57 @@ I've developed a **modular AI platform** that solves the biggest flaws of tradit
 
 ## What This Is — And What It Is Not
 
-**This system IS:**
-- **LLM-agnostic:** Works with multiple large language models — you’re not locked into one provider.  
-- **Web-browser interface:** Intuitive, easy to use — anyone familiar with a browser can operate it.  
-- **Simple to train and use:** Accept, edit, or reject AI-generated questions and answers; the system learns from your input.  
-- **Mercenary-style setup:** I **walk you through setup and show you how it works**, then I’m out. You keep full control; no ongoing support, no subscriptions, no implied obligations.
+This system is designed for **simplicity, autonomy, and flexibility**:
 
-**This system is NOT:**
-- A subscription service requiring ongoing payments or updates.  
-- A 24/7 tech support or IT troubleshooting service.  
-- A guarantee that I will fix unrelated hardware, OS, or virus issues.  
-- A product that runs on unsupported or obsolete systems — your computer must meet minimum requirements to run the AI.
+- **It is:** A locally running, modular AI platform that can learn from your documents, URLs, or manual input.  
+- **It is not:** A subscription-based service, cloud-dependent system, or 24/7 tech support contract.  
+- **You get:** A one-time setup walkthrough, demonstration of usage, and co-created deployment tuned to your computing setup. Once it’s running, it’s **yours** — I’m out.
 
-> **Bottom line:** If you don’t have a system capable of running the provided LLM scripts, I **cannot** take the job.
+> ⚡ If your system isn’t capable of running the models we select (CPU, RAM, OS), the project can’t proceed — this keeps expectations clear and avoids wasted time.
 
 ---
 
 ## Why This Matters
 
 ### Your Data, Your Control
-Most AI services **collect and reuse your input data by design** to “customize your experience.” In plain terms: they **build profiles on you or your company**, monetize your data, or use it to improve their models — while you pay monthly for the privilege. **Cancel your subscription, and you lose access to all the AI’s knowledge**, leaving your business without the work it trained on.
+Most AI services **collect and reuse your input data** to “customize your experience.” That means they **build profiles on you or your company**, monetize your data, or use it to improve their models — while you pay monthly. **Cancel your subscription, and you lose all the knowledge the AI has learned.** Not here. Your AI is **100% local and fully owned by you**.
 
-### No Magic Pill
-There is **no magic pill, powder, or potion** — no one-size-fits-all solution that advertisers and marketing directors go on TV to sell you about AI. Those “customized user experiences” are marketing hype. **You want a true custom AI experience? You have to build it yourself. I give you that power.**
+### LLM-Agnostic
+This system works with **multiple large language models** — you’re **not locked into a single provider**. Choose a model that matches your system’s computing power, whether CPU-only or GPU-accelerated.
 
-### AI Isn’t Magic — Human-in-the-Loop is Essential
-AI **hallucinates, returns flawed responses, and doesn’t actually think**. My system uses **Human-in-the-Loop (HIL) training**, where your experts guide the AI, ensuring all outputs are **accurate, relevant, and aligned with your business knowledge**. Garbage in = garbage out? **Not here. Your AI evolves safely and intelligently under your supervision.**
+### Web Browser GUI
+The interface runs in any **modern web browser**, making it **intuitive and easy to use**. If you can read a screen and type into a box, you can operate this system.
+
+### Human-in-the-Loop Accuracy
+AI **hallucinates and returns flawed responses**. This platform uses **Human-in-the-Loop (HIL) training**, letting you **accept, edit, or reject questions and answers** during setup and day-to-day use. The AI **learns from your corrections**, evolving safely under your guidance.
 
 ### Flexible Training & Continuous Learning
-Train on **anything** — PDFs, Word docs, website URLs, or even manual input. The system **learns continuously**, adapting as your business evolves. Your AI always reflects **current processes, policies, and expert knowledge**, keeping it **robust, intelligent, and reliable**.
+Train on **anything**: PDFs, Word docs, URLs, or manual entries. The system **adapts continuously**, reflecting your **current processes, policies, and expert knowledge** without retraining from scratch.
 
 ---
 
-## Easy to Use
-The system is **designed for simplicity**. During training, it presents suggested questions and answers from your data — you can **accept, edit, or reject** each one. In day-to-day use, the AI continues to learn from your corrections, ensuring **accurate, up-to-date answers**.  
+## Custom-Tailored Deployment
 
-> If you can read a screen and enter information into a box, you can use this system. No advanced technical skills required.
+I consult with you upfront to **evaluate your system and co-create the deployment**. This ensures that the AI:
 
----
+- Is **custom-tailored to your computing power and OS**  
+- Operates **locally and efficiently**  
+- Provides **accurate, usable outputs from day one**  
 
-## Scalable & Accessible Infrastructure
-You **don’t need massive servers or GPUs** to get started. My platform runs on **any modern laptop or desktop** with sufficient memory and storage. As your business grows, the system **scales seamlessly** — from a single laptop to full servers with GPUs — delivering **secure, efficient, and high-performance AI assistance** at every stage.
+Once deployed, the system is **yours to use independently** — no ongoing support or hidden subscriptions.
 
 ---
 
 ## Key Benefits
 
-- **Data Sovereignty:** Your company keeps full ownership of its data; nothing leaves your system unless you allow it.  
-- **Scalable AI:** Grows with your business — small setup or enterprise-grade, the platform adapts.  
-- **Human-in-the-Loop Accuracy:** Experts guide AI training, eliminating hallucinations and flawed outputs.  
-- **Continuous Learning:** The AI evolves with your business, staying up-to-date without manual retraining.  
-- **Cross-Platform Training:** Ingest documents, URLs, or manual entries for **robust, modular learning**.  
-- **Browser-Based GUI:** Intuitive interface for anyone familiar with standard web browsers.  
-- **Mercenary Setup:** I **walk you through setup**, show you how it works, and I’m out — no long-term support obligations.
+- **Data Sovereignty:** You keep full ownership; nothing leaves your system unless you allow it.  
+- **Mercenary Deployment:** I set it up, walk you through usage, and leave — no long-term obligations.  
+- **LLM Flexibility:** Choose from multiple models to suit your hardware.  
+- **Human-in-the-Loop Accuracy:** Guide AI learning for precise, business-aligned outputs.  
+- **Web Browser Interface:** Intuitive, universal access without complex installs.  
+- **Continuous Learning:** The AI evolves with your business, reflecting the latest input from you.  
+- **Cross-Platform Training:** Ingest documents, URLs, or manual entries for **robust, modular learning**.
 
 ---
+
+**Your AI. Your Way.** No subscriptions. No cloud. No unnecessary dependencies. Just **AI built around your company and expertise**.
