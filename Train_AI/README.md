@@ -1,4 +1,4 @@
-FROM FRUSTRATION TO FREEDOM: THE MY_CODER STORY
+**FROM FRUSTRATION TO FREEDOM: THE MY_CODER STORY**
 
 How I Broke the AI Subscription Cycle and Built a System That Actually Remembers
 
