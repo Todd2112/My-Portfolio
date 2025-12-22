@@ -655,7 +655,7 @@ VAULT_PATHS = {
 3. Vector search (I/O-bound if index is large)
 
 **Scaling Strategy:**
-
+~~~python
 Load Balancer (NGINX)
     ↓
 ┌─────────┬─────────┬─────────┐
@@ -666,6 +666,7 @@ Load Balancer (NGINX)
               ↓
     Shared Vault (NFS/S3)
     or Sharded by User
+~~~
 
 
 **Alternative:** Dedicated inference servers per brain
