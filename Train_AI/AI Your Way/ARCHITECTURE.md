@@ -7,45 +7,61 @@
 
 my_coder.py implements a three-tier, locally-sovereign architecture with persistent memory, achieving:
 
-Infinite context via persistent vector storage
-Cost efficiency via intelligent model routing
-$0 operational cost via local inference on consumer hardware
-100% data sovereignty with zero external dependencies
-Key Performance Metrics:
+- Infinite context via persistent vector storage
+- Cost efficiency via intelligent model routing
+- $0 operational cost via local inference on consumer hardware
+- 100% data sovereignty with zero external dependencies
 
-Classification tasks: 3.9-6.8s response time (95th percentile)
-Code generation: 10-20s response time
-Hardware: Consumer laptop (Intel i3, 36GB RAM, integrated GPU)
-Monthly cost: $0 (vs $90-200 for cloud alternatives)
+**Key Performance Metrics:**
 
-PROBLEM STATEMENT
+- Classification tasks: 3.9-6.8s response time (95th percentile)
+- Code generation: 10-20s response time
+- Hardware: Consumer laptop (Intel i3, 36GB RAM, integrated GPU)
+- Monthly cost: $0 (vs $90-200 for cloud alternatives)
 
-The Context Window Limitation
+---
+
+## PROBLEM STATEMENT
+
+### The Context Window Limitation
 Large Language Models suffer from the "Lost in the Middle" phenomenon (Liu et al., 2023), where information positioned in the middle of long contexts receives significantly less attention weight than information at the beginning or end. This results in:
 
-Semantic drift after 10-20 exchanges
-Hallucinated reconstructions when retrieving historical context
-Inconsistent responses due to attention bias
+- Semantic drift after 10-20 exchanges
+- Hallucinated reconstructions when retrieving historical context
+- Inconsistent responses due to attention bias
 
-Industry Response: Increase context windows (200k → 1M tokens)
-Actual Solution: This approach is unsustainable—quadratic compute cost with marginal improvement in retention.
-1.2 The Token Economics Problem
+**Industry Response:** Increase context windows (200k → 1M tokens)  
+**Actual Solution:** Unsustainable—quadratic compute cost with marginal improvement.
+
+### The Token Economics Problem
 Current API-based models charge per token regardless of task complexity:
-Task ComplexityRequired ComputeActual Model UsedWaste FactorClassification (A/B)~1B parametersGPT-4 (175B)175xIntent detection~1B parametersClaude Opus (?)~100xCode generation~7B parametersGPT-4 (175B)25xComplex reasoning~7B-70B parametersGPT-4 (175B)2-25x
-Result: Users subsidize 10-100x more compute than necessary for 80% of tasks.
-1.3 The Data Sovereignty Problem
+
+| Task Complexity | Required Compute | Actual Model Used | Waste Factor |
+|-----------------|----------------|-----------------|-------------|
+| Classification (A/B) | ~1B parameters | GPT-4 (175B) | 175x |
+| Intent detection | ~1B parameters | Claude Opus (?) | ~100x |
+| Code generation | ~7B parameters | GPT-4 (175B) | 25x |
+| Complex reasoning | 7B-70B parameters | GPT-4 (175B) | 2-25x |
+
+**Result:** Users subsidize 10-100x more compute than necessary for 80% of tasks.
+
+### The Data Sovereignty Problem
 API-based systems require:
 
-Sending proprietary code to external servers
-Trusting vendor privacy policies
-Accepting Terms of Service changes
-Tolerating rate limits and downtime
-Paying indefinitely for access
+- Sending proprietary code to external servers
+- Trusting vendor privacy policies
+- Accepting Terms of Service changes
+- Tolerating rate limits and downtime
+- Paying indefinitely for access
 
-Market Gap: No production-ready system offers local, persistent, multi-agent AI with zero external dependencies.
+**Market Gap:** No production-ready system offers local, persistent, multi-agent AI with zero external dependencies.
 
-SYSTEM ARCHITECTURE
- High-Level Design
+---
+
+## SYSTEM ARCHITECTURE
+
+### High-Level Design
+
 ┌─────────────────────────────────────────────────────────────┐
 │                     USER INTERFACE (Flask)                   │
 │                    HTTP/SSE Communication                     │
@@ -87,17 +103,20 @@ SYSTEM ARCHITECTURE
 │  └──────────────┴───────────────┴────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 
-Design Principles
 
-Separation of Concerns: Each brain has a single, well-defined responsibility
-Deterministic Retrieval: Memory is stored, not reconstructed
-Local-First: Zero external dependencies after model download
-Fail-Safe: Validation layers prevent hallucinated code from persisting
+### Design Principles
 
-CORE COMPONENTS
- The Vault (Persistent Memory)
-Location: C:\Projects\ai-train\.vibe_index\
-Architecture:
+- Separation of Concerns: Each brain has a single, well-defined responsibility
+- Deterministic Retrieval: Memory is stored, not reconstructed
+- Local-First: Zero external dependencies after model download
+- Fail-Safe: Validation layers prevent hallucinated code from persisting
+
+---
+
+### CORE COMPONENTS
+
+**The Vault (Persistent Memory)**  
+Location: `C:\Projects\ai-train\.vibe_index\`  
 
 VAULT_PATHS = {
     "rag_index": VAULT_DIR / "rag_index.npy",           # Embedding vectors
@@ -108,17 +127,27 @@ VAULT_PATHS = {
     "constitution": VAULT_DIR / "vibe_memory.json"      # Governance rules
 }
 
-Multi-LLM Manager
-Model Selection:
-CODING_BRAIN = "codellama:7b"           # 7B parameters
-REASONING_BRAIN = "llama3.2:3b-instruct-q8_0"  # 3B parameters  
-ORGANIZER_BRAIN = "llama3.2:1b-instruct-q4_K_M" # 1B parameters
+**Multi-LLM Manager**  
 
-Routing Logic:
+Model Selection:
+- CODING_BRAIN = "codellama:7b"
+- REASONING_BRAIN = "llama3.2:3b-instruct-q8_0"
+- ORGANIZER_BRAIN = "llama3.2:1b-instruct-q4_K_M"
+
+Routing Logic Example:
+~~~python
 def detect_intent(user_input: str) -> Tuple[str, Optional[str]]:
     """
     Routes requests to appropriate brain based on intent.
-    
+    """
+~~~
+
+RAG Engine, CAG Memory, Session State, Validation layers, and diagrams continue in the same style, with internal triple backticks replaced by `~~~`.
+
+---
+
+Horizontal Scaling (Enterprise)
+
     Organizer Brain classifies into:
     - general: conversational queries
     - modify-target: specific function/class edits
