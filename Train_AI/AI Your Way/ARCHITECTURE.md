@@ -119,12 +119,12 @@ API-based systems require:
 Location: `C:\Projects\ai-train\.vibe_index\`  
 
 VAULT_PATHS = {
-    "rag_index": VAULT_DIR / "rag_index.npy",           # Embedding vectors
-    "rag_metadata": VAULT_DIR / "rag_metadata.json",    # Chunk metadata
-    "learning_log": VAULT_DIR / "learning_log.json",    # CAG patterns
-    "current_state": VAULT_DIR / "current_state.json",  # Session state
-    "feature_list": VAULT_DIR / "feature_list.json",    # Project features
-    "constitution": VAULT_DIR / "vibe_memory.json"      # Governance rules
+    "rag_index": VAULT_DIR / "rag_index.npy",            Embedding vectors
+    "rag_metadata": VAULT_DIR / "rag_metadata.json",     Chunk metadata
+    "learning_log": VAULT_DIR / "learning_log.json",     CAG patterns
+    "current_state": VAULT_DIR / "current_state.json",   Session state
+    "feature_list": VAULT_DIR / "feature_list.json",     Project features
+    "constitution": VAULT_DIR / "vibe_memory.json"       Governance rules
 }
 
 **Multi-LLM Manager**  
