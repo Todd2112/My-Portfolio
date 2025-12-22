@@ -670,10 +670,10 @@ Load Balancer (NGINX)
 
 
 **Alternative:** Dedicated inference servers per brain
-
+~~~python
 Organizer Server (1B)  ─┐
 Coding Server (7B)     ─┼→ Load Balancer → API Gateway
 Reasoning Server (3B)  ─┘
-
+~~~
 
 
