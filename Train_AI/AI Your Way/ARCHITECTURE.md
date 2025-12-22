@@ -5,7 +5,8 @@
 2. **Token Waste** — Single-model architectures use expensive compute for trivial tasks
 3. **Vendor Lock-In** — Cloud-dependent systems create data sovereignty and cost dependency issues
 
-my_coder.py implements a three-tier, locally-sovereign architecture with persistent memory, achieving:
+# my_coder.py 
+**implements a three-tier, locally-sovereign architecture with persistent memory, achieving:**
 
 - Infinite context via persistent vector storage
 - Cost efficiency via intelligent model routing
