@@ -272,7 +272,7 @@ def get_current_feature_state() -> Optional[Dict]:
 
 RAG Indexing Pipeline
 Code Submission
-    ↓
+    **↓**
 AST Parsing → Extract Functions/Classes
     ↓
 Chunk Generation → Semantic boundaries preserved
