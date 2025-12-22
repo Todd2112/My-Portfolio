@@ -333,21 +333,19 @@ If critical or user-requested:
 └─ Store in scratchpad
 └─ Index in RAG (if substantial)
 └─ Log in CAG (if pattern-worthy)
-```
 
 ### 5.3 Cost Comparison
 
 **Traditional Approach (Single Model):**
-```
 100 requests/day:
 - Classification (30 req): 30 × $0.03 = $0.90
 - Generation (50 req): 50 × $0.03 = $1.50
 - Verification (20 req): 20 × $0.03 = $0.60
 Daily: $3.00 | Monthly: $90.00 | Annual: $1,080.00
-```
+
 
 **my_coder.py Approach (Multi-Model):**
-```
+
 100 requests/day:
 - Classification (30 req): 1B model, local = $0.00
 - Generation (50 req): 7B model, local = $0.00
@@ -419,9 +417,8 @@ for ($i = 0; $i -lt $lines.Length; $i++) {
         }
     }
 }
-```
+
 ~~~
----
 
 ## 7. PERFORMANCE BENCHMARKS
 
