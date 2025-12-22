@@ -63,46 +63,33 @@ API-based systems require:
 
 ### High-Level Design
 
-┌─────────────────────────────────────────────────────────────┐
-│                     USER INTERFACE (Flask)                  │
-│                    HTTP/SSE Communication                   │
-└────────────────────┬────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  INTENT DETECTION LAYER                     │
-│              (Organizer Brain - 1B Model)                   │
-│          Routes to: general | modify-target |               │
-│                 review | fix | explain                      │
-└────────────────────┬────────────────────────────────────────┘
-                     │
-        ┌────────────┴───────────┬─────────────┐
-        ▼                        ▼             ▼
-┌──────────────┐        ┌──────────────┐  ┌──────────────┐
-│ CODING BRAIN │        │ REASONING    │  │  CAG PIPELINE│
-│  (7B Model)  │◄──────►│   BRAIN      │  │ (Targeted    │
-│              │        │  (3B Model)  │  │  Edits)      │
-└──────┬───────┘        └──────┬───────┘  └──────┬───────┘
-       │                       │                  │
-       └───────────┬───────────┴──────────────────┘
-                   ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    MEMORY LAYER (The Vault)                 │
-│  ┌──────────────┬──────────────┬─────────────┬────────────┐ │
-│  │ RAG Engine   │ CAG Memory   │ Feature     │ Session    │ │
-│  │ (Vector      │ (Pattern     │ List        │ State      │ │
-│  │  Search)     │  Learning)   │             │            │ │
-│  └──────────────┴──────────────┴─────────────┴────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-                   │
-                   ▼
-┌─────────────────────────────────────────────────────────────┐
-│              VALIDATION & GOVERNANCE LAYER                  │
-│  ┌──────────────┬───────────────┬────────────────────────┐  │
-│  │ Python AST   │ PowerShell    │ Hallucination          │  │
-│  │ Analysis     │ Style Check   │ Detection              │  │
-│  └──────────────┴───────────────┴────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+- **User Interface (Flask)**  
+  - HTTP/SSE Communication
+  - Routes user requests to Intent Detection Layer
+
+- **Intent Detection Layer (Organizer Brain, 1B Model)**  
+  - Routes requests to:
+    - general
+    - modify-target
+    - review
+    - fix
+    - explain
+
+- **Brains & Pipelines**
+  - **Coding Brain (7B Model)** — Code generation & refactoring
+  - **Reasoning Brain (3B Model)** — Logic verification & review
+  - **CAG Pipeline** — Targeted edits, pattern learning
+
+- **Memory Layer (The Vault)**
+  - RAG Engine (Vector Search)
+  - CAG Memory (Pattern Learning)
+  - Feature List
+  - Session State
+
+- **Validation & Governance Layer**
+  - Python AST Analysis
+  - PowerShell Style Check
+  - Hallucination Detection
 
 
 ### Design Principles
@@ -358,49 +345,19 @@ Daily: $3.00 | Monthly: $90.00 | Annual: $1,080.00
 - Generation (50 req): 7B model, local = $0.00
 - Verification (20 req): 3B model, local = $0.00
 
-VALIDATION PIPELINE
+### Validation Pipeline
 
-Multi-Layer Validation 
-Code Generation
-    ↓
-┌───────────────────────────────────────┐
-│ Layer 1: Python AST Syntax Check     │
-│ - Compile test                        │
-│ - Parse tree generation               │
-└───────────────┬───────────────────────┘
-                ↓
-┌───────────────────────────────────────┐
-│ Layer 2: PowerShell Style Check       │
-│ - Indentation (4-space enforcement)   │
-│ - Mixed tabs/spaces detection         │
-│ - Trailing whitespace                 │
-│ - Line length (PEP 8)                 │
-└───────────────┬───────────────────────┘
-                ↓
-┌───────────────────────────────────────┐
-│ Layer 3: Heuristic Lint               │
-│ - Wildcard imports                    │
-│ - Long lines (>100 chars)             │
-└───────────────┬───────────────────────┘
-                ↓
-┌───────────────────────────────────────┐
-│ Layer 4: Security StrictMode          │
-│ - eval/exec detection                 │
-│ - Hardcoded secrets (regex patterns)  │
-└───────────────┬───────────────────────┘
-                ↓
-┌───────────────────────────────────────┐
-│ Layer 5: Hallucination Detection      │
-│ - Placeholder detection (TODO, FIXME) │
-│ - Trivial implementations (pass only) │
-│ - Function preservation check         │
-│ - Import consistency                  │
-│ - Confidence scoring (0.0-1.0)        │
-└───────────────┬───────────────────────┘
-                ↓
-        Safe to persist?
-        ├─ Yes → Store in memory
-        └─ No  → Flag for user review
+Code Generation → Validation
+
+ **Layer 1: Python AST** — compile & parse tree  
+ **Layer 2: PowerShell Style** — indentation, tabs/spaces, trailing whitespace, line length  
+ **Layer 3: Heuristic Lint** — wildcard imports, long lines  
+ **Layer 4: Security StrictMode** — eval/exec detection, secrets  
+ **Layer 5: Hallucination Detection** — TODO/FIXME, trivial impl, function preservation, import consistency, confidence score  
+
+✅ Safe → store in memory  
+⚠️ Unsafe → flag for user review
+
 
 Hallucination Detection Algorithm
 def detect_hallucinations(generated_code: str, original_code: str = "") -> Dict:
