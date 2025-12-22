@@ -64,30 +64,30 @@ API-based systems require:
 ### High-Level Design
 
 ┌─────────────────────────────────────────────────────────────┐
-│                     USER INTERFACE (Flask)                   │
-│                    HTTP/SSE Communication                     │
+│                     USER INTERFACE (Flask)                  │
+│                    HTTP/SSE Communication                   │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  INTENT DETECTION LAYER                      │
-│              (Organizer Brain - 1B Model)                    │
-│          Routes to: general | modify-target |                │
-│                 review | fix | explain                       │
+│                  INTENT DETECTION LAYER                     │
+│              (Organizer Brain - 1B Model)                   │
+│          Routes to: general | modify-target |               │
+│                 review | fix | explain                      │
 └────────────────────┬────────────────────────────────────────┘
                      │
         ┌────────────┴───────────┬─────────────┐
         ▼                        ▼             ▼
 ┌──────────────┐        ┌──────────────┐  ┌──────────────┐
 │ CODING BRAIN │        │ REASONING    │  │  CAG PIPELINE│
-│  (7B Model)  │◄──────►│   BRAIN      │  │ (Targeted   │
-│              │        │  (3B Model)  │  │  Edits)     │
+│  (7B Model)  │◄──────►│   BRAIN      │  │ (Targeted    │
+│              │        │  (3B Model)  │  │  Edits)      │
 └──────┬───────┘        └──────┬───────┘  └──────┬───────┘
        │                       │                  │
        └───────────┬───────────┴──────────────────┘
                    ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    MEMORY LAYER (The Vault)                  │
+│                    MEMORY LAYER (The Vault)                 │
 │  ┌──────────────┬──────────────┬─────────────┬────────────┐ │
 │  │ RAG Engine   │ CAG Memory   │ Feature     │ Session    │ │
 │  │ (Vector      │ (Pattern     │ List        │ State      │ │
@@ -97,7 +97,7 @@ API-based systems require:
                    │
                    ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              VALIDATION & GOVERNANCE LAYER                   │
+│              VALIDATION & GOVERNANCE LAYER                  │
 │  ┌──────────────┬───────────────┬────────────────────────┐  │
 │  │ Python AST   │ PowerShell    │ Hallucination          │  │
 │  │ Analysis     │ Style Check   │ Detection              │  │
@@ -370,32 +370,32 @@ Code Generation
 └───────────────┬───────────────────────┘
                 ↓
 ┌───────────────────────────────────────┐
-│ Layer 2: PowerShell Style Check      │
-│ - Indentation (4-space enforcement)  │
-│ - Mixed tabs/spaces detection        │
-│ - Trailing whitespace                │
-│ - Line length (PEP 8)                │
+│ Layer 2: PowerShell Style Check       │
+│ - Indentation (4-space enforcement)   │
+│ - Mixed tabs/spaces detection         │
+│ - Trailing whitespace                 │
+│ - Line length (PEP 8)                 │
 └───────────────┬───────────────────────┘
                 ↓
 ┌───────────────────────────────────────┐
-│ Layer 3: Heuristic Lint              │
-│ - Wildcard imports                   │
-│ - Long lines (>100 chars)            │
+│ Layer 3: Heuristic Lint               │
+│ - Wildcard imports                    │
+│ - Long lines (>100 chars)             │
 └───────────────┬───────────────────────┘
                 ↓
 ┌───────────────────────────────────────┐
-│ Layer 4: Security StrictMode         │
-│ - eval/exec detection                │
-│ - Hardcoded secrets (regex patterns) │
+│ Layer 4: Security StrictMode          │
+│ - eval/exec detection                 │
+│ - Hardcoded secrets (regex patterns)  │
 └───────────────┬───────────────────────┘
                 ↓
 ┌───────────────────────────────────────┐
-│ Layer 5: Hallucination Detection     │
-│ - Placeholder detection (TODO, FIXME)│
-│ - Trivial implementations (pass only)│
-│ - Function preservation check        │
-│ - Import consistency                 │
-│ - Confidence scoring (0.0-1.0)       │
+│ Layer 5: Hallucination Detection      │
+│ - Placeholder detection (TODO, FIXME) │
+│ - Trivial implementations (pass only) │
+│ - Function preservation check         │
+│ - Import consistency                  │
+│ - Confidence scoring (0.0-1.0)        │
 └───────────────┬───────────────────────┘
                 ↓
         Safe to persist?
@@ -426,8 +426,8 @@ Output:
     "hallucination_detected": True,
     "confidence": 0.0,
     "issues": [
-        "Placeholder detected: TODO",
-        "Trivial implementation: Only 'pass' statement"
+  "Placeholder detected: TODO",
+  "Trivial implementation: Only 'pass' statement"
     ],
     "safe_to_persist": False
 }
