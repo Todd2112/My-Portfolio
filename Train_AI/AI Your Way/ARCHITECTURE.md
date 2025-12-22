@@ -1,4 +1,4 @@
-my_coder.py is my attempt to to develop a coding assistant that solves the 3 major problems with cloud dependant services like ChatGPT. This script is scaleable to use in any business that uses a subscription based service like ChatGPT.
+# my_coder.py is my attempt to to develop a coding assistant that solves the 3 major problems with cloud dependant services like ChatGPT. This script is scaleable to use in any business that uses a subscription based service like ChatGPT.
 
 1. Context Amnesia — Traditional LLMs lose context after 200k tokens or session termination
 2. Token Waste — Single-model architectures use expensive compute for trivial tasks
