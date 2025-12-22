@@ -105,29 +105,23 @@ API-based systems require:
 
 **The Vault (Persistent Memory)**  
 Location: `C:\Projects\ai-train\.vibe_index\`  
-
+~~~python
 VAULT_PATHS = {
-    "rag_index": VAULT_DIR / "rag_index.npy",            
-    Embedding vectors
-    "rag_metadata": VAULT_DIR / "rag_metadata.json",     
-    Chunk metadata
-    "learning_log": VAULT_DIR / "learning_log.json",     
-    CAG patterns
-    "current_state": VAULT_DIR / "current_state.json",   
-    Session state
-    "feature_list": VAULT_DIR / "feature_list.json",     
-    Project features
-    "constitution": VAULT_DIR / "vibe_memory.json"       
-    Governance rules
+    "rag_index": VAULT_DIR / "rag_index.npy",           # Embedding vectors
+    "rag_metadata": VAULT_DIR / "rag_metadata.json",    # Chunk metadata
+    "learning_log": VAULT_DIR / "learning_log.json",    # CAG patterns
+    "current_state": VAULT_DIR / "current_state.json",  # Session state
+    "feature_list": VAULT_DIR / "feature_list.json",    # Project features
+    "constitution": VAULT_DIR / "vibe_memory.json"      # Governance rules
 }
-
+~~~
 **Multi-LLM Manager**  
-
+~~~python
 Model Selection:
 - CODING_BRAIN = "codellama:7b"
 - REASONING_BRAIN = "llama3.2:3b-instruct-q8_0"
 - ORGANIZER_BRAIN = "llama3.2:1b-instruct-q4_K_M"
-
+~~~
 Routing Logic Example:
 ~~~python
 def detect_intent(user_input: str) -> Tuple[str, Optional[str]]:
