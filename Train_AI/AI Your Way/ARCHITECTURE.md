@@ -621,6 +621,7 @@ Current: Single-user (session_id = "local-user")
 Scaling Path:
 
 # Implement session management
+~~~python
 session_id = generate_session_token()
 
 conversations[session_id] = {
@@ -629,13 +630,15 @@ conversations[session_id] = {
     "scratchpad": {},
     "current_feature_id": None
 }
+~~~
 
 # Vault remains shared (or shard by user)
+~~~python
 VAULT_PATHS = {
     "rag_index": VAULT_DIR / f"user_{user_id}_rag.npy",
     ...
 }
-```
+~~~
 
 **Considerations:**
 - Authentication layer (JWT, OAuth)
@@ -652,7 +655,7 @@ VAULT_PATHS = {
 3. Vector search (I/O-bound if index is large)
 
 **Scaling Strategy:**
-```
+
 Load Balancer (NGINX)
     ↓
 ┌─────────┬─────────┬─────────┐
@@ -663,10 +666,10 @@ Load Balancer (NGINX)
               ↓
     Shared Vault (NFS/S3)
     or Sharded by User
-```
+
 
 **Alternative:** Dedicated inference servers per brain
-```
+
 Organizer Server (1B)  ─┐
 Coding Server (7B)     ─┼→ Load Balancer → API Gateway
 Reasoning Server (3B)  ─┘
