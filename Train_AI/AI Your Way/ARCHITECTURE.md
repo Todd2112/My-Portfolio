@@ -304,7 +304,7 @@ Coding
 codellama:7b7BCode generation, refactoring 10-20s
 Reasoning
 llama3.2:3b-instruct-q8_03BLogic verification, review 8-12s
-
+~~~python
 Request Flow
  # Step 1: Intent Detection
 User: "Add error handling to parse_csv"
@@ -333,7 +333,7 @@ If critical or user-requested:
 └─ Store in scratchpad
 └─ Index in RAG (if substantial)
 └─ Log in CAG (if pattern-worthy)
-
+~~~
 ### 5.3 Cost Comparison
 
 **Traditional Approach (Single Model):**
