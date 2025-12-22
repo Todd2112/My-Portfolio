@@ -136,8 +136,6 @@ def detect_intent(user_input: str) -> Tuple[str, Optional[str]]:
     """
 ~~~
 
-RAG Engine, CAG Memory, Session State, Validation layers, and diagrams continue in the same style, with internal triple backticks replaced by `~~~`.
-
 ---
 
 Horizontal Scaling (Enterprise)
@@ -150,6 +148,7 @@ Horizontal Scaling (Enterprise)
     - explain: documentation requests
     """
 Governance Application:
+~~~python
 def _apply_governance(self, brain: str) -> str:
     """
     Enforces hard limits on LLM behavior.
@@ -165,9 +164,11 @@ def _apply_governance(self, brain: str) -> str:
     - Meta-commentary ("Here's what I did")
     - Markdown formatting (plain text or code only)
     """
+~~~
 
 RAG Engine (Semantic Memory)
 Chunking Strategy:
+~~~python
 CHUNK_SIZE = 2048      # Characters per chunk
 CHUNK_OVERLAP = 512    # Overlap for context preservation
 
@@ -188,13 +189,16 @@ def _chunk_by_ast(self, code_text: str) -> List[Dict[str, Any]]:
             "end_line": int
         }
     ]
-    
+   
     Importance scoring factors:
     - Docstring presence (+0.2)
     - Code length (up to +0.3)
     - Reference frequency (up to +0.2)
     """
+~~~
+
 Importance-Weighted Retrieval:
+~~~python
 def query(self, text: str, k: int = 3) -> List[Dict]:
     """
     Retrieves k most relevant chunks using weighted similarity.
@@ -213,9 +217,13 @@ def query(self, text: str, k: int = 3) -> List[Dict]:
     
     Ensures high-importance code (documented, referenced)
     ranks higher than rarely-used utilities.
-    """
+ """
+~~~
+
 CAG Memory (Pattern Learning)
+
 Pattern Storage:
+~~~python
    {
     "id": "235847",
     "timestamp": "2025-12-20 13:47:56",
@@ -224,8 +232,9 @@ Pattern Storage:
     "code_delta": "enemy.health -= (self.attack_power - enemy.defense)",
     "confidence": 0.9
 }
-
+~~~
 Heuristic Retrieval:
+~~~python
 def get_relevant(self, query: str, k: int = 2) -> List[Dict]:
     """
     Scores patterns based on:
@@ -235,10 +244,12 @@ def get_relevant(self, query: str, k: int = 2) -> List[Dict]:
     
     Returns top-k patterns sorted by relevance.
     """
+~~~
 
 MEMORY MANAGEMENT
 Session State Management
 Structure:  
+~~~python
 conversations[session_id] = {
     "current_code": str,              # Active code in editor
     "history": List[Dict],            # Message history (20 max)
@@ -251,8 +262,10 @@ conversations[session_id] = {
     },
     "current_feature_id": Optional[str]  # Locked feature
 }
+~~~
 
 Memory Quarantine Fix:
+~~~python
 def get_current_feature_state() -> Optional[Dict]:
     """
     CRITICAL: Only returns currently locked features.
@@ -261,6 +274,7 @@ def get_current_feature_state() -> Optional[Dict]:
     Prevents A002 pollution where feature context
     leaks into unrelated conversations.
     """
+~~~
 
 RAG Indexing Pipeline
 Code Submission
@@ -360,6 +374,7 @@ Code Generation → Validation
 
 
 Hallucination Detection Algorithm
+~~~python
 def detect_hallucinations(generated_code: str, original_code: str = "") -> Dict:
     """
     Confidence Scoring:
@@ -388,8 +403,10 @@ Output:
     ],
     "safe_to_persist": False
 }
+~~~
 
 PowerShell Integration
+~~~python
 Validation Script:
 # Check indentation consistency
 for ($i = 0; $i -lt $lines.Length; $i++) {
@@ -409,7 +426,7 @@ for ($i = 0; $i -lt $lines.Length; $i++) {
     }
 }
 ```
-
+~~~
 ---
 
 ## 7. PERFORMANCE BENCHMARKS
@@ -555,7 +572,7 @@ Total: Typically <100MB for small-medium projects
 ### 9.2 Data Sovereignty
 
 **Data Flow:**
-```
+
 User Input
     ↓
 Local Flask Server (127.0.0.1:5000)
@@ -575,6 +592,7 @@ Never leaves local network
 ✅ No rate limiting or usage tracking
 
 Governance Enforcement
+~~~python
 
 Constitutional Rules:
 {
@@ -589,7 +607,7 @@ Constitutional Rules:
         }
     }
 }
-
+~~~
 Enforcement Points:
 
 System prompt injection (pre-generation)
