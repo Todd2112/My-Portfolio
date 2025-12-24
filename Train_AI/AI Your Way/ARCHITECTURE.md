@@ -13,16 +13,18 @@ I design privacy-first, local AI systems that run entirely on your infrastructur
 These systems require no external APIs, no recurring subscriptions, and no expensive GPUs. All data, models, and memory remain local, allowing behavior to stay predictable, inspectable, and secure over time.
 
 
-1. **Context Amnesia** — Traditional LLMs lose context after 200k tokens or session termination
-2. **Token Waste** — Single-model architectures use expensive compute for trivial tasks
-3. **Vendor Lock-In** — Cloud-dependent systems create data sovereignty and cost dependency issues
+### Core Challenges Addressed
+- **Context Amnesia:** Traditional LLMs lose context after 200k tokens or session termination
+- **Token Waste:** Single-model architectures use expensive compute for trivial tasks
+- **Vendor Lock-In:** Cloud-dependent systems create data sovereignty and cost dependency issues
 
-**implements a three-tier, locally-sovereign architecture with persistent memory, achieving:**
-
+### Local, Persistent Architecture
+Implements a three-tier, locally-sovereign architecture with persistent memory, achieving:
 - Infinite context via persistent vector storage
 - Cost efficiency via intelligent model routing
 - $0 operational cost via local inference on consumer hardware
 - 100% data sovereignty with zero external dependencies
+
 
 **Key Performance Metrics:**
 
