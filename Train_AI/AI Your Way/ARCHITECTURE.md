@@ -1,11 +1,22 @@
-# my_coder.py 
-**is my attempt to to develop a coding assistant that solves the 3 major problems with cloud dependant services like ChatGPT. This script is scaleable to use in any business that uses a subscription based service like ChatGPT.**
+# Local AI Systems with Persistent Memory
+
+Much of today’s AI discourse is driven by hype: exaggerated claims about full automation, job replacement, and generalized models that promise to solve every problem.
+
+In real-world engineering and knowledge work, these claims break down quickly. Cloud-based, subscription AI platforms consistently fail when tasks become complex, long-running, or privacy-sensitive. Context degrades after short usage, hallucinations increase as sessions grow, and prior state is reconstructed inaccurately or lost entirely. These are not edge cases — they are structural limitations of stateless, token-metered systems optimized for scale rather than correctness.
+
+I, along with many others working in production environments, encountered these failures repeatedly and reached the same conclusion: cloud-dependent AI services do not hold up when real work requires persistent context, auditability, and data ownership.
+
+AI is a tool, not an autonomous solution. For it to be useful, it must be constrained, verifiable, and designed around memory and validation rather than probabilistic recall.
+
+I design privacy-first, local AI systems that run entirely on your infrastructure, maintain persistent memory across sessions, and remain stable under extended use. These systems move away from generalized, for-profit models and toward purpose-built architectures where multiple language models are used to generate, challenge, clean, and test outputs before human review. Human-in-the-loop oversight is a core design principle, preventing the “garbage in, garbage out” failure modes common to fee-based platforms.
+
+These systems require no external APIs, no recurring subscriptions, and no expensive GPUs. All data, models, and memory remain local, allowing behavior to stay predictable, inspectable, and secure over time.
+
 
 1. **Context Amnesia** — Traditional LLMs lose context after 200k tokens or session termination
 2. **Token Waste** — Single-model architectures use expensive compute for trivial tasks
 3. **Vendor Lock-In** — Cloud-dependent systems create data sovereignty and cost dependency issues
 
-# my_coder.py 
 **implements a three-tier, locally-sovereign architecture with persistent memory, achieving:**
 
 - Infinite context via persistent vector storage
