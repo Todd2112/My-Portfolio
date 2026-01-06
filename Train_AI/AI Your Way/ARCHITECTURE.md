@@ -498,7 +498,7 @@ for ($i = 0; $i -lt $lines.Length; $i++) {
 - RAM: 36GB DDR4
 - GPU: Intel UHD Graphics (integrated, no dedicated GPU)
 - Storage: NVMe SSD
-- Cost: ~$700 (used laptop)
+- Cost: ~$700 
 
 **Software:**
 - OS: Windows 11
@@ -777,13 +777,13 @@ This architecture demonstrates that production-grade AI systems don't require cl
 - **Multi-model orchestration** for cost efficiency
 - **Rigorous validation** for correctness
 
-...we achieve a system that's faster, cheaper, and more reliable than cloud alternatives for sustained knowledge work.
+...I've achieved a system that's faster, cheaper, and more reliable than cloud alternatives for sustained knowledge work.
 
 The system runs on consumer hardware, costs $0 to operate, and maintains complete context across unlimited sessions. It represents a fundamental shift from stateless, token-metered cloud services to stateful, locally-sovereign AI tooling.
 
 **Total Cost of Ownership (2 years):**
-- Hardware: $700 (one-time)
+- Hardware: $700 
 - Cloud alternative: $2,160 ($90/month × 24)
 - **Net savings: $1,460**
 
-All code, documentation, and deployment guides are available in this repository.
+
