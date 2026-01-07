@@ -1,204 +1,228 @@
-# My Portfolio
+<div align="center">
+  
+# Todd's AI Engineering Portfolio
 
-I'm building AI systems with one guiding principle: AI belongs to the users, not to corporations.
+**Building production-grade local AI systems that eliminate recurring API costs**
 
-AI is just a tool under your control, not a corporate product guessing your needs.
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)]()
+[![Status](https://img.shields.io/badge/Status-Available%20for%20Licensing-green.svg)]()
 
-Today’s dominant platforms — OpenAI, Anthropic, Microsoft, Google — keep AI locked behind APIs, subscriptions, and terms of service that restrict freedom and compromise privacy. They turn intelligence into a product you rent, never own.
+[Featured Work](#featured-projects) • [Philosophy](#technical-philosophy) • [Contact](#connect)
 
-My work takes AI back out of the cloud and puts it in your hands. I design and develop local, private, adaptive AI pipelines that run on your hardware, with your data, under your control. No corporate middlemen, no hidden costs, no black-box restrictions.
+</div>
 
-This portfolio showcases **proof-of-concept projects** demonstrating real-world AI, adaptive LLM, and intelligent software solutions.
+---
 
-My work emphasizes **offline deployment, privacy, and adaptive AI** that is trained to work for your specific business context — **no cloud dependencies, no subscription fees, no prompt engineering guesswork**.
+## About
 
-Unlike SaaS AI services promoted by OpenAI, Microsoft, or others — which prioritize recurring revenue over user value — my focus is on delivering local, adaptive AI that works for your business, efficiently, privately, and securely.
+I design and deploy **local-first AI systems** that run entirely on your infrastructure—no cloud dependencies, no recurring API costs, no vendor lock-in.
 
-## Why Local Adaptive AI Matters
+My work focuses on three core capabilities:
+- **Document Intelligence:** Multi-format ingestion with intelligent extraction
+- **Knowledge Retrieval:** Multi-KB RAG with cross-model semantic search
+- **Persistent Memory:** Stateful AI that maintains context across unlimited sessions
 
-When you rely on subscription-based AI, your proprietary data is stored, analyzed, and leveraged by third parties. Cancel your subscription, and any models fine-tuned on your workflows vanish. Worse, your sensitive information can indirectly influence generalized LLMs, leaving you exposed.
+**Core Value Proposition:** What costs $90–200/month in cloud APIs runs locally for $0/month with better data sovereignty and predictable performance.
 
-My local adaptive AI pipelines ensure:
-
-- Complete data privacy and offline operation
-- AI that learns and grows with your business
-- Compatibility with your existing tools (a private MS Office-style equivalent)
-- Scalable integration across departments, workflows, and industries
-
-Just as businesses modernized with computers, paperless systems, and Microsoft Office, adaptive AI is now foundational for efficiency, automation, competitive intelligence, and innovation. My approach eliminates middlemen, SaaS dependency, and recurring costs.
-
-## Hardware-Aware Deployment
-
-I design AI pipelines that scale to your hardware, from CPU-only laptops to local GPU servers:
-
-- Small-business-ready LLMs and AI pipelines without expensive GPUs
-- Stable Diffusion for visual replication, generative design, and prototyping
-- Reasoning AI, RAG search, and NLP pipelines optimized for both CPUs and GPUs
-- Future-proof, multi-platform deployment that grows with your infrastructure
-- Full offline operation to maximize privacy, security, and compliance
+---
 
 ## Featured Projects
 
-### Web Keyword Crawler
-*Mission: AI-powered insight without SaaS lock-in*
-[Live Demo](https://web-keyword.streamlit.app/)
+### 🚀 AI-Your-Way: Local AI Systems with Persistent Memory
+**Production-grade coding assistant with infinite context and zero API costs**
 
-**Problem:** Monitoring competitor or industry mentions efficiently while keeping all data local and private.
+A three-tier local AI architecture that eliminates the context amnesia problem. Uses specialized models (1B/3B/7B) routed by task complexity, with persistent memory stored locally in human-readable JSONL format.
 
-**Solution & Technical Details:**
-- HTML parser and tokenizer for meaningful keyword extraction
-- Regex-based filtering and context snippet generation
-- Trend detection algorithms with Python moving averages and frequency analysis
-- Optional local embeddings for semantic similarity and clustering
+**Key Metrics:**
+- Classification: 4–6s response time (1B model)
+- Code generation: 10–20s (7B model)
+- Hardware: Consumer laptop (Intel i3, 36GB RAM, integrated GPU)
+- Monthly cost: **$0** (vs $90–200 for cloud alternatives)
 
-**Why local/adaptive AI matters:**
-- Complete offline operation
-- Customizable keyword weighting for industry-specific applications
-- Scalable for internal knowledge management, R&D pipelines, and market intelligence
+**Technical Highlights:**
+- Triple-LLM architecture with role-specific system prompts
+- RAG + CAG hybrid memory (semantic + pattern learning)
+- Multi-layer validation pipeline (AST, style, hallucination detection)
+- Break-even: 7.8 months vs cloud APIs
 
-**Applications & Scalability:**
-- Brand monitoring, competitor analysis, trend forecasting
-- Integrates with internal dashboards for automated reporting
-- Extensible to multilingual or multi-domain scraping
-
-**Screenshot Placeholder:** ![Web Keyword Crawler](./screenshots/web_keyword_crawler.png)
+**[View Full Documentation →](AI-Your-Way/)**
 
 ---
 
-### Reasoning AI Chatbot
-*Mission: Explainable reasoning AI, fully under your control*
-[Live Demo](https://todd2112.github.io/My-Portfolio/live-demo.html)
+### 📚 AI-Train: Document Ingestion Pipeline
+**Multi-format document processing with intelligent extraction and classification**
 
-**Problem:** Generalized LLMs provide outputs without transparency or verification, causing errors and inefficiencies.
+A production-grade ingestion system that processes PDFs, Word docs, HTML, and text files with automatic fallback chains and web crawling capabilities.
 
-**Solution & Technical Details:**
-- Intermediate reasoning vectors representing stepwise decision-making
-- Error detection algorithms highlighting hallucinations or inconsistencies
-- Knowledge graph embeddings for context preservation
-- Local LLM integration (Ollama/DeepSeek) with PyTorch offline inference
-- Custom prompt conditioning for precise results without cloud calls
+**Key Features:**
+- PDF extraction: pdfplumber → OCR → PyPDF2 fallback
+- Triple-LLM classification (1B), summarization (3B), and link analysis (8B)
+- Smart chunking with goal-based filtering
+- BFS web crawling with same-domain enforcement
 
-**Why local/adaptive AI matters:**
-- Avoid costly hallucinations
-- Fully offline with no subscription fees or API limits
-- Trained specifically for your workflow and context
+**Technical Highlights:**
+- Garbled text detection with automatic OCR fallback
+- Thread-safe JSONL persistence with chunk relationship tracking
+- Hybrid reasoning: LLM primary, keyword fallback
+- Healthcare-aware classification (CPT, ICD, HCPCS detection)
 
-**Applications & Scalability:**
-- Internal Q&A, employee onboarding, workflow simulations
-- Decision-making analytics with stepwise reasoning logs
-- Recommendation engines, research assistants, technical tutorials
-
-**Screenshot Placeholder:** ![Reasoning AI Chatbot](./screenshots/reasoning_ai_chatbot.png)
+**[View Full Documentation →](AI-Train/)**
 
 ---
 
-### Visual Data Replication Pipeline
-*Mission: Identity-preserving image replication without exposing data*
+### 🔍 Ask-AI: Multi-KB RAG System
+**Cross-model knowledge base retrieval with semantic validation**
 
-**Problem:** Generating realistic images while maintaining identity fidelity, without uploading sensitive visual data to the cloud.
+A multi-knowledge-base RAG system that queries KBs built with different embedding models (BioBERT, MiniLM, MPNet) simultaneously, with per-model reranking and LLM augmentation.
 
-**Solution & Technical Details:**
-- Face detection and alignment via dlib/mediapipe
-- LoRA adaptive fine-tuning for identity preservation
-- 512-dimensional embeddings with cosine drift scoring for verification
-- Data augmentation for pose, lighting, and hair variation
-- Multi-pass image-to-image stylization for realism and aesthetic control
-- Optional AR/VR export compatible with Unity/Unreal
+**Key Features:**
+- Multi-KB cross-model retrieval (query 3+ KBs with different embeddings)
+- Per-model semantic reranking (local sentence transformers)
+- Cross-KB score fusion with confidence scoring
+- Answer augmentation with semantic validation (70% similarity threshold)
 
-**Why local/adaptive AI matters:**
-- Fully offline, no cloud dependencies
-- Fine-tuned models stay private
-- Eliminates prompt engineering guesswork
+**Technical Highlights:**
+- Metadata-driven model loading (single source of truth)
+- RAG consensus scoring (60th percentile similarity)
+- Web fallback with DuckDuckGo (5s timeout)
+- Query performance: 100–150ms (KB only), 8–12s (with augmentation)
 
-**Applications & Scalability:**
-- Identity-consistent content generation
-- AR/VR, digital assets, product visualization
-- Object replication, prototyping, and quality control
-
-**Screenshot Placeholder:** ![Visual Data Pipeline](./screenshots/visual_data_pipeline.png)
+**[View Full Documentation →](Ask-AI/)**
 
 ---
 
-### PDF Teacher RAG Assistant
-*Mission: Secure document QA with intelligent reasoning*
+## Architecture Philosophy
 
-**Problem:** Query multiple PDFs efficiently while preserving sensitive business or research data.
+### Why Local-First?
 
-**Solution & Technical Details:**
-- Local embeddings for semantic search at sentence and paragraph levels
-- Retrieval-Augmented Generation (RAG) with offline LLM
-- Cosine similarity scoring for precise content retrieval
-- Reasoning layer to display intermediate logic steps
-- Batch processing for multiple PDFs with Python multiprocessing
+Cloud-based AI services create three structural problems:
 
-**Why local/adaptive AI matters:**
-- Avoid sending proprietary documents to cloud AI
-- Offline and subscription-free
-- Custom embeddings trained on your PDFs outperform general models
+**The API Tax**  
+You pay for 100× more compute than necessary. Classifying a document uses the same 175B model as writing an essay.
 
-**Applications & Scalability:**
-- Research summarization, compliance, and internal knowledge management
-- Legal contracts, scientific papers, corporate manuals
+**The Context Reset**  
+Knowledge disappears when sessions end. You re-pay to re-ingest the same documents repeatedly.
 
-**Screenshot Placeholder:** ![PDF Teacher RAG](./screenshots/pdf_teacher_rag.png)
+**The Data Sovereignty Problem**  
+Your proprietary content passes through vendor servers. You trust their terms, accept their changes, hope they don't get breached.
+
+### The Local Alternative
+
+My systems eliminate all three:
+
+| Challenge | Cloud Solution | Local Solution |
+|:----------|:---------------|:---------------|
+| **Compute Waste** | Single 175B model | 3-tier routing (1B/3B/8B) |
+| **Context Loss** | 128k–200k token limits | Infinite (disk-based storage) |
+| **Data Risk** | Vendor servers | Never leaves your network |
+| **Cost** | $90–200/month | $0/month (after hardware) |
+
+**Break-even: 7.8 months**
 
 ---
 
-### Business Solutions Suite
-*Mission: End-to-end content creation without SaaS control*
+## Technical Philosophy
 
-**Problem:** Automated content, SEO, and social media management while keeping all data and processing local.
+**1. Task-Appropriate Scaling**  
+Route simple tasks (classification) to small models (1B), complex reasoning to larger models (8B). Don't use a 175B model to answer "Is this about healthcare?"
 
-**Solution & Technical Details:**
-- CopyIQ: AI-assisted content generation with Factual Overlap scoring
-- Max SEO Agent: Local keyword extraction, competitor scraping, SEO scoring pipelines
-- LLMO: LLM-first content optimization for search engines and internal discovery
-- SMO Agent: Hashtag generation, platform-specific post formatting, engagement prediction
-- Python + Streamlit pipelines integrating modular AI components with offline data stores
-- Analytics dashboards for tracking engagement, ranking, and content effectiveness
+**2. Persistent Memory**  
+Store context permanently in human-readable formats (JSONL). No vendor lock-in, no schema migrations, trivial backup.
 
-**Why local/adaptive AI matters:**
-- Avoid cloud-based AI that profits from your data
-- Fully offline, adaptable to your brand and workflow
-- Customizable modules for SEO, social media, and content analytics
+**3. Semantic Validation**  
+LLM augmentation is powerful but dangerous. Validate outputs with keyword overlap (30%) and embedding similarity (70%) thresholds.
 
-**Applications & Scalability:**
-- Marketing, documentation, social media automation
-- Multi-team or multi-platform deployment
-- Extensible for internal corporate pipelines or multi-industry solutions
+**4. Model-Agnostic Architecture**  
+Support multiple embedding models simultaneously. Medical KB uses BioBERT, legal KB uses LegalBERT—query both at once.
 
-**Screenshot Placeholder:** ![Business Suite](./screenshots/business_suite.png)
+---
+
+## Cost Analysis
+
+### 2-Year Total Cost of Ownership
+
+**Cloud API Approach (GPT-4):**
+- Monthly: $90 (100 requests/day, mixed workload)
+- Annual: $1,080
+- 2-Year: **$2,160**
+
+**Local Approach:**
+- Hardware: $700 (one-time, consumer laptop)
+- Monthly: $0
+- Annual: $0
+- 2-Year: **$700**
+
+**Net Savings: $1,460 over 2 years**
+
+**Additional Benefits:**
+- No rate limits
+- No network dependency
+- No vendor ToS changes
+- Complete data sovereignty
+
+---
+
+## Other Projects
+
+Brief explorations and proofs-of-concept demonstrating specific techniques:
+
+- **Web Keyword Crawler:** HTML parsing with trend detection
+- **Reasoning AI Chatbot:** Explainable decision-making with intermediate vectors
+- **Visual Data Pipeline:** Identity-preserving image generation with LoRA
+- **PDF Teacher RAG:** Document Q&A with offline embeddings
+- **Business Solutions Suite:** Content generation, SEO, social media automation
+
+**[View Archive →](Other-Projects/)**
+
+---
+
+## Commercial Availability
+
+These systems are available for **licensing and custom deployment**.
+
+**Ideal For:**
+- Healthcare organizations (HIPAA-compliant document processing)
+- Law firms (privileged document search and analysis)
+- Financial institutions (regulatory compliance knowledge bases)
+- Enterprises (internal AI assistants with data sovereignty)
+- Research labs (academic paper retrieval and analysis)
+
+**Licensing Options:**
+- Single-deployment license
+- Multi-tenant enterprise license
+- Custom integration services
+- White-label deployment
 
 ---
 
 ## Technology Stack
 
-- Python 3.x, Streamlit/Tkinter GUIs
-- Local LLMs via Ollama and custom embeddings
-- LoRA adaptive training
-- NLP, RAG, cosine drift scoring, reasoning algorithms
-- PDF parsing, FastAPI, VS Code, GitHub Actions
+**Core Technologies:**
+- Python 3.8+, Flask, Ollama (local LLM runtime)
+- FAISS (vector search), sentence-transformers (embeddings + reranking)
+- NumPy, PyTorch (optional, for custom models)
 
----
+**Optional Components:**
+- pdfplumber, pytesseract (PDF extraction + OCR)
+- python-docx (Word document parsing)
+- BeautifulSoup4 (HTML cleaning)
+- duckduckgo-search (web fallback)
 
-## Key Philosophy Points
-
-1. **Adaptive AI:** Each solution is trained for your data and workflow
-2. **Local & Private:** No cloud, no monthly fees, no data harvesting
-3. **Explainable:** Step-by-step reasoning reduces errors and prevents hallucinations
-4. **Algorithmic Transparency:** NLP, embeddings, LoRA, RAG, drift scoring, content analysis
-5. **Scalable Across Industries:** Marketing, R&D, internal automation, AR/VR
-6. **No Generalized AI Guesswork:** Unlike ChatGPT, your AI works for you without prompt engineering
+**Hardware Requirements:**
+- Minimum: Intel i3 (11th gen), 16GB RAM, 50GB storage
+- Recommended: Intel i5+, 32GB RAM, NVMe SSD
+- Optional: Dedicated GPU for faster inference
 
 ---
 
 ## Connect
 
-- GitHub: [Todd2112](https://github.com/Todd2112)
+**For commercial licensing inquiries:**  
+📧 [your-email@example.com]  
+💼 [LinkedIn Profile]  
+🌐 [Personal Website]  
+📂 GitHub: [Todd2112](https://github.com/Todd2112)
 
 ---
 
-**Design. Develop. Deploy. Solve.**  
-**I build AI that works for your business — not the other way around.**
-
-
+**Production-Ready • Zero API Costs • Complete Data Sovereignty**
