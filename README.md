@@ -1,6 +1,6 @@
 <div align="center">
   
-# Todd's AI Engineering Portfolio
+# My AI Engineering Portfolio
 
 **Building production-grade local AI systems that eliminate recurring API costs**
 
@@ -226,3 +226,4 @@ These systems are available for **licensing and custom deployment**.
 ---
 
 **Production-Ready • Zero API Costs • Complete Data Sovereignty**
+
