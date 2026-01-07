@@ -278,42 +278,6 @@ def sanitize_text(raw_text: str) -> str:
 
 ---
 
-## Engagement
-
-- Hourly Rate: $45/hr (within your $30-60 range)
-- Availability: 30+ hrs/week, flexible hours
-- Long-Term: Open to contract-to-hire
-- Location: US-based (Michigan), overlaps with all US time zones
-
----
-
-## Deliverables (2-Week PoC)
-
-Week 1:
-1. RAG architecture for SOPs/FAQs/pricing (using AI-Train pipeline)
-2. Multi-KB backend with confidence scoring (Ask AI architecture)
-3. Initial CRM/calendar tool integrations
-
-Week 2:
-4. Lead qualification logic with escalation rules
-5. Conversation memory with session management
-6. Deployment-ready code (Docker + API docs)
-7. Metrics dashboard (confidence, retrieval quality, escalation rate)
-
-Ongoing (Months 2-3):
-- Scaling roadmap (vector DB upgrade, caching layer)
-- A/B testing framework for prompt optimization
-- Feedback loop for continuous improvement
-
----
-
-## Contact
-
-Available for:
-- Live demo of any system
-- Architecture walkthrough on video call
-- Code review of specific components
-
 **GitHub Portfolio:** https://github.com/Todd2112/My-Portfolio/tree/master/AI-Your-Way
 
 Looking forward to building a production autonomous agent together.
