@@ -171,6 +171,9 @@ def detect_hallucinations(generated_code: str, original_code: str = "") -> Dict:
 5. Augmentation: LLM refinement with dual validation (keyword overlap ≥30%, semantic similarity ≥70%)
 6. Consensus: 60th percentile similarity across retrieved chunks (avoids outlier dominance)
 
+- Model-Agnostic: Current implementation uses Ollama (local), trivially adaptable to OpenAI/Claude/Gemini APIs
+
+
 ### Agent Decision Logic (MyCoder)
 ```python
 intent, target = detect_intent(user_input)  # Organizer LLM (1B)
