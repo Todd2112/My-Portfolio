@@ -28,7 +28,7 @@ My work focuses on three core capabilities:
 
 ## Featured Projects
 
-### 🚀 AI-Your-Way: Local AI Systems with Persistent Memory
+### AI-Your-Way: Local AI Systems with Persistent Memory
 **Production-grade coding assistant with infinite context and zero API costs**
 
 A three-tier local AI architecture that eliminates the context amnesia problem. Uses specialized models (1B/3B/7B) routed by task complexity, with persistent memory stored locally in human-readable JSONL format.
@@ -49,7 +49,7 @@ A three-tier local AI architecture that eliminates the context amnesia problem. 
 
 ---
 
-### 📚 AI-Train: Document Ingestion Pipeline
+### AI-Train: Document Ingestion Pipeline
 **Multi-format document processing with intelligent extraction and classification**
 
 A production-grade ingestion system that processes PDFs, Word docs, HTML, and text files with automatic fallback chains and web crawling capabilities.
@@ -70,7 +70,7 @@ A production-grade ingestion system that processes PDFs, Word docs, HTML, and te
 
 ---
 
-### 🔍 Ask-AI: Multi-KB RAG System
+### Ask-AI: Multi-KB RAG System
 **Cross-model knowledge base retrieval with semantic validation**
 
 A multi-knowledge-base RAG system that queries KBs built with different embedding models (BioBERT, MiniLM, MPNet) simultaneously, with per-model reranking and LLM augmentation.
@@ -218,12 +218,12 @@ These systems are available for **licensing and custom deployment**.
 ## Connect
 
 **For commercial licensing inquiries:**  
-📧 [your-email@example.com]  
-💼 [LinkedIn Profile]  
-🌐 [Personal Website]  
+[e-mail] realtodd@yahoo.com  
+[LinkedIn Profile] (https://www.linkedin.com/in/todd-lipscomb-670458290/)  
 📂 GitHub: [Todd2112](https://github.com/Todd2112)
 
 ---
 
 **Production-Ready • Zero API Costs • Complete Data Sovereignty**
+
 
