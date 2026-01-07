@@ -217,14 +217,17 @@ These systems are available for **licensing and custom deployment**.
 
 ## Connect
 
-**For commercial licensing inquiries:**  
-[![e-mail] (realtodd@yahoo.com)]()  
-[![LinkedIn Profile] (https://www.linkedin.com/in/todd-lipscomb-670458290/)]  
+**For commercial licensing inquiries:**
+
+📧 Email: [realtodd@yahoo.com](mailto:realtodd@yahoo.com)  
+🔗 LinkedIn: [Todd](https://www.linkedin.com/in/todd-lipscomb-670458290/)  
 📂 GitHub: [Todd2112](https://github.com/Todd2112)
+
 
 ---
 
 **Production-Ready • Zero API Costs • Complete Data Sovereignty**
+
 
 
 
