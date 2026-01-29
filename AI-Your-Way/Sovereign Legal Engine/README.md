@@ -48,7 +48,6 @@ Local models love to "talk" and add conversational fluff. I built a custom sanit
 ### The Discovery Ledger: Structured Truth
 The final goal isn't a "chat." It's a structured audit. Below is the final output of the engine—a high-fidelity risk ledger that classifies every legal component by Authority Type and Risk Factor.
 
-![Final Discovery Ledger](https://github.com/Todd2112/My-Portfolio/raw/master/AI-Your-Way/Sovereign%20Legal%20Engine/SD_pg8.jpg)
 
 ### The Sovereign Specs
 I’m a firm believer that you shouldn't need a server farm to run powerful AI.
