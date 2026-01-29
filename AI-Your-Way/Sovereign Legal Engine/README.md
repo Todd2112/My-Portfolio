@@ -13,7 +13,6 @@ This isn't a "wrapper." It’s a precision-engineered audit tool that runs 100% 
 ### End-User Programmability (The Logic Store)
 I don't believe in "one size fits all" AI. Every case has a different mission. I built a **Logic Store** into the engine where the end-user defines exactly what the search and prompt outputs will be. 
 
-![Defining Data Schema](https://github.com/Todd2112/My-Portfolio/raw/master/AI-Your-Way/Sovereign%20Legal%20Engine/SD_pg2.jpg)
 
 Here's where the end user defines what the search/prompts outputs will be. I put in a few "pre-made" defaults but since I'm not a lawyer these obviously can be used or more importantly, the end user can apply and create their own prompts. 
 
