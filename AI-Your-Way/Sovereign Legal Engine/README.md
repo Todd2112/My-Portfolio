@@ -60,4 +60,4 @@ I’m a firm believer that you shouldn't need a server farm to run powerful AI.
 ### Project Status & Access
 **Note:** The Sovereign Legal Engine is a proprietary product. This repository serves as a technical showcase and architectural proof-of-work. 
 
-**If you're interested in the Sovereign Series or want a demo of the engine in action, connect with me on LinkedIn.**
+**If you're interested in the Sovereign Series or want a demo of the engine in action, connect with me on LinkedIn.** https://www.linkedin.com/in/todd-lipscomb-670458290/
