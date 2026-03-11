@@ -1,99 +1,42 @@
-# AI-Train: Production-Grade Document Ingestion Pipeline
+# ai-train.py — Production Document Ingestion Pipeline
 
-AI-Train is a local-first document processing system that ingests, classifies, and organizes knowledge from multiple sources without sending data to external APIs. Built on a triple-LLM architecture, it routes tasks intelligently across three specialized models to minimize compute waste while maintaining high accuracy.
+A fully local document ingestion system that extracts, classifies, chunks, and stores knowledge
+from PDFs, Word docs, HTML pages, and websites — using three specialized LLMs routed by task
+complexity. No cloud APIs. No recurring costs. No data leaving your network.
 
-**Core Principle:** Document ingestion should be fast, cheap, and private. AI-Train achieves this by running entirely on local infrastructure with zero recurring costs.
+**Core principle:** Most ingestion tasks don't need a 175B parameter model. Route by complexity,
+pay nothing.
 
----
-
-## What It Does
-
-AI-Train transforms unstructured content into organized, queryable knowledge:
-
-- **Extracts text** from PDFs, Word documents, HTML pages, and plain text files
-- **Classifies content** into categories (Healthcare, Technology, Science, Finance, Literature, History, General)
-- **Chunks intelligently** while preserving sentence boundaries and document structure
-- **Analyzes links** to recommend related content based on user-defined goals
-- **Stores persistently** in human-readable JSONL format with chunk relationship tracking
-- **Crawls websites** with configurable depth and page limits
-
-All processing happens locally. No data leaves your network. No API keys. No usage limits. No recurring costs.
+→ [Code Snippets](snippets/)
 
 ---
 
-## Why It Exists
+## The Problem It Solves
 
-Cloud-based document processing creates structural problems:
+Cloud document processing has three structural failures:
 
-**The API Tax**  
-Services like GPT-4 or Claude charge per token regardless of task complexity. Classifying a document into one of seven categories uses the same 175B parameter model as writing an essay. You pay for 100× more compute than necessary.
-
-**The Context Reset**  
-Every session starts from zero. Ingested knowledge disappears when the chat ends. You re-pay to re-ingest the same documents repeatedly.
-
-**The Data Sovereignty Problem**  
-Your proprietary content passes through vendor servers. You trust their privacy policies, accept their terms of service changes, and hope they don't get breached.
-
-AI-Train eliminates all three:
-- **Intelligent routing:** 70% of tasks handled by a 1B model (classification), 20% by a 3B model (summaries), 10% by an 8B model (reasoning)
-- **Persistent storage:** All content stored locally in JSONL format, survives sessions indefinitely
-- **Complete privacy:** Network disconnected after initial model download, zero telemetry
+| Problem | Cloud Behavior | This System |
+|:--------|:--------------|:------------|
+| API tax | Every task hits a 175B model regardless of complexity | 1B for classification, 3B for summaries, 8B for reasoning |
+| Context reset | Knowledge disappears when session ends | Append-only JSONL survives indefinitely |
+| Data sovereignty | Proprietary content passes through vendor servers | Network disconnected after model download |
 
 ---
 
 ## Architecture
 
-### Triple-LLM Intelligence Layer
+### Triple-LLM Routing
 
-AI-Train uses three specialized models instead of one generalized model:
+| Brain | Model | Size | Temperature | Role |
+|:------|:------|-----:|:-----------:|:-----|
+| Classifier | llama3.2:1b-instruct-q4_K_M | 1B | 0.0 | Document categorization |
+| Parser | llama3.2:3b-instruct-q8_0 | 3B | 0.1 | Summaries, entity extraction |
+| Reasoner | llama3:8b-instruct-q5_K_M | 8B | 0.1 | Link analysis, multi-hop reasoning |
 
-| Brain | Model | Size | Role | Response Time | Temperature |
-|:------|:------|-----:|:-----|:--------------|:------------|
-| **Classifier** | llama3.2:1b-instruct-q4_K_M | 1B | Document categorization | 4–6s | 0.0 (deterministic) |
-| **Parser** | llama3.2:3b-instruct-q8_0 | 3B | Summary generation, entity extraction | 8–12s | 0.1 (low creativity) |
-| **Reasoner** | llama3:8b-instruct-q5_K_M | 8B | Link analysis, multi-hop reasoning | 10–15s | 0.1 (logical consistency) |
+60–70% of requests routed to the 1B classifier. The 8B reasoner only activates for link
+analysis — and only before text cleaning, so raw HTML link context is preserved.
 
-**Why Three Models?**
-
-Using GPT-4 for every task wastes compute:
-- Classifying "Is this about healthcare?" → Uses 175B parameters, needs ~1B
-- Summarizing a document → Uses 175B parameters, needs ~3B
-- Analyzing link relevance → Uses 175B parameters, needs ~8B
-
-**Result:** 60–70% of requests routed to the 1B model, achieving 10–100× cost efficiency.
-
-### System Prompts (Role Discipline)
-
-Each brain has a locked system prompt to prevent hallucination:
-
-**Classifier Brain:**
-```
-Strict document classifier.
-Choose exactly ONE category from: Technology, Science, History, 
-Literature, Finance, Healthcare, General.
-
-Medical procedures, CPT, ICD, CMS → Healthcare
-Academic research → Science
-Software/hardware → Technology
-
-Return ONLY the category name. No explanation.
-```
-
-**Parser Brain:**
-```
-Document auditor.
-Describe ONLY what is explicitly present.
-Do not infer purpose or intent.
-Do not add outside knowledge.
-```
-
-**Reasoner Brain:**
-```
-Research assistant.
-Refine existing answers and analyze relevance.
-Do not add facts beyond the context.
-Output valid JSON when requested.
-```
+→ [snippets/triple_llm_pipeline.py](snippets/triple_llm_pipeline.py)
 
 ### Processing Pipeline
 
@@ -101,93 +44,141 @@ Output valid JSON when requested.
 Input (URL, File, or Manual Text)
     ↓
 [File Type Detection]
-    ├─ PDF → pdfplumber → OCR fallback → PyPDF2 fallback
-    ├─ DOCX → python-docx (paragraph extraction)
-    ├─ HTML → BeautifulSoup (sanitize scripts/nav/ads)
+    ├─ PDF → pdfplumber → garbled-text detection → OCR fallback → PyPDF2 fallback
+    ├─ DOCX → python-docx
+    ├─ HTML → BeautifulSoup sanitization
     └─ TXT → UTF-8 decode
     ↓
-[Link Analysis - Reasoner Brain, 8B]
-    • Identifies relevant links BEFORE content cleaning
-    • Hybrid LLM + keyword scoring
-    • Returns JSON recommendations
+[Link Analysis — Reasoner Brain, 8B]
+    Runs BEFORE text cleaning to preserve HTML link context
+    Hybrid: LLM primary, keyword scoring fallback
     ↓
 [Text Normalization]
-    • HTML tag removal
-    • Whitespace normalization
-    • ASCII fallback encoding
+    HTML tag removal, whitespace cleanup, ASCII fallback
     ↓
-[Classification - Classifier Brain, 1B]
-    • Sample first 3000 chars
-    • Remove numeric tables
-    • Single category label
+[Classification — Classifier Brain, 1B]
+    First 3000 chars, numeric tables stripped, single label output
     ↓
 [Smart Chunking]
-    • 2048 chars per chunk
-    • 256 char overlap for context
-    • Preserve sentence boundaries
-    • Filter by goal keywords (optional)
+    2048 chars, 256 overlap, sentence boundary preservation
+    Optional goal-based keyword filtering
     ↓
-[Persistence - Thread-Safe JSONL]
-    • Unique doc_id and chunk_id
-    • Relationship tracking (prev/next chunks)
-    • Optional entity extraction (first chunk only)
+[Persistence — Thread-Safe JSONL]
+    Unique doc_id + chunk_id, prev/next relationship tracking
+    Optional entity extraction (first chunk only)
     ↓
-[Summary Generation - Parser Brain, 3B]
-    • PDF-aware (describes document type)
-    • Content-aware (summarizes topic)
-    • 1-2 sentence summaries
+[Summary — Parser Brain, 3B]
+    PDF-aware prompt, 1-2 sentence output
 ```
 
 ---
 
 ## Key Features
 
-### Multi-Format Document Processing
+### PDF Extraction with Intelligent Fallback
 
-**PDF Extraction with Intelligent Fallback**
+Three extraction methods tried in order. Each result checked by a garbled-text detector
+before acceptance — symbol ratio above 40% or repeated character patterns trigger fallback.
+
 ```
-pdfplumber (text-based PDFs) 
-    ↓ [garbled output detected]
-OCR via Tesseract (scanned PDFs)
+pdfplumber (table-aware, structured PDFs)
+    ↓ [garbled-text detected: symbol ratio > 40% or repeated patterns]
+pytesseract OCR (scanned/image-based PDFs)
     ↓ [OCR unavailable or failed]
-PyPDF2 (basic extraction)
+PyPDF2 (basic text extraction)
+    ↓ [all methods fail]
+RuntimeError
 ```
 
-Automatically handles:
-- Text-based PDFs with tables
-- Scanned/image-based PDFs
-- Partially corrupted PDFs
-- Encrypted PDFs (attempts recovery)
+→ [snippets/garbled_text_detection.py](snippets/garbled_text_detection.py)  
+→ [snippets/pdf_fallback_chain.py](snippets/pdf_fallback_chain.py)
 
-**Word Document Processing**
-- Extracts paragraphs with proper separation
-- Preserves document structure
-- Handles complex formatting
+### Smart Chunking
 
-**HTML Sanitization**
-- Removes scripts, navigation, ads, forms
-- Preserves semantic content
-- Optimized for embedding generation
+- 2048 chars per chunk, 256 char overlap for context continuity
+- Sentence boundary preservation — splits at periods, never mid-sentence
+- Instructional content detection — keeps "how to", "step-by-step", tutorial content intact
+- Standalone question filtering — removes noise questions, preserves instructional ones
+- Goal-based filtering — optional keyword relevance pass before persistence
 
-### Smart Content Chunking
+→ [snippets/goal_based_filtering.py](snippets/goal_based_filtering.py)
 
-- **2048 characters per chunk** with 256 character overlap
-- **Sentence boundary preservation** (splits at periods, not mid-sentence)
-- **Instructional content detection** (keeps "how to", "step-by-step", tutorials)
-- **Question filtering** (removes standalone questions, keeps instructional ones)
-- **Goal-based filtering** (optional keyword relevance scoring)
+### Chunk Relationship Tracking
 
-### Web Crawling
+Every chunk stores `prev_chunk_id` and `next_chunk_id`. Retrieval systems can walk the
+chain to reconstruct surrounding context when a single chunk isn't sufficient.
 
-- **Breadth-first search (BFS)** traversal
-- **Configurable depth** (0–5 levels) and page limits (1–100 pages)
-- **Same-domain enforcement** with URL normalization
-- **Automatic deduplication** via normalized URLs
-- **Content validation** (spam detection, minimum length checks)
+→ [snippets/chunk_persistence.py](snippets/chunk_persistence.py)
 
-### Persistent Storage
+### Hybrid Link Analysis
 
-**Append-Only JSONL Format**
+8B reasoner analyzes up to 15 candidate links against the user's goal before text cleaning.
+Keyword scoring activates automatically if LLM returns unparseable JSON.
+
+→ [snippets/hybrid_link_analysis.py](snippets/hybrid_link_analysis.py)
+
+### Web Crawler
+
+- BFS traversal with configurable depth (0–5) and page limits (1–100)
+- Same-domain enforcement, URL normalization, automatic deduplication
+- Content validation before ingestion (spam detection, minimum length)
+- One crawl-level summary generated after all pages ingested
+
+---
+
+## Performance Benchmarks
+
+**Hardware:** Intel Core i3-1115G4 (11th Gen), 36GB RAM, integrated GPU — ~$700 used laptop.
+
+**Classifier Brain (1B) — 20 sample requests:**
+
+| Metric | Value |
+|:-------|:------|
+| Mean response | 7.76s |
+| Median response | 5.76s |
+| 95th percentile | 10.15s |
+| Fastest | 3.92s |
+| Slowest (cold start) | 18.31s |
+| Excluding cold starts | 6.45s avg |
+
+**Full pipeline (single document):** 10–20s  
+**Web crawl (20 pages):** 3–5 minutes  
+**PDF with OCR:** 30–60s  
+**Memory usage:** <2GB RAM  
+**Monthly cost:** $0
+
+---
+
+## Cost Comparison
+
+100 requests/day, 30 days:
+
+| Approach | Monthly | Annual |
+|:---------|:-------:|:------:|
+| GPT-4 API (single model) | $90.00 | $1,080.00 |
+| This system (local, 3 models) | $0.00 | $0.00 |
+
+Hardware break-even vs. cloud: **7.8 months**  
+2-year net savings: **$1,460**
+
+---
+
+## Use Cases
+
+**Medical Billing** — Ingest CMS fee schedules, CPT updates, ICD-10 crosswalks without
+exposing proprietary billing data. Classifier detects clinical terminology, chunking
+respects code list boundaries, link reasoner follows CPT update chains.
+
+**Technical Documentation** — Crawl vendor docs and API references. Link reasoner follows
+"Related API" and "See Also" links. Chunking preserves code examples intact.
+
+**Legal Research** — Ingest case law and regulatory filings. Link reasoner identifies
+precedent chains. Entity extraction captures parties, dates, statutes.
+
+---
+
+## JSONL Storage Format
+
 ```json
 {
   "chunk_id": "doc_a3f92b1e4c5d_chunk_0",
@@ -204,216 +195,76 @@ Automatically handles:
 }
 ```
 
-**Why JSONL?**
-- Human-readable (grep, jq, text editors work)
-- Zero-dependency (pure Python I/O)
-- Atomic writes (thread-safe with file locks)
-- Trivial backup (copy file)
-- Streaming reads (process line-by-line)
+Human-readable, zero-dependency, streamable, trivially backupable.
 
-### Link Analysis & Recommendations
+---
 
-**Hybrid Reasoning Approach:**
+## API Endpoints
 
-1. **Primary:** Reasoner Brain (8B model)
-   - Analyzes up to 15 candidate links
-   - Multi-hop reasoning about relevance
-   - Returns JSON-structured recommendations
-
-2. **Fallback:** Keyword matching
-   - Activates if LLM parsing fails
-   - Scores links by goal keyword overlap
-   - Threshold: 20/100 minimum score
-
-**Example Output:**
-```json
-{
-  "url": "https://example.com/related-page",
-  "link_text": "Advanced Configuration Guide",
-  "context_snippet": "This guide covers advanced setup...",
-  "relevance_reason": "Contains detailed implementation steps for user's goal",
-  "method": "llm",
-  "confidence": "high",
-  "action": "ingest_recommended"
-}
+```
+GET  /                    # Web interface
+GET  /api/stats           # Ingestion statistics
+POST /api/ingest          # Ingest URL or manual text
+POST /api/ingest/file     # Upload and ingest file
+POST /api/ingest/crawl    # Crawl website
+POST /api/db/init         # Reset document store
+POST /api/db/delete       # Delete document store
+GET  /api/kb/entries      # Knowledge base stats
 ```
 
 ---
 
-## Performance Benchmarks
+## Setup
 
-### Test Environment
-
-**Hardware:**
-- CPU: Intel Core i3-1115G4 (11th Gen, 3.0GHz, 2 cores/4 threads)
-- RAM: 36GB DDR4
-- GPU: Intel UHD Graphics (integrated, no dedicated GPU)
-- Storage: NVMe SSD
-- Cost: ~$700 (used laptop)
-
-### Real-World Metrics (20 Sample Requests)
-
-**Classifier Brain (1B Model):**
-
-| Metric | Value |
-|:-------|:------|
-| Mean response | 7.76s |
-| Median response | 5.76s |
-| 95th percentile | 10.15s |
-| Fastest | 3.92s |
-| Slowest | 18.31s (cold start) |
-| Excluding cold starts | 6.45s avg |
-
-**Full Pipeline Performance:**
-- Single document: 10–20 seconds (extract + classify + chunk + persist + summarize)
-- Web crawl (20 pages): 3–5 minutes
-- PDF with OCR: 30–60 seconds (varies by page count)
-
-**Resource Usage:**
-- Memory: <2GB RAM during processing
-- CPU: 60–80% during inference, <5% idle
-- Disk I/O: Sequential appends (minimal latency)
-- Network: Zero API calls after model download
-
----
-
-## Cost Analysis
-
-### Traditional Approach (GPT-4 API)
-
-100 requests/day × 30 days:
-- Classification (30 req/day): 900 × $0.03 = $27.00
-- Generation (50 req/day): 1,500 × $0.03 = $45.00
-- Verification (20 req/day): 600 × $0.03 = $18.00
-
-**Monthly: $90.00 | Annual: $1,080.00**
-
-### AI-Train Approach (Local)
-
-100 requests/day × 30 days:
-- Classification: 1B model, local = $0.00
-- Generation: 3B model, local = $0.00
-- Verification: 8B model, local = $0.00
-
-**Monthly: $0.00 | Annual: $0.00**
-
-**Break-Even Analysis:**
-- Hardware cost: $700 (one-time)
-- Cloud API cost: $90/month
-- Break-even: 7.8 months
-- 2-year savings: $1,460
-
----
-
-## Use Cases
-
-### Medical Billing Knowledge Base
-
-**Challenge:** Ingest CMS fee schedules, CPT code updates, ICD-10 crosswalks without exposing proprietary billing data to external APIs.
-
-**How AI-Train Solves It:**
-- Classifier detects clinical terminology (CPT, HCPCS, ICD) → assigns "Healthcare"
-- Parser preserves tabular data (fee schedules, code mappings)
-- Chunking respects code list boundaries (no mid-table splits)
-- Link reasoner identifies related documents (CPT updates → fee schedule changes)
-
-**Result:** Private, queryable medical billing knowledge base with zero vendor access.
-
-### Technical Documentation Archive
-
-**Challenge:** Crawl vendor docs, API references, changelogs while maintaining cross-references between versions.
-
-**How AI-Train Solves It:**
-- Classifier assigns "Technology" to software/hardware content
-- Link reasoner follows "Related API" and "See Also" links
-- Chunking preserves code examples intact
-- Summary identifies document types (API reference, tutorial, migration guide)
-
-**Result:** Searchable technical archive with preserved documentation relationships.
-
-### Legal Research Repository
-
-**Challenge:** Ingest case law, statutes, regulatory filings while maintaining citation networks.
-
-**How AI-Train Solves It:**
-- Chunking preserves citation structure
-- Link reasoner identifies precedent chains (cases citing other cases)
-- Entity extraction captures parties, dates, statutes (optional)
-- Persistent storage maintains document relationships
-
-**Result:** Private legal research database with complete citation tracking.
-
----
-
-## Technical Specifications
-
-### Models Used
-
-```python
-llm_classifier = LLMManager("llama3.2:1b-instruct-q4_K_M")
-llm_parser = LLMManager("llama3.2:3b-instruct-q8_0")
-llm_reasoner = LLMManager("llama3:8b-instruct-q5_K_M")
+### 1. Install Ollama and pull models
+```bash
+ollama pull llama3.2:1b-instruct-q4_K_M
+ollama pull llama3.2:3b-instruct-q8_0
+ollama pull llama3:8b-instruct-q5_K_M
 ```
 
-**Total Model Storage:** ~7GB (one-time download via Ollama)
-
-### Configuration Parameters
-
-```python
-CHUNK_SIZE = 2048              # Characters per chunk
-CHUNK_OVERLAP = 256            # Overlap for context preservation
-MIN_TEXT_LENGTH = 200          # Minimum valid content length
-KEYWORD_FALLBACK_THRESHOLD = 20  # Minimum keyword score for link relevance
-EXTRACT_ENTITIES = False       # Optional entity extraction (env flag)
+### 2. Install dependencies
+```bash
+pip install flask requests beautifulsoup4 lxml pdfplumber PyPDF2 python-docx
+# Optional OCR support:
+pip install pytesseract pdf2image
+# Install Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
 ```
 
-### Supported File Types
+### 3. Configure vault path
+Edit `VAULT_DIR` at the top of `ai-train.py` to your local output directory.
 
-| Format | Handler | Features |
-|:-------|:--------|:---------|
-| PDF | pdfplumber → OCR → PyPDF2 | Table extraction, fallback chain |
-| DOCX | python-docx | Paragraph extraction |
-| HTML | BeautifulSoup | Tag sanitization |
-| TXT | UTF-8 decode | Direct ingestion |
-
-### API Endpoints
-
-```
-GET  /                      # Web interface
-GET  /api/stats             # Ingestion statistics
-POST /api/ingest            # Ingest URL or manual text
-POST /api/ingest/file       # Upload and ingest file
-POST /api/ingest/crawl      # Crawl website
-POST /api/db/init           # Reset document store
-POST /api/db/delete         # Delete document store
-GET  /api/kb/entries        # Knowledge base stats
+### 4. Run
+```bash
+python ai-train.py
+# API available at http://localhost:8000
 ```
 
 ---
 
-## Limitations & Design Choices
+## Hardware Requirements
 
-### What AI-Train Does NOT Do
+| Component | Minimum | Notes |
+|:----------|:--------|:------|
+| CPU | Intel i3 11th gen / Ryzen 3 | More cores = faster inference |
+| RAM | 16GB | 32GB+ recommended |
+| Storage | 50GB SSD | Models ~7GB, JSONL grows with usage |
+| GPU | Not required | Integrated graphics sufficient |
+| Network | Offline after model download | Zero runtime dependency |
 
-**No Vector Search**  
-AI-Train stores raw chunks, not embeddings. Retrieval requires separate RAG implementation.
+---
 
-**No Real-Time Updates**  
-Document store is append-only. Updates require re-ingestion.
+## Security & Privacy
 
-**No Multi-User Auth**  
-Single-user design. Multi-tenancy requires authentication layer.
+```
+User Input → Flask (localhost:8000) → Ollama (localhost:11434) → JSONL (filesystem)
+                                                                   ↑
+                                                         Never leaves local network
+```
 
-**No Distributed Processing**  
-Single-threaded Flask. Horizontal scaling requires Gunicorn/NGINX.
-
-### Why These Choices?
-
-**Append-Only Storage:** Simplicity over complexity. No schema migrations, no transaction overhead, trivial backup/restore.
-
-**No Vector DB:** Embeddings are domain-specific. AI-Train provides ingestion; you choose embedding strategy.
-
-**Single-User Design:** Reduces complexity. Enterprise deployments add auth middleware as needed.
+- No telemetry, no analytics, no vendor access
+- Works fully offline after initial model download
+- System prompts lock each brain to its role — classifier cannot reason, reasoner cannot classify
 
 ---
 
@@ -421,87 +272,21 @@ Single-threaded Flask. Horizontal scaling requires Gunicorn/NGINX.
 
 | Feature | AI-Train | GPT-4 API | Pinecone | LangChain |
 |:--------|:---------|:----------|:---------|:----------|
-| **Cost/month** | $0 | $90–200 | $70–200 | Varies |
-| **Data sovereignty** | Complete | Zero | Zero | Partial |
-| **Context persistence** | Infinite | 128k tokens | Vector-dependent | Varies |
-| **Network dependency** | None* | Required | Required | Required |
-| **Rate limits** | None | Yes | Yes | Yes |
-| **Customization** | Full source | Prompt-only | Config-only | Framework-dependent |
+| Cost/month | $0 | $90–200 | $70–200 | Varies |
+| Data sovereignty | Complete | Zero | Zero | Partial |
+| Context persistence | Infinite | 128k tokens | Vector-dependent | Varies |
+| Network dependency | None* | Required | Required | Required |
+| Rate limits | None | Yes | Yes | Yes |
 
 *After initial model download
 
 ---
 
-## Commercial Licensing
-
-AI-Train is available for commercial deployment under proprietary licensing.
-
-**Ideal For:**
-- Healthcare organizations (HIPAA-compliant document ingestion)
-- Law firms (privileged document processing)
-- Financial institutions (regulatory filing archives)
-- Research labs (academic paper repositories)
-- Enterprises (internal knowledge base construction)
-
-**Licensing Options:**
-- Single-deployment license
-- Multi-tenant enterprise license
-- Custom integration services
-- White-label deployment
-
-**Contact:** [Your Contact Information]
-
----
-
-## Technical Requirements
-
-### Minimum Specifications
-
-| Component | Requirement |
-|:----------|:------------|
-| CPU | Intel i3 (11th gen) or AMD Ryzen 3 |
-| RAM | 16GB (32GB recommended) |
-| Storage | 50GB free (SSD) |
-| OS | Windows 10/11, Linux, macOS |
-| Network | Internet for model download only |
-
-### Dependencies
-
-```
-Python 3.8+
-Ollama (local LLM runtime)
-Flask
-BeautifulSoup4
-Requests
-pdfplumber (optional, for PDF support)
-pytesseract + pdf2image (optional, for OCR)
-python-docx (optional, for Word support)
-```
-
----
-
-## Philosophy
-
-AI-Train is built on three principles:
-
-**1. Local-First**  
-Data sovereignty is non-negotiable. If your content leaves your network, you've lost control.
-
-**2. Cost-Aware**  
-Intelligent task routing eliminates compute waste. Most classification tasks don't need 175B parameters.
-
-**3. Human-Readable**  
-JSONL storage means no vendor lock-in. You can read, modify, and migrate your data with basic text tools.
-
-Cloud-based AI services optimize for vendor revenue, not customer value. AI-Train optimizes for the opposite: zero recurring costs, complete data ownership, and predictable performance on commodity hardware.
-
----
-
 ## Status
 
-**Current Version:** Production-ready  
-**Last Updated:** January 2025  
-**Deployment:** Local/on-premises only  
-**License:** Proprietary (commercial licensing available)
+**Last updated:** January 2025  
+**Deployment:** Local / on-premises only  
+**License:** Proprietary
 
-The code is not open-source, but the architecture and principles are documented here for evaluation purposes.
+The full script is not open-source. Snippets and architecture documentation are provided
+for evaluation purposes. Commercial licensing available on request.
