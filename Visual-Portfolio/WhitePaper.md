@@ -18,7 +18,7 @@ This paper presents a fully offline, LoRA-based image synthesis pipeline designe
 
 The proliferation of generative image models has introduced powerful tools for artistic expression and synthetic content creation. However, these tools often exhibit a strong bias toward stylistic abstraction, idealized symmetry, and artificial skin smoothing, even when prompted for realism. This undermines their use in forensic, documentary, or identity-anchored applications.
 
-We propose a multi-phase pipeline that augments a foundational latent diffusion model with a LoRA-injected, identity-preserving pathway. The goal is high-fidelity identity replication—not aestheticization—across new scenes, camera perspectives, or lighting.
+I propose a multi-phase pipeline that augments a foundational latent diffusion model with a LoRA-injected, identity-preserving pathway. The goal is high-fidelity identity replication—not aestheticization—across new scenes, camera perspectives, or lighting.
 
 ---
 
