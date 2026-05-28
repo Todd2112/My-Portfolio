@@ -1,0 +1,15 @@
+INFO:     MISSION STARTED: Marbury v. Madison [case_id:1] | 17 Segments
+2026-05-26 10:00:43 - INFO - Processing chunk 1 (Depth 0)
+2026-05-26 10:02:30 - httpx - INFO - api/generate "HTTP/1.1 200 OK"
+Segment 1 finished in 112.69s
+
+2026-05-26 10:08:08 - INFO - Processing chunk 7 (Depth 0)
+Segment 7 finished in 121.68s [COMPLEX PRECEDENT DETECTED]
+
+2026-05-26 10:20:07 - INFO - Processing chunk 15 (Depth 0)
+Segment 15 finished in 36.63s [OPTIMIZED]
+
+2026-05-26 10:23:02 - legal_db - INFO - TF-IDF backfill complete: 35 findings weighted.
+2026-05-26 10:23:02 - legal_faiss - INFO - FAISS meta synced from DB.
+2026-05-26 10:23:02 - legal_cag - INFO - CAG buffer refreshed: 1 cases, 35 findings in memory.
+2026-05-26 10:25:00 - httpx - INFO - api/generate "HTTP/1.1 200 OK" [QUERY SUCCESS]
