@@ -49,4 +49,32 @@ Segment 15 finished in 36.63s [OPTIMIZED]
 2026-05-26 10:23:02 - legal_faiss - INFO - FAISS meta synced from DB.
 2026-05-26 10:23:02 - legal_cag - INFO - CAG buffer refreshed: 1 cases, 35 findings in memory.
 2026-05-26 10:25:00 - httpx - INFO - api/generate "HTTP/1.1 200 OK" [QUERY SUCCESS]
-**If you're interested in the Sovereign Series or want a demo of the engine in action, connect with me on LinkedIn.** https://www.linkedin.com/in/todd-lipscomb-670458290/
+```
+
+
+Core Engineering Features
+Parallel Dual-Agent Pipeline
+
+To eliminate context drift, reasoning is decoupled into specialized local agents:
+
+    The Auditor (Llama 3.2 3B): Clinical extraction of Holdings, Rules, and Precedents into structured JSON.
+
+    The Narrator (Llama 3.2 1B): Synthesis of findings into strategic briefs and keyword highlighting.
+
+Logic Store (End-User Programmability)
+
+A dedicated configuration layer allows users to define the "Mission Profile" for each case. By committing new logic to the store, the engine recalibrates its extraction priorities for deposition summaries, contract audits, or sentencing mitigation.
+Hardware Configuration & Optimization
+
+This build is specifically optimized for high-memory environments where CPU cores are limited, ensuring the i3 is never bottlenecked by memory-swap operations.
+
+    Processor: Intel i3 (4 Cores)
+
+    Memory: 36GB RAM (Enables high-capacity FAISS index caching and large-scale metadata buffering)
+
+    Inference: Ollama (Llama 3.2 4-bit Quantized)
+
+    Retrieval: FAISS + SQLite (Metadata anchoring)
+
+
+    **If you're interested in the Sovereign Series or want a demo of the engine in action, connect with me on LinkedIn.** https://www.linkedin.com/in/todd-lipscomb-670458290/
