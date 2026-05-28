@@ -1,6 +1,6 @@
-# Sovereign Legal Engine: Entry 01 in the Sovereign Series
+# Local AI for PDF, Legal Briefs —No APIs, No Data Leaks, No Compromises.
 
-**"Local AI for High-Stakes Law—No APIs, No Data Leaks, No Compromises."**
+**""**
 
 I built the **Sovereign Legal Engine** because the legal industry has a massive problem: they are being told that high-level AI reasoning only exists in the cloud. For a senior litigator or an appellate clerk, sending sensitive filings to a 3rd-party API isn't just a risk—it's a liability. 
 
