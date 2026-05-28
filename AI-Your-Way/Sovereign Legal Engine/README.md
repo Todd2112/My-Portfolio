@@ -2,17 +2,17 @@
 
 # Local AI for PDF, Legal Briefs —No APIs, No Data Leaks, No Compromises.
 
-## Sovereign Legal Engine: legal_proto_v3
+## 100% Local Legal Engine
 **High-Memory Local RAG for Instant Case Recall**
 
-**legal_proto_v3** is a localized, air-gapped discovery engine designed to transform massive, non-searchable legal archives into high-fidelity semantic databases. By leveraging a high-RAM, low-core architecture (optimized for i3/36GB RAM), this system provides deterministic recall for senior litigators without the privacy risks or subscription costs of cloud-based APIs.
+**legal PDF** is a localized, air-gapped discovery engine designed to transform massive, non-searchable legal archives into high-fidelity semantic databases. By leveraging a high-RAM, low-core architecture (optimized for i3/36GB RAM), this system provides deterministic recall for senior litigators without the privacy risks or subscription costs of cloud-based APIs.
 
 ![Sovereign Discovery Interface](https://github.com/Todd2112/My-Portfolio/raw/master/AI-Your-Way/Sovereign%20Legal%20Engine/SD_pg1.jpg)
 
 ---
 
 ### Performance Audit: Bench-Tested Ingestion
-The following data represents a live stress test of the `legal_proto_v3` pipeline using a 17-segment high-complexity legal filing (*Marbury v. Madison*).
+The following data represents a live stress test of the `Legal Engine` pipeline using a 17-segment high-complexity legal filing (*Marbury v. Madison*).
 
 #### 1. Ingestion Efficiency (The "Shredding" Phase)
 The engine utilizes a defensive fallback chain to ensure text fidelity before embedding.
