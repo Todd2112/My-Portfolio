@@ -77,4 +77,4 @@ This build is specifically optimized for high-memory environments where CPU core
     Retrieval: FAISS + SQLite (Metadata anchoring)
 
 
-    **If you're interested in the Sovereign Series or want a demo of the engine in action, connect with me on LinkedIn.** https://www.linkedin.com/in/todd-lipscomb-670458290/
+   
