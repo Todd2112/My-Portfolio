@@ -253,7 +253,7 @@ All endpoints on port 8001.
 ---
 
 
-## 11. Troubleshooting
+## 10. Troubleshooting
 
 | Symptom | Fix |
 |---|---|
