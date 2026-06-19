@@ -7,7 +7,7 @@
 
 **legal PDF** is a localized, air-gapped discovery engine designed to transform massive, non-searchable legal archives into high-fidelity semantic databases. By leveraging a high-RAM, low-core architecture (optimized for i3/36GB RAM), this system provides deterministic recall for senior litigators without the privacy risks or subscription costs of cloud-based APIs.
 
-![Sovereign Discovery Interface](https://github.com/Todd2112/My-Portfolio/raw/master/AI-Your-Way/Sovereign%20Legal%20Engine/SD_pg1.jpg)
+![Sovereign Discovery Interface](https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Sovereign%20Legal%20Engine/worlflow.jpg)
 
 ---
 
