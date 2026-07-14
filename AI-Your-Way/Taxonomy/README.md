@@ -12,7 +12,8 @@ A real regulatory/legislative text dataset (`R45348.2.pdf`), loaded with only on
 
 Loaded the PDF, extracted and scanned 5 rows, surfaced the most common words in the actual corpus (no manual tagging).
 
-<insert screen_shot2.png here>
+![Word Ranking](AI-Your-Way/Taxonomy/screen_shot2.png)
+
 
 Result: 0 auto-accepted, 1 needs review, 4 no match — because only one category existed and it genuinely didn't cover most of the content. This is correct, not a failure.
 
