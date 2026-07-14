@@ -8,7 +8,7 @@
 
 A real regulatory/legislative text dataset (`R45348.2.pdf`), loaded with only one category defined (`Federal Framework Legislation`). This shows the system's core behavior: it refuses to force a match when confidence is low, rather than guessing.
 
-https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Taxonomy/screen_shot1.png
+![Baseline run — one category, honest no-match results](AI-Your-Way/Taxonomy/screen_shot1.png)
 
 Loaded the PDF, extracted and scanned 5 rows, surfaced the most common words in the actual corpus (no manual tagging).
 
