@@ -41,13 +41,13 @@ Result jumped from 0/5 to 2/5 auto-accepted immediately — no code changes, jus
 
 For the two remaining unresolved rows, used the built-in correction feature: picked the right category from a dropdown and clicked Teach. This isn't a one-off fix — it's written permanently into that category's data, so the same or similar term matches automatically from now on.
 
-![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot1.png)
+![ResultI](AI-Your-Way/Taxonomy/3rd_run_screenshot1.png)
 
 
-![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot2.png)
+![ResultII](AI-Your-Way/Taxonomy/3rd_run_screenshot2.png)
 
 
-![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot3.png)
+![ResultIII](AI-Your-Way/Taxonomy/3rd_run_screenshot3.png)
 
 Both corrected rows now show `human taught` at 100% confidence in the permanent audit history — a full record of every match and every human correction, nothing silent or untracked.
 
