@@ -41,15 +41,17 @@ Result jumped from 0/5 to 2/5 auto-accepted immediately — no code changes, jus
 
 For the two remaining unresolved rows, used the built-in correction feature: picked the right category from a dropdown and clicked Teach. This isn't a one-off fix — it's written permanently into that category's data, so the same or similar term matches automatically from now on.
 
-<insert 3rd_run_screenshot1.png here>
+![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot1.png)
 
-<insert 3rd_run_screenshot2.png here>
 
-<insert 3rd_run_screenshot3.png here>
+![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot2.png)
+
+
+![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot3.png)
 
 Both corrected rows now show `human taught` at 100% confidence in the permanent audit history — a full record of every match and every human correction, nothing silent or untracked.
 
-<insert 3rd_run_screenshot4.png here>
+![Result](AI-Your-Way/Taxonomy/3rd_run_screenshot4.png)
 
 ---
 
@@ -57,17 +59,19 @@ Both corrected rows now show `human taught` at 100% confidence in the permanent 
 
 A completely different domain and dataset: an actual resume (`todd_lipscomb_resume_v5.pdf`), extracted directly from PDF (no manual retyping), matched against three custom job-fit categories built specifically for this run.
 
-<insert resume_screenshot1.png here>
 
-<insert resume_screenshot2.png here>
+![Result](AI-Your-Way/Taxonomyresume_screenshot1.png)
+
+
+![Result](AI-Your-Way/Taxonomyresume_screenshot2.png)
 
 Corpus scan on the extracted resume text — note it handles messy real-world artifacts (inline citation markers like `[cite: 2]` left over from another tool) without breaking.
 
-<insert resume_screenshot3.png here>
+![Result](AI-Your-Way/Taxonomyresume_screenshot3.png)
 
 Final result: 5 of 5 lines auto-accepted at 90% confidence, correctly sorted into role categories (Sovereign AI Systems Architect, Senior Backend & Tooling Engineer, Regulatory Compliance & Transaction Operations) — zero manual review needed once the categories were properly defined.
 
-<insert resume_screenshot4.png here>
+![Result](AI-Your-Way/Taxonomyresume_screenshot4.png)
 
 ---
 
