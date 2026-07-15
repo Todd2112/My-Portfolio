@@ -17,7 +17,8 @@ Loaded the PDF, extracted and scanned 5 rows, surfaced the most common words in 
 
 Result: 0 auto-accepted, 1 needs review, 4 no match — because only one category existed and it genuinely didn't cover most of the content. This is correct, not a failure.
 
-<insert screen_shot3.png here>
+![Result](AI-Your-Way/Taxonomy/screen_shot3.png)
+
 
 ---
 
@@ -25,13 +26,14 @@ Result: 0 auto-accepted, 1 needs review, 4 no match — because only one categor
 
 Added a second category (`Executive and Administrative Directives`, alt labels: OMB, Circular, Executive Order, Guidance) to the same category set. Re-ran the identical five rows.
 
-<insert 2nd_run_screenshot1.png here>
+![Add Category](AI-Your-Way/Taxonomy/2nd_run_screenshot1.png)
 
 Result jumped from 0/5 to 2/5 auto-accepted immediately — no code changes, just a better-defined taxonomy.
 
-<insert 2nd_run_screenshot2.png here>
+![Result](AI-Your-Way/Taxonomy/2nd_run_screenshot2.png)
 
-<insert 2nd_run_screenshot3.png here>
+
+![ResultII](AI-Your-Way/Taxonomy/2nd_run_screenshot3.png)
 
 ---
 
