@@ -476,7 +476,7 @@ For contract engineering, technical audits, prototypes, or deployment discussion
 
 - Email: realtodd@yahoo.com
 - GitHub: Todd2112
-- LinkedIn: Todd
+- LinkedIn: https://www.linkedin.com/in/todd-lipscomb-670458290/
 
 When contacting me, include:
 
