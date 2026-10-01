@@ -57,8 +57,7 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 ---
 
-## Core Engineering Capabilities & Code Architecture
-
+## The Problem
 ### 1. Structure-Aware Ingestion & Segmentation
 
 Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
