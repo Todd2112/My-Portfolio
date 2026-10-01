@@ -56,7 +56,8 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 ```
-
+![Ask-AI Mid-Pipeline Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_mid.png)
+*Figure 2: Intermediate execution state, session tracking, and pipeline routing.*
 ---
 
 ## Core Engineering Capabilities & Code Architecture
@@ -227,7 +228,8 @@ async def query_web_fallback(query: str) -> str:
                     results.append(res.text[:1500])
     return "\n\n".join(results)
 ```
-
+![Ask-AI Grounded Response Output](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_answer.png)
+*Figure 3: Grounded response output with real-time scoring and source attribution.*
 ---
 
 ### 6. Telemetry & Monitoring Sidecar
@@ -260,7 +262,8 @@ sidecar_app = FastAPI()
 def get_metrics():
     return Telemetry.DATA
 ```
-
+![Ask-AI System Telemetry & Monitor](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_bottom.png)
+*Figure 4: Sidecar telemetry panel monitoring RAM, loop latency, and local inference execution.*
 ---
 
 ### 7. FastAPI Service Routes & Streaming
