@@ -56,12 +56,13 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 
-Core Engineering Capabilities & Code Architecture
-1. Structure-Aware Ingestion & Segmentation
+## Core Engineering Capabilities & Code Architecture
 
-Extracts raw text across multi-file formats (PDF with pytesseract OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
-Python
+### 1. Structure-Aware Ingestion & Segmentation
 
+Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
+
+```python
 import re
 import fitz  # PyMuPDF
 import numpy as np
@@ -94,6 +95,11 @@ def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[d
                 chunks.append("\n".join(current_chunk))
                 current_chunk = []
             current_chunk.append(line)
+        if current_chunk:
+            chunks.append("\n".join(current_chunk))
+        return [{"title": f"SubDoc_{i+1}", "content": c} for i, c in enumerate(chunks)]
+
+    return [{"title": "Full Document", "content": text}]
         if current_chunk:
             chunks.append("\n".join(current_chunk))
         return [{"title": f"SubDoc_{i+1}", "content": c} for i, c in enumerate(chunks)]
