@@ -1,6 +1,6 @@
-# Ask-AI: The Sovereign Engine
+# Ask-AI: Hybrid Retrieval & Document Intelligence System
 
-**A 100% local, CPU-Bound Local RAG Engine & Document Processing Service**
+**100% Local • CPU-Bound Engine • Multi-Format Document Processing • Web Search Fallback**
 
 Local Vectors • Sub-Document Ingestion • Deterministic Grounding Checks • Zero Cloud Exposure
 
