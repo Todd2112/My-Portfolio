@@ -4,7 +4,7 @@
 
 Local Vectors • Sub-Document Ingestion • Deterministic Grounding Checks • Zero Cloud Exposure
 
-![Ask-AI Telemetry & Retrieval Trace](docs/live-telemetry.png)
+![Ask-AI Telemetry & Retrieval Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_llm_monitor_cli.png)
 *Figure 1: Real-time execution diagnostic pipeline. Left: System telemetry, prefill/generation token latency, and hybrid retrieval traces. Right: Local Ollama server executing a two-pass multi-document extraction on commodity CPU hardware.*
 
 > **Commercial Architecture Showcase**  
