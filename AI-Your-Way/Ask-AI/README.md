@@ -55,6 +55,7 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │         • Auto-Ingest Web DDGS   │
                                │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
+---
 
 ## Core Engineering Capabilities & Code Architecture
 
