@@ -1,6 +1,6 @@
 # Ask-AI: The Sovereign Engine
 
-**A 100% Private, CPU-Bound Local RAG Engine & Document Processing Service**
+**A 100% local, CPU-Bound Local RAG Engine & Document Processing Service**
 
 Local Vectors • Sub-Document Ingestion • Deterministic Grounding Checks • Zero Cloud Exposure
 
