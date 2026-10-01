@@ -53,7 +53,7 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │         • Ollama Streaming       │
                                │         • Overlap/Vector Check   │
                                │         • Auto-Ingest Web DDGS   │
-                               │
+                               │                                  │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 ```
 
@@ -230,6 +230,9 @@ async def query_web_fallback(query: str) -> str:
 ![Ask-AI Grounded Response Output](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_answer.png)
 *Figure 3: Grounded response output with real-time scoring and source attribution.*
 
+![Ask-AI Human-in-the-Loop Feedback Interface](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_bottom.png)
+*Figure 4: Human-in-the-Loop (HITL) feedback module providing real-time answer verification, optional inline text editing, and Approve / Edit / Reject workflow control.*
+
 ---
 
 ### 6. Telemetry & Monitoring Sidecar
@@ -263,10 +266,7 @@ def get_metrics():
 ```
 
 ![Ask-AI Telemetry & Retrieval Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_llm_monitor_cli.png)
-*Figure 4: Real-time execution diagnostic pipeline. Left: System telemetry, prefill/generation token latency, and hybrid retrieval traces. Right: Local Ollama server executing a two-pass multi-document extraction on commodity CPU hardware.*
-
-![Ask-AI System Telemetry & Monitor](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_bottom.png)
-*Figure 5: Sidecar telemetry panel monitoring RAM, loop latency, and local inference execution.*
+*Figure 5: Sidecar telemetry panel monitoring RAM, loop latency, prefill/generation rates, and local LLM execution.*
 
 ---
 
