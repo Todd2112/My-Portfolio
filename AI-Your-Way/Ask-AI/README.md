@@ -66,9 +66,6 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
 Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
 
 ```python
-import re
-import fitz  # PyMuPDF
-import numpy as np
 
 def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[dict]:
     """Splits full document text into structural sub-documents using ToCs or gap ratios."""
@@ -114,8 +111,6 @@ Queries a 768-dimensional L2-normalized FAISS vector index (`nomic-embed-text`),
 $$RRF_{score}(d) = \frac{1}{60 + r_{vec}} + \frac{1}{60 + r_{lex}}$$
 
 ```python
-import faiss
-import numpy as np
 
 def query_kb(query_vec: np.ndarray, query_terms: list[str], active_doc_id: str, k: int = 20) -> list[dict]:
     # 1. FAISS Dense Retrieval
@@ -159,8 +154,6 @@ def query_kb(query_vec: np.ndarray, query_terms: list[str], active_doc_id: str, 
 Manages persistent conversation states in SQLite (`data/sessions.db`) alongside an in-memory deque. Intercepts referential follow-ups (*"summarize this"*, *"tell me more"*) to lock retrieval directly to the active document.
 
 ```python
-import sqlite3
-from collections import deque
 
 STICKY_TRIGGERS = {"this", "it", "that", "more", "summarize", "explain further", "continue"}
 
@@ -211,8 +204,6 @@ def select_semantic_windows(paragraphs: list[dict], top_score: float, score_thre
 Streams local model synthesis via Ollama. Evaluates generation fidelity against source context using token precision and vector similarity, triggering an asynchronous DuckDuckGo web search and auto-ingestion if confidence drops below 40%.
 
 ```python
-import httpx
-from duckduckgo_search import DDGS
 
 def validate_synthesis(generated_text: str, source_context: str) -> bool:
     """Deterministic grounding check; returns False if overlap drops below 40%."""
@@ -244,10 +235,6 @@ async def query_web_fallback(query: str) -> str:
 Decoupled performance tracking framework using the `@Telemetry.gate` decorator. Monitors sync/async execution timing, RSS memory (`psutil`), heap allocation (`tracemalloc`), and loop lag via an independent HTTP sidecar daemon running on port 8002.
 
 ```python
-import time
-import functools
-import psutil
-from fastapi import FastAPI
 
 class Telemetry:
     DATA = {"metrics": {}, "last_retrieval": {}}
@@ -281,9 +268,6 @@ def get_metrics():
 Core API interface serving UI assets, routing direct metadata queries to knowledge registries, processing RAG retrieval pipelines, and streaming NDJSON token feeds to client interfaces.
 
 ```python
-from fastapi import FastAPI, Request
-from fastapi.responses import StreamingResponse
-import json
 
 app = FastAPI()
 
