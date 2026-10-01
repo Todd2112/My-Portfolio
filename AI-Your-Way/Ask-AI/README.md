@@ -8,7 +8,7 @@ Local Vectors • Sub-Document Ingestion • Deterministic Grounding Checks • 
 *Figure 1: Real-time execution diagnostic pipeline. Left: System telemetry, prefill/generation token latency, and hybrid retrieval traces. Right: Local Ollama server executing a two-pass multi-document extraction on commodity CPU hardware.*
 
 > **Commercial Architecture Showcase**  
-> Ask-AI (The Sovereign Engine) is a proprietary, single-tenant commercial software package. This repository serves as an architectural benchmark and technical showcase containing sanitized core logic snippets. Source code access and enterprise licensing are available upon request. See [Availability & Licensing](#availability--licensing).
+> Ask-AI is a proprietary, single-tenant commercial software package. This repository serves as an architectural benchmark and technical showcase containing sanitized core logic snippets. Source code access and enterprise licensing are available upon request. See [Availability & Licensing](#availability--licensing).
 
 ---
 
@@ -55,3 +55,47 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │         • Auto-Ingest Web DDGS   │
                                │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
+
+Core Engineering Capabilities & Code Architecture
+1. Structure-Aware Ingestion & Segmentation
+
+Extracts raw text across multi-file formats (PDF with pytesseract OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
+Python
+
+import re
+import fitz  # PyMuPDF
+import numpy as np
+
+def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[dict]:
+    """Splits full document text into structural sub-documents using ToCs or gap ratios."""
+    # Tier 1 & 2: Match Numbered or Unnumbered ToC entries
+    if toc_entries:
+        sub_docs = []
+        for i, entry in enumerate(toc_entries):
+            title = entry["title"]
+            start_pos = text.find(title)
+            end_pos = text.find(toc_entries[i + 1]["title"]) if i + 1 < len(toc_entries) else len(text)
+            if start_pos != -1:
+                sub_docs.append({"title": title, "content": text[start_pos:end_pos]})
+        if sub_docs:
+            return sub_docs
+
+    # Tier 3: Gap-Ratio Clustering based on heading spacing
+    lines = text.split("\n")
+    heading_indices = [i for i, line in enumerate(lines) if re.match(r"^(SECTION|CHAPTER|\d+\.\d+)", line, re.I)]
+    
+    if len(heading_indices) > 1:
+        gaps = np.diff(heading_indices)
+        median_gap = np.median(gaps)
+        chunks, current_chunk = [], []
+        
+        for idx, line in enumerate(lines):
+            if idx in heading_indices and current_chunk and len(current_chunk) > median_gap * 0.5:
+                chunks.append("\n".join(current_chunk))
+                current_chunk = []
+            current_chunk.append(line)
+        if current_chunk:
+            chunks.append("\n".join(current_chunk))
+        return [{"title": f"SubDoc_{i+1}", "content": c} for i, c in enumerate(chunks)]
+
+    return [{"title": "Full Document", "content": text}]
