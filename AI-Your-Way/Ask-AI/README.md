@@ -4,8 +4,8 @@
 
 Local FAISS Vectors • Sub-Document Ingestion • Deterministic Grounding • Zero Cloud Dependencies
 
-![Ask-AI Telemetry & Retrieval Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_llm_monitor_cli.png)
-*Figure 1: Real-time execution diagnostic pipeline. Left: System telemetry, prefill/generation token latency, and hybrid retrieval traces. Right: Local Ollama server executing a two-pass multi-document extraction on commodity CPU hardware.*
+![Ask-AI Top Panel & Interface](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_top.png)
+*Figure 1: Ask-AI system dashboard and primary query interface.*
 
 > **Commercial Architecture Showcase**  
 > Ask-AI is a proprietary, single-tenant commercial software package. This repository serves as an architectural benchmark and technical showcase containing sanitized core logic snippets. Source code access and enterprise licensing are available upon request. See [Availability & Licensing](#availability--licensing).
@@ -56,8 +56,10 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 ```
+
 ![Ask-AI Mid-Pipeline Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_mid.png)
 *Figure 2: Intermediate execution state, session tracking, and pipeline routing.*
+
 ---
 
 ## Core Engineering Capabilities & Code Architecture
@@ -67,7 +69,6 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
 Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
 
 ```python
-
 def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[dict]:
     """Splits full document text into structural sub-documents using ToCs or gap ratios."""
     # Tier 1 & 2: Match Numbered or Unnumbered ToC entries
@@ -112,7 +113,6 @@ Queries a 768-dimensional L2-normalized FAISS vector index (`nomic-embed-text`),
 $$RRF_{score}(d) = \frac{1}{60 + r_{vec}} + \frac{1}{60 + r_{lex}}$$
 
 ```python
-
 def query_kb(query_vec: np.ndarray, query_terms: list[str], active_doc_id: str, k: int = 20) -> list[dict]:
     # 1. FAISS Dense Retrieval
     distances, indices = faiss_index.search(query_vec.astype(np.float32), k)
@@ -155,7 +155,6 @@ def query_kb(query_vec: np.ndarray, query_terms: list[str], active_doc_id: str, 
 Manages persistent conversation states in SQLite (`data/sessions.db`) alongside an in-memory deque. Intercepts referential follow-ups (*"summarize this"*, *"tell me more"*) to lock retrieval directly to the active document.
 
 ```python
-
 STICKY_TRIGGERS = {"this", "it", "that", "more", "summarize", "explain further", "continue"}
 
 def resolve_sticky_doc_id(query: str, session_history: deque, last_doc_id: str) -> str:
@@ -205,7 +204,6 @@ def select_semantic_windows(paragraphs: list[dict], top_score: float, score_thre
 Streams local model synthesis via Ollama. Evaluates generation fidelity against source context using token precision and vector similarity, triggering an asynchronous DuckDuckGo web search and auto-ingestion if confidence drops below 40%.
 
 ```python
-
 def validate_synthesis(generated_text: str, source_context: str) -> bool:
     """Deterministic grounding check; returns False if overlap drops below 40%."""
     gen_words = set(re.findall(r"\w+", generated_text.lower()))
@@ -228,8 +226,10 @@ async def query_web_fallback(query: str) -> str:
                     results.append(res.text[:1500])
     return "\n\n".join(results)
 ```
+
 ![Ask-AI Grounded Response Output](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_answer.png)
 *Figure 3: Grounded response output with real-time scoring and source attribution.*
+
 ---
 
 ### 6. Telemetry & Monitoring Sidecar
@@ -237,7 +237,6 @@ async def query_web_fallback(query: str) -> str:
 Decoupled performance tracking framework using the `@Telemetry.gate` decorator. Monitors sync/async execution timing, RSS memory (`psutil`), heap allocation (`tracemalloc`), and loop lag via an independent HTTP sidecar daemon running on port 8002.
 
 ```python
-
 class Telemetry:
     DATA = {"metrics": {}, "last_retrieval": {}}
 
@@ -262,8 +261,13 @@ sidecar_app = FastAPI()
 def get_metrics():
     return Telemetry.DATA
 ```
+
+![Ask-AI Telemetry & Retrieval Trace](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_llm_monitor_cli.png)
+*Figure 4: Real-time execution diagnostic pipeline. Left: System telemetry, prefill/generation token latency, and hybrid retrieval traces. Right: Local Ollama server executing a two-pass multi-document extraction on commodity CPU hardware.*
+
 ![Ask-AI System Telemetry & Monitor](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_bottom.png)
-*Figure 4: Sidecar telemetry panel monitoring RAM, loop latency, and local inference execution.*
+*Figure 5: Sidecar telemetry panel monitoring RAM, loop latency, and local inference execution.*
+
 ---
 
 ### 7. FastAPI Service Routes & Streaming
@@ -271,7 +275,6 @@ def get_metrics():
 Core API interface serving UI assets, routing direct metadata queries to knowledge registries, processing RAG retrieval pipelines, and streaming NDJSON token feeds to client interfaces.
 
 ```python
-
 app = FastAPI()
 
 @app.post("/api/query")
