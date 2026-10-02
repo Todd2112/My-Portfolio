@@ -1,14 +1,14 @@
 # Ask-AI: Hybrid Retrieval & Document Intelligence System
 
-**100% Local • CPU-Bound Engine • Multi-Format Document Processing • Web Search Fallback**
+**100% Local • CPU-Bound Engine • Multi-Format Document Processing • Optional Web Search Fallback**
 
-Local FAISS Vectors • Sub-Document Ingestion • Deterministic Grounding • Zero Cloud Dependencies
+Local FAISS Vectors • Sub-Document Ingestion • Deterministic Grounding • No Cloud AI Dependencies
 
 ![Ask-AI Top Panel & Interface](https://raw.githubusercontent.com/Todd2112/My-Portfolio/master/AI-Your-Way/Ask-AI/ask_ai_top.png)
 *Figure 1: Ask-AI system dashboard and primary query interface.*
 
-> **Commercial Architecture Showcase**  
-> Ask-AI is a proprietary, single-tenant commercial software package. This repository serves as an architectural benchmark and technical showcase containing sanitized core logic snippets. Source code access and enterprise licensing are available upon request. See [Availability & Licensing](#availability--licensing).
+> **Commercial Architecture Showcase**
+> Ask-AI is a proprietary, single-tenant commercial software package. This repository is an architectural and technical showcase. Code snippets are simplified illustrations of the approach, not the shipped source. Licensing inquiries are welcome. See [Availability & Licensing](#availability--licensing).
 
 ---
 
@@ -19,12 +19,12 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
 | Challenge | Standard RAG Approach | Ask-AI Approach |
 |:---|:---|:---|
 | **Large Document Ingestion** | Fixed chunking ignoring document structure | **3-Tier Sub-Doc Ingestion:** Numbered/unnumbered ToCs & line gap-ratio clustering |
-| **Retrieval Accuracy** | Single-vector cosine similarity search | **Hybrid RRF Search:** 768d FAISS vectors + Lexical IDF + Active Doc Session Boost |
-| **Multi-Turn Context** | Global re-queries on every turn | **Sticky Context Locking:** Detects referential phrasing ("summarize this") to lock target doc |
+| **Retrieval Accuracy** | Single-vector cosine similarity search | **Hybrid RRF Search:** 768d FAISS vectors + Lexical IDF + Title Boost + Active Doc Session Boost |
+| **Multi-Turn Context** | Global re-queries on every turn | **Sticky Context Locking:** Detects follow-ups that add no new content words ("tell me more about this") and locks the target doc |
 | **Context Window Overhead** | Arbitrary top-$k$ chunk dumping | **Dynamic Anchoring:** Head/Mid/Tail structural slices + top-40% semantic windowing |
-| **Hallucination Control** | Unvalidated generation output | **Deterministic Grounding:** Dual-check token overlap & vector similarity gate (<40% fallback) |
+| **Hallucination Control** | Unvalidated generation output | **Validation Gate:** Keyword overlap and embedding similarity checked against retrieved text before an augmented answer is accepted |
 | **System Observability** | Black-box API calls | **Decoupled Telemetry Sidecar:** Real-time RAM, heap, loop lag, and t/s tracking on port 8002 |
-| **Data Privacy & Cost** | External cloud LLM dependency ($/token) | **100% Local CPU Execution:** $0 recurring API overhead, zero external data leakage |
+| **Data Privacy & Cost** | External cloud LLM dependency ($/token) | **Local CPU Execution:** $0 recurring API overhead. Documents never leave the machine; optional, labeled web search sends only the query |
 
 ---
 
@@ -52,7 +52,7 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
                                ├──────────────────────► (5) Synthesis & Grounding
                                │         • Ollama Streaming       │
                                │         • Overlap/Vector Check   │
-                               │         • Auto-Ingest Web DDGS   │
+                               │         • Optional Web Fallback  │
                                │                                  │
                                └──────────────────────► (6) Telemetry Sidecar (127.0.0.1:8002)
 ```
@@ -64,9 +64,11 @@ Standard, off-the-shelf RAG implementations often suffer from structural documen
 
 ## Core Engineering Capabilities & Code Architecture
 
+> The snippets below are **simplified illustrations of the approach**, not the shipped source.
+
 ### 1. Structure-Aware Ingestion & Segmentation
 
-Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping), detects structural boundaries using multi-tier ToCs and gap-ratio clustering, and registers documents with domain classifications and keyword tags.
+Extracts raw text across multi-file formats (PDF with `pytesseract` OCR fallback, DOCX, TXT, MD, URL web scraping) and detects structural boundaries using multi-tier ToCs and gap-ratio clustering. ToC parsing is layout-agnostic: it handles one-line entries (`4  Basic Programming ..... 37`) as well as extractors that split number, title, and page onto separate lines, and it locates each real heading in the body even when titles wrap across lines. Very short sections are merged into their neighbors instead of being dropped.
 
 ```python
 def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[dict]:
@@ -86,12 +88,12 @@ def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[d
     # Tier 3: Gap-Ratio Clustering based on heading spacing
     lines = text.split("\n")
     heading_indices = [i for i, line in enumerate(lines) if re.match(r"^(SECTION|CHAPTER|\d+\.\d+)", line, re.I)]
-    
+
     if len(heading_indices) > 1:
         gaps = np.diff(heading_indices)
         median_gap = np.median(gaps)
         chunks, current_chunk = [], []
-        
+
         for idx, line in enumerate(lines):
             if idx in heading_indices and current_chunk and len(current_chunk) > median_gap * 0.5:
                 chunks.append("\n".join(current_chunk))
@@ -108,63 +110,54 @@ def split_into_subdocuments(text: str, toc_entries: list[dict] = None) -> list[d
 
 ### 2. Hybrid Retrieval Engine (`query_kb`)
 
-Queries a 768-dimensional L2-normalized FAISS vector index (`nomic-embed-text`), computes sparse lexical IDF scores with a **2.5x Active Document Session Boost**, and fuses ranks using Reciprocal Rank Fusion:
+Queries a 768-dimensional L2-normalized FAISS vector index (`nomic-embed-text`), computes sparse lexical IDF scores per chunk, applies a **3x title-match boost** and a **2.5x Active Document Session Boost**, and fuses the two rankings using Reciprocal Rank Fusion:
 
 $$RRF_{score}(d) = \frac{1}{60 + r_{vec}} + \frac{1}{60 + r_{lex}}$$
 
 ```python
-def query_kb(query_vec: np.ndarray, query_terms: list[str], active_doc_id: str, k: int = 20) -> list[dict]:
-    # 1. FAISS Dense Retrieval
+def query_kb(query: str, query_vec: np.ndarray, query_terms: set, active_doc_id: str, k: int = 40) -> list[dict]:
+    # 1. FAISS dense retrieval
     distances, indices = faiss_index.search(query_vec.astype(np.float32), k)
-    vec_results = {idx: rank + 1 for rank, idx in enumerate(indices[0]) if idx != -1}
+    candidates = [load_chunk(int(i)) for i in indices[0] if i != -1]
 
-    # 2. Lexical IDF + Session Continuity Boosting
-    lex_scores = {}
-    for doc_id, doc in kb_registry.items():
-        tf_idf = sum(doc["idf_tags"].get(term, 0) for term in query_terms)
-        
-        # Apply Title Exact Match & Session Continuity Boost (2.5x)
-        if doc_id == active_doc_id:
-            tf_idf *= 2.5
-        if any(term in doc["title"].lower() for term in query_terms):
-            tf_idf *= 1.5
-            
-        lex_scores[doc_id] = tf_idf
+    # 2. Per-chunk lexical IDF score and boosts
+    for chunk, sim in zip(candidates, distances[0]):
+        chunk["vector_score"] = float(sim)
+        chunk["lexical_score"] = sum(term_idf(t) for t in query_terms & chunk["keywords"])
 
-    # Rank lexical candidates
-    sorted_lex = sorted(lex_scores.items(), key=lambda x: x[1], reverse=True)[:k]
-    lex_results = {doc_id: rank + 1 for rank, (doc_id, _) in enumerate(sorted_lex)}
+        boost = 1.0
+        if chunk["doc_title"].lower() in query.lower():
+            boost *= 3.0   # explicit title match
+        if chunk["doc_id"] == active_doc_id:
+            boost *= 2.5   # session continuity
+        chunk["boost"] = boost
 
-    # 3. Reciprocal Rank Fusion (RRF)
-    all_keys = set(vec_results.keys()) | set(lex_results.keys())
-    rrf_scores = []
-    for key in all_keys:
-        r_vec = vec_results.get(key, 1000)
-        r_lex = lex_results.get(key, 1000)
-        score = (1.0 / (60 + r_vec)) + (1.0 / (60 + r_lex))
-        rrf_scores.append((key, score))
+    # 3. Rank each signal independently, then fuse ranks (not raw scores)
+    by_vec = {id(c): r for r, c in enumerate(sorted(candidates, key=lambda c: c["vector_score"], reverse=True))}
+    by_lex = {id(c): r for r, c in enumerate(sorted(candidates, key=lambda c: c["lexical_score"], reverse=True))}
 
-    rrf_scores.sort(key=lambda x: x[1], reverse=True)
-    return [kb_registry[key] for key, _ in rrf_scores[:k]]
+    for c in candidates:
+        rrf = 1.0 / (60 + by_vec[id(c)] + 1) + 1.0 / (60 + by_lex[id(c)] + 1)
+        c["score"] = rrf * c["boost"]
+
+    return sorted(candidates, key=lambda c: c["score"], reverse=True)
 ```
 
 ---
 
 ### 3. Session Memory & Context Stickiness
 
-Manages persistent conversation states in SQLite (`data/sessions.db`) alongside an in-memory deque. Intercepts referential follow-ups (*"summarize this"*, *"tell me more"*) to lock retrieval directly to the active document.
+Manages persistent conversation states in SQLite (`data/sessions.db`) alongside an in-memory deque. Follow-ups that add no new content words (*"tell me more about this"*) lock retrieval to the active document. A query that names a new subject (*"summarize Visual Studio"*) is treated as a topic change and routed normally.
 
 ```python
-STICKY_TRIGGERS = {"this", "it", "that", "more", "summarize", "explain further", "continue"}
+REFERENTIAL = {"this", "it", "that", "more", "tell", "about", "explain", "continue", "summarize"}
 
-def resolve_sticky_doc_id(query: str, session_history: deque, last_doc_id: str) -> str:
-    """Detects implicit follow-up queries and locks context to the active document."""
-    words = set(query.lower().split())
-    
-    # Check if query consists primarily of referential triggers or short follow-ups
-    if words.intersection(STICKY_TRIGGERS) and (len(words) <= 6 or last_doc_id):
-        return last_doc_id
-    return None
+def resolve_sticky_doc_id(query: str, history: list) -> str | None:
+    """Stick to the prior document only if the query adds no new content words."""
+    if not history:
+        return None
+    remainder = extract_keywords(query) - REFERENTIAL
+    return history[-1]["doc_id"] if not remainder else None
 
 def save_turn(db_path: str, session_id: str, role: str, content: str):
     with sqlite3.connect(db_path) as conn:
@@ -185,38 +178,33 @@ def select_semantic_windows(paragraphs: list[dict], top_score: float, score_thre
     """Filters and aggregates narrative windows within 40% of top vector score."""
     cutoff = top_score * score_threshold_ratio
     selected = [p for p in paragraphs if p["score"] >= cutoff]
-    
+
     # Extract structural head, middle, and tail anchors (1200 chars each)
     full_text = "\n\n".join([p["text"] for p in paragraphs])
     head_anchor = full_text[:1200]
     mid_idx = len(full_text) // 2
     mid_anchor = full_text[mid_idx - 600 : mid_idx + 600]
     tail_anchor = full_text[-1200:]
-    
+
     semantic_body = "\n\n".join([p["text"] for p in selected])
     return f"--- ANCHORS ---\n{head_anchor}\n...\n{mid_anchor}\n...\n{tail_anchor}\n\n--- SEMANTIC WINDOWS ---\n{semantic_body}"
 ```
 
 ---
 
-### 5. Synthesis, Grounding & Web Fallback
+### 5. Synthesis, Grounding & Optional Web Fallback
 
-Streams local model synthesis via Ollama. Evaluates generation fidelity against source context using token precision and vector similarity, triggering an asynchronous DuckDuckGo web search and auto-ingestion if confidence drops below 40%.
+Streams local model synthesis via Ollama. An augmented answer is accepted only if it passes both a keyword-overlap check and an embedding-similarity check against the retrieved text. Web search is an optional, clearly labeled fallback for when the knowledge base cannot answer; only the query is sent, and documents never leave the machine.
 
 ```python
-def validate_synthesis(generated_text: str, source_context: str) -> bool:
-    """Deterministic grounding check; returns False if overlap drops below 40%."""
-    gen_words = set(re.findall(r"\w+", generated_text.lower()))
-    ctx_words = set(re.findall(r"\w+", source_context.lower()))
-    
-    if not gen_words:
-        return False
-        
-    overlap = len(gen_words.intersection(ctx_words)) / len(gen_words)
-    return overlap >= 0.40
+def validate_synthesis(generated: str, source_context: str) -> bool:
+    """Dual-check gate: keyword overlap AND embedding similarity must both pass."""
+    kw_overlap = keyword_overlap(source_context, generated)
+    emb_sim = cosine(embed(generated), embed(source_context))
+    return kw_overlap >= 0.40 and emb_sim >= 0.65
 
 async def query_web_fallback(query: str) -> str:
-    """Executes DDG search and extracts top web content on low confidence."""
+    """Optional: runs only when local retrieval produces no answer."""
     results = []
     with DDGS() as ddgs:
         for r in ddgs.text(query, max_results=3):
@@ -250,7 +238,7 @@ class Telemetry:
             start = time.perf_counter()
             res = await func(*args, **kwargs)
             elapsed = time.perf_counter() - start
-            
+
             name = func.__name__
             cls.DATA["metrics"][name] = cls.DATA["metrics"].get(name, []) + [elapsed]
             cls.DATA["rss_memory_mb"] = psutil.Process().memory_info().rss / (1024 * 1024)
@@ -292,7 +280,7 @@ async def api_query(request: Request):
 
         # Execute Retrieval & Context Selection
         context = retrieve_and_build_context(user_query, session_id)
-        
+
         # Stream model response chunks
         async for chunk in stream_ollama_synthesis(user_query, context):
             yield json.dumps({"type": "token", "content": chunk}) + "\n"
@@ -308,12 +296,12 @@ Evaluated on consumer laptop hardware (**Intel Core i3 11th Gen, 36 GB RAM, Inte
 
 | Workload Scenario | Execution Path | Avg. Duration | Pipeline Operations |
 |:---|:---|:---:|:---|
-| **Single-Document Retrieval & Summary** | Full-Text Injection Path | ~150 s | Anchor extraction + single LLM synthesis pass |
+| **Single-Document Retrieval & Summary** | Full-Text Injection Path | ~150 s | Full-section injection + single LLM synthesis pass |
 | **Two-Document Comparative Analysis** | Multi-Doc Extraction Pipeline | ~138 s | Two extraction passes + cross-synthesis pass |
-| **Vector Similarity Search (FAISS)** | Hybrid `query_kb` Path | ~2.2 s | 768d vector dot product + RRF ranking |
+| **Query Embedding** | `nomic-embed-text` on CPU | ~2.2 s | 768d embedding of the user query (FAISS search itself takes milliseconds) |
 | **System Resource Allocation** | Memory / CPU Footprint | ~3.1 GB | Stable resident footprint across continuous operations |
 
-> *Note: Local CPU execution prioritizes total data privacy and $0 operating overhead over raw token speed. Wall times scale down significantly when deployed on hardware with dedicated GPU acceleration.*
+> *Note: Local CPU execution prioritizes total data privacy and $0 operating overhead over raw token speed. Timings are observations from one cold-start test configuration, not guarantees. Wall times scale down significantly on hardware with dedicated GPU acceleration.*
 
 ---
 
@@ -340,7 +328,7 @@ I am available for contract engagements and specialized technical consulting aro
 
 ## Availability & Licensing
 
-Ask-AI is distributed as a single-tenant, closed-source commercial software package. 
+Ask-AI is distributed as a single-tenant, closed-source commercial software package.
 
 For commercial licensing, custom integration inquiries, or system demos:
 
