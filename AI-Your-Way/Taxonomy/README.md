@@ -61,3 +61,67 @@ Full write-up, warts and all: **(https://www.linkedin.com/pulse/everyone-wants-a
 
 ---
 
+Under the Hood
+
+No magic here. Deterministic code first, LLM last. The real snippets, trimmed:
+
+1. The confidence gate (pipeline.py)
+
+Two thresholds decide everything. Below the floor, it's no_match. Above the ceiling, it's accepted. Everything in between goes to a human.
+
+python
+AUTO_ACCEPT_THRESHOLD = 0.85
+REVIEW_THRESHOLD = 0.60
+
+if not top or top["confidence"] < REVIEW_THRESHOLD:
+    status = "no_match"
+    ...
+elif top["confidence"] >= AUTO_ACCEPT_THRESHOLD:
+    status = "auto_accepted"
+else:
+    status = "needs_review"
+
+Every row ends up as one of five statuses: auto_accepted, needs_review, no_match, llm_matched, or human_taught.
+
+2. Teach once, remembered forever (pipeline.py)
+
+When a person fixes a row, the correction is stored at 100% confidence with its own status. It's never overwritten, and it shows up in the audit history.
+
+python
+(payload.term, payload.concept_id, row["pref_label"], 1.0, "human_taught")
+3. Embed the text, not the labels (merge_vector.py)
+
+My first run embedded CATEGORY | STATUS | text together, which skewed the similarity scores. Now only the raw text is embedded. Category and status stay as metadata.
+
+python
+# Embed the raw text only; category/status stay as metadata
+# so they do not skew similarity scores.
+embed_text = text_chunk
+4. 540K rows, ~4,200 embeds (merge_vector.py)
+
+Identical texts are embedded once and reused. That's why a half-million-row compile takes about a minute on CPU.
+
+python
+for r in records:
+    t = r["embed_text"]
+    if t not in text_to_unique_idx:
+        text_to_unique_idx[t] = len(unique_texts)
+        unique_texts.append(t)
+    record_to_unique_idx.append(text_to_unique_idx[t])
+5. The review gate at query time (kb_console.py)
+
+The gate isn't a label. Rows that haven't cleared review are filtered out before the LLM ever sees them. This was the fix from the first run.
+
+python
+USABLE_STATUSES = {"auto_accepted", "human_taught", "llm_matched"}
+
+for score, idx in zip(scores[0], ids[0]):
+    rec = records[idx]
+    if rec.get("status") not in USABLE_STATUSES:
+        continue
+The stack
+Python, with FastAPI for the local interface
+Ollama for local embeddings (bge-small, quantized, CPU only)
+FAISS (IndexFlatIP) for vector search
+SQLite for the taxonomy and audit history
+No cloud. No API keys. No GPU.
