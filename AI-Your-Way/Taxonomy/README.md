@@ -55,7 +55,7 @@ After fixing the gate, the embeddings, and the test questions: **5 of 5 correct,
 
 **Still not done:** my tests used exact product names, so I haven't proven paraphrase recall yet. The backlog of rows waiting on review is the real job. It's retrieval-ready for the accepted slice, not the whole dataset.
 
-Full write-up, warts and all: **[link to article]**
+Full write-up, warts and all: **(https://www.linkedin.com/pulse/everyone-wants-ai-almost-nobody-clean-data-first-todd-lipscomb-utivc)**
 
 *Data: "Online Retail" dataset (Dr. Daqing Chen, London South Bank University, via UCI/Kaggle). Used for testing only.*
 
