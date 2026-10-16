@@ -22,9 +22,7 @@ Tool, not toy.
 
 ---
 
-## Demo 5: The Stress Test: 540K Real Transactions
-
-*This is the big one, so it goes first.*
+## The Stress Test: 540K Real Transactions
 
 I ran the public "Online Retail" dataset from Kaggle through the tool: 541,909 raw transactions from a UK gift retailer. About 4,200 unique products, repeated roughly 129 times each. Six starter categories. Fully local, CPU only, one consumer machine.
 
@@ -55,7 +53,7 @@ After fixing the gate, the embeddings, and the test questions: **5 of 5 correct,
 
 **Still not done:** my tests used exact product names, so I haven't proven paraphrase recall yet. The backlog of rows waiting on review is the real job. It's retrieval-ready for the accepted slice, not the whole dataset.
 
-Full write-up, warts and all: **(https://www.linkedin.com/pulse/everyone-wants-ai-almost-nobody-clean-data-first-todd-lipscomb-utivc)**
+Full write-up, warts and all: [Everyone Wants AI. Almost Nobody Wants to Clean the Data First.](https://www.linkedin.com/pulse/everyone-wants-ai-almost-nobody-clean-data-first-todd-lipscomb-utivc)
 
 *Data: "Online Retail" dataset (Dr. Daqing Chen, London South Bank University, via UCI/Kaggle). Used for testing only.*
 
