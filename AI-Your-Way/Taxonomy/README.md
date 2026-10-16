@@ -39,7 +39,7 @@ I ran the public "Online Retail" dataset from Kaggle through the tool: 541,909 r
 
 After a full automated pass, 95% of the data still needs a person. That's not a bug. My starter taxonomy was too thin, and the audit made it obvious. Better to know than to hide it.
 
-![Matching results](AI-Your-Way/Taxonomy/ecommerce_screenshot2.png)
+![Matching results](https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Taxonomy/screen4.png)
 
 **Then I took it further.** The cleaned output exports as CSV or JSON, feeds a local vector index, and gets checked in a Data Readiness Console that audits the results and tests live retrieval.
 
