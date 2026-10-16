@@ -28,7 +28,7 @@ Tool, not toy.
 
 I ran the public "Online Retail" dataset from Kaggle through the tool: 541,909 raw transactions from a UK gift retailer. About 4,200 unique products, repeated roughly 129 times each. Six starter categories. Fully local, CPU only, one consumer machine.
 
-![Load the data]([AI-Your-Way/Taxonomy/ecommerce_screenshot1.png](https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Taxonomy/screen.png))
+![Load the data](https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Taxonomy/screen.png)
 
 **The honest numbers:**
 
