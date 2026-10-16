@@ -51,7 +51,7 @@ The first run broke, and I'm leaving that in:
 
 After fixing the gate, the embeddings, and the test questions: **5 of 5 correct, grounded answers.**
 
-![Audit](AI-Your-Way/Taxonomy/ecommerce_screenshot3.png)
+![Audit](https://github.com/Todd2112/My-Portfolio/blob/master/AI-Your-Way/Taxonomy/screen11.png)
 
 **Still not done:** my tests used exact product names, so I haven't proven paraphrase recall yet. The backlog of rows waiting on review is the real job. It's retrieval-ready for the accepted slice, not the whole dataset.
 
